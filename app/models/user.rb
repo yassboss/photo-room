@@ -15,5 +15,5 @@ class User < ApplicationRecord
                                  allow_blank: true
 
   validates :nickname, :image, :last_name, :first_name, :main_camera, presence: true
-  validates :prefecture_id, :camera_experience_id, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :prefecture_id, :camera_experience_id, numericality: { other_than: 1, message: "can't be blank" }
 end

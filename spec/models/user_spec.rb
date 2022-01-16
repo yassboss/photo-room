@@ -66,13 +66,13 @@ RSpec.describe User, type: :model do
         @user.password = '1234t'
         @user.password_confirmation = '1234t'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
+        expect(@user.errors.full_messages).to include('Password is too short (minimum is 6 characters)')
       end
       it 'passwordが半角英数字混合でなければ登録できない' do
         @user.password = '12345Ｙ'
         @user.password_confirmation = '12345Ｙ'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password must be containing both letters and numbers")
+        expect(@user.errors.full_messages).to include('Password must be containing both letters and numbers')
       end
       it 'passwordとpassword_confirmationが不一致であれば登録できない' do
         @user.password = '1234test'
@@ -84,12 +84,12 @@ RSpec.describe User, type: :model do
         @user.save
         another_user = FactoryBot.build(:user, email: @user.email)
         another_user.valid?
-        expect(another_user.errors.full_messages).to include("Email has already been taken")
+        expect(another_user.errors.full_messages).to include('Email has already been taken')
       end
       it 'emailに@を含まない場合は登録できない' do
         @user.email = 'test.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
     end
   end
