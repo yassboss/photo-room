@@ -25,7 +25,7 @@
 | Column        | Type       | Options                        |
 | ------------- | ---------- | -------------------------------|
 | name          | string     | null: false                    |
-| introduce     | string     | null: false                    |
+| introduction  | string     | null: false                    |
 | owner_id      | integer    | null: false                    |
 
 ### Association
