@@ -3,7 +3,7 @@
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
   </div>
   <div>
-    <%= image_tag current_user.image.variant(resize:'200x200'), style: 'width: 200px; height: 200px, border-radius: 100px; object-fit: cover;' %>
+    <%= image_tag current_user.image.url, style: 'width: 200px; height: 200px, border-radius: 100px; object-fit: cover;' %>
     <%= current_user.nickname %>
   </div>
 <% else %>
