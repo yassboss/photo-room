@@ -5,7 +5,7 @@
 
   <div class="field">
     <%= f.label :nickname, 'ニックネーム（必須）' %><br />
-    <%= f.email_field :nickname, autofocus: true %>
+    <%= f.text_field :nickname, autofocus: true %>
   </div>
 
   <div class="field">
@@ -33,17 +33,17 @@
 
   <div class="field">
     <%= f.label :last_name, 'お名前（姓）' %><br />
-    <%= f.email_field :last_name, autofocus: true, placeholder: "姓" %>
+    <%= f.text_field :last_name, autofocus: true, placeholder: "姓" %>
   </div>
 
   <div class="field">
     <%= f.label :first_name, 'お名前（名）' %><br />
-    <%= f.email_field :first_name, autofocus: true, placeholder: "名" %>
+    <%= f.text_field :first_name, autofocus: true, placeholder: "名" %>
   </div>
 
   <div class="field">
     <%= f.label :main_camera, '主な機種' %><br />
-    <%= f.email_field :main_camera, autofocus: true %>
+    <%= f.text_field :main_camera, autofocus: true %>
   </div>
 
   <div class="field">
