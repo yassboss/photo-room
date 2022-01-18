@@ -1,0 +1,6 @@
+<%= @group.name %>
+<%= @group.introduction %>
+<%= @owner.nickname %>
+<% @members.each do |member| %>
+  <%= member.nickname %>
+<% end %>
