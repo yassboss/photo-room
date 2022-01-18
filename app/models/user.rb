@@ -4,6 +4,8 @@ class User < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :prefecture
   belongs_to :camera_experience
+  has_many :group_users
+  has_many :groups, through: :group_users
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable

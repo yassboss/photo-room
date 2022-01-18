@@ -1,6 +1,7 @@
 <% if user_signed_in? %>
   <div>
     <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <%= link_to "グループ登録", new_group_path %>
   </div>
   <div>
     <%= image_tag current_user.image.url, style: 'width: 200px; height: 200px, border-radius: 100px; object-fit: cover;' %>
