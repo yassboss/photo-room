@@ -4,8 +4,17 @@
     <%= link_to "グループ登録", new_group_path %>
   </div>
   <div>
-    <%= image_tag current_user.image.url, style: 'width: 200px; height: 200px, border-radius: 100px; object-fit: cover;' %>
+    <%= image_tag current_user.image.url, style: 'width: 150px; height: 150px, border-radius: 100px; object-fit: cover;' %>
     <%= link_to current_user.nickname, edit_user_registration_path %>
+  </div>
+
+  <div>
+    <p>所属グループ一覧</p>
+    <% @user_groups.each do |group| %>
+    <div>
+      <%= link_to "#{group.name}のページへ", group_path(group.id) %>
+    </div>
+    <% end %>
   </div>
 <% else %>
   <div>
@@ -13,3 +22,16 @@
     <%= link_to '新規登録', new_user_registration_path %>
   </div>
 <% end %>
+
+<div>
+  <p>所属外のグループ</p>
+  <% if @groups.length >= 1 %>
+    <% @groups.each do |group| %>
+      <% unless @user_groups.ids.include?(group.id) %>
+      <div>
+        <%= link_to "#{group.name}", group_path(group.id) %>
+      </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

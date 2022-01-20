@@ -1,10 +1,9 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit, :update]
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def new
     @group = Group.new
-    @group.users << current_user
   end
 
   def create
@@ -18,18 +17,22 @@ class GroupsController < ApplicationController
   end
 
   def show
+    @groups = Group.includes(:user)
     @group = Group.find(params[:id])
-    @group_members = GroupUser.select(:user_id).where(group_id: @group.id)
-    @members = User.where(id: @group_members)
+    @user_groups = Group.where(id: GroupUser.select(:group_id).where(user_id: current_user.id)) if user_signed_in?
+    
+    @members = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
     @owner = User.find(@group.owner_id)
   end
 
   def edit
+    @group = Group.find(params[:id])
   end
 
   def update
+    @group.owner_id = current_user.id
     if @group.update(group_params)
-      redirect_to groups_path(@group)
+      redirect_to group_path(@group)
     else
       render :edit
     end
@@ -44,7 +47,7 @@ class GroupsController < ApplicationController
   def ensure_correct_user
     @group = Group.find(params[:id])
     unless @group.owner_id == current_user.id
-      redirect_to groups_path
+      redirect_to group_path(@group)
     end
   end
 end
