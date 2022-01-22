@@ -1,37 +1,22 @@
-<% if user_signed_in? %>
-  <div>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "グループ登録", new_group_path %>
-  </div>
-  <div>
-    <%= image_tag current_user.image.url, style: 'width: 150px; height: 150px, border-radius: 100px; object-fit: cover;' %>
-    <%= link_to current_user.nickname, edit_user_registration_path %>
-  </div>
+<%= render "shared/header" %>
 
-  <div>
-    <p>所属グループ一覧</p>
-    <% @user_groups.each do |group| %>
+<main class="main-box" style="background-color: #F5F5F5; height: 100vh; display: flex; align-items: center; ">
+  <div class="main-content" style="width: calc(100vw - 200px); margin: 0 20px;  background-color: white; height: 600px;">
     <div>
-      <%= link_to "#{group.name}のページへ", group_path(group.id) %>
+      Main-content
     </div>
-    <% end %>
   </div>
-<% else %>
-  <div>
-    <%= link_to "ログイン", new_user_session_path %>
-    <%= link_to '新規登録', new_user_registration_path %>
-  </div>
-<% end %>
-
-<div>
-  <p>所属外のグループ</p>
-  <% if @groups.length >= 1 %>
-    <% @groups.each do |group| %>
-      <% unless @user_groups.ids.include?(group.id) %>
-      <div>
-        <%= link_to "#{group.name}", group_path(group.id) %>
-      </div>
+  <div style="width: 200px; height: 600px;">
+    Side bar
+    <p>所属外のグループ</p>
+      <% if @groups.length >= 1 %>
+        <% @groups.each do |group| %>
+          <% unless @user_groups.ids.include?(group.id) %>
+          <div>
+            <%= link_to "#{group.name}", group_path(group.id) %>
+          </div>
+          <% end %>
+        <% end %>
       <% end %>
-    <% end %>
-  <% end %>
-</div>
+  </div>
+</main>
