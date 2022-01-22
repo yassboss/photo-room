@@ -16,14 +16,21 @@
       <% if user_signed_in? %>
         <li><%= link_to "New Group", new_group_path %></li>
         <% if @user_groups.exists? %>
-        <li>
-          <select onChange="location.href=value;", class="select-group">
-              <option value="">Select Group</option>
-            <% @user_groups.each do |group| %>
-              <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
-            <% end %>
-          </select>
-        </li>
+          <li>
+            <select onChange="location.href=value;", class="select-group">
+              <% if @group %>
+                <option value="<%=@group.id%>"><%=@group.name%>のページ</option>
+                <% @user_groups.where.not(id: @group.id).each do |group| %>
+                    <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
+                <% end %>
+              <% else %>
+                <option value="">Select Group</option>
+                <% @user_groups.each do |group| %>
+                  <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
+                <% end %>
+              <% end %>
+            </select>
+          </li>
         <% end %>
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
       <% else %>
