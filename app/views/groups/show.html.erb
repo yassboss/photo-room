@@ -1,6 +1,29 @@
-<%= @group.name %>
-<%= @group.introduction %>
-<%= @owner.nickname %>
-<% @members.each do |member| %>
-  <%= member.nickname %>
+<%= render "shared/header" %>
+
+<h1><%= @group.name %>のページ</h1>
+<%= link_to "#{@group.name}の編集", edit_group_path(@group) if user_signed_in? && @group.owner_id == current_user.id %>
+<h3>グループ紹介</h3>
+<p>紹介文</p>
+  <p><span><%= @group.introduction %></span></p>
+<p>オーナー</p>
+  <p><span><%= @owner.nickname %></span></p>
+<p>メンバーリスト</p>
+<ul>
+  <% @members.each do |member| %>
+    <li><%= member.nickname %></li>
+  <% end %>
+</ul>
+
+<% if user_signed_in? && @user_groups.include?(@group) %>
+<div>
+  <p>その他のグループ</p>
+  <% @user_groups.each do |group| %>
+    <% unless group.id == @group.id %>
+      <div>
+        <%= link_to "#{group.name}", group_path(group.id) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
 <% end %>
+
