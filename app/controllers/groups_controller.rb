@@ -27,6 +27,8 @@ class GroupsController < ApplicationController
 
   def edit
     @group = Group.find(params[:id])
+    @members = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
+    @add_members = User.where.not(id: current_user.id && @members.ids)
   end
 
   def update
