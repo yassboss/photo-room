@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!, only: [:edit, :update]
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :set_member_in_out, only: [:edit, :update]
 
   def new
     @group = Group.new
@@ -26,9 +27,6 @@ class GroupsController < ApplicationController
   end
 
   def edit
-    @group = Group.find(params[:id])
-    @members = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
-    @add_members = User.where.not(id: current_user.id && @members.ids)
   end
 
   def update
@@ -51,5 +49,10 @@ class GroupsController < ApplicationController
     unless @group.owner_id == current_user.id
       redirect_to group_path(@group)
     end
+  end
+
+  def set_member_in_out
+    @members = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
+    @add_members = User.where.not(id: current_user.id && @members.ids)
   end
 end

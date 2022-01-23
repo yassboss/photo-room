@@ -1,5 +1,6 @@
 
 <%=form_with model: @group, local: true do |f|%>
+<%= render 'layouts/error_messages', model: f.object %>
 <div class="field">
   <%= f.label :name, 'グループ名（必須）' %><br />
   <%= f.text_field :name, autofocus: true %>
