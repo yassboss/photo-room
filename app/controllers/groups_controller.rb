@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :set_member_in_out, only: [:edit, :update]
 
