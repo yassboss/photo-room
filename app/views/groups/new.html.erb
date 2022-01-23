@@ -1,4 +1,3 @@
-
 <%=form_with model: @group, local: true do |f|%>
 <%= render 'layouts/error_messages', model: f.object %>
 <div class="field">
@@ -10,24 +9,30 @@
   <%= f.text_area :introduction, autofocus: true %>
 </div>
 <div class="field">
-  <select name="group[user_ids][]">
-    <option value="">グループに招待するユーザーを選択してください</option>
-      <% User.where.not(id: current_user.id).each do |user| %>
-        <option value=<%= user.id %>><%= user.nickname %></option>
-      <% end %>
-  </select>
-  <select name="group[user_ids][]">
-    <option value="">グループに招待するユーザーを選択してください</option>
-      <% User.where.not(id: current_user.id).each do |user| %>
-        <option value=<%= user.id %>><%= user.nickname %></option>
-      <% end %>
-  </select>
-  <select name="group[user_ids][]">
-    <option value="">グループに招待するユーザーを選択してください</option>
-      <% User.where.not(id: current_user.id).each do |user| %>
-        <option value=<%= user.id %>><%= user.nickname %></option>
-      <% end %>
-  </select>
+  <div>
+    <select name="group[user_ids][]">
+      <option value="">グループに招待するユーザーを選択してください</option>
+        <% User.where.not(id: current_user.id).each do |user| %>
+          <option value=<%= user.id %>><%= user.nickname %></option>
+        <% end %>
+    </select>
+  </div>
+  <div>
+    <select name="group[user_ids][]">
+      <option value="">グループに招待するユーザーを選択してください</option>
+        <% User.where.not(id: current_user.id).each do |user| %>
+          <option value=<%= user.id %>><%= user.nickname %></option>
+        <% end %>
+    </select>
+  </div>
+  <div>
+    <select name="group[user_ids][]">
+      <option value="">グループに招待するユーザーを選択してください</option>
+        <% User.where.not(id: current_user.id).each do |user| %>
+          <option value=<%= user.id %>><%= user.nickname %></option>
+        <% end %>
+    </select>
+  </div>
   <input name="group[user_ids][]" type="hidden" value=<%= current_user.id %>>
 </div>
 <div>
