@@ -10,7 +10,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # トップページに移動する
       visit root_path
       # トップページにサインアップページへ遷移するボタンがあることを確認する
-      expect(page.body).to have_content('新規登録')
+      expect(page.body).to have_content('Signup')
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
@@ -31,10 +31,10 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # ログアウトボタンが表示されることを確認する
-      expect(page.body).to have_content('ログアウト')
+      expect(page.body).to have_content('Logout')
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
-      expect(page.body).to have_no_content('新規登録')
-      expect(page.body).to have_no_content('ログイン')
+      expect(page.body).to have_no_content('Signup')
+      expect(page.body).to have_no_content('Login')
     end
   end
   context 'ユーザー新規登録ができないとき' do
@@ -42,7 +42,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # トップページに移動する
       visit root_path
       # トップページにサインアップページへ遷移するボタンがあることを確認する
-      expect(page.body).to have_content('新規登録')
+      expect(page.body).to have_content('Signup')
       # 新規登録ページへ移動する
       visit new_user_registration_path
       # ユーザー情報を入力する
@@ -75,7 +75,7 @@ RSpec.describe 'ログイン', type: :system do
       # トップページに移動する
       visit root_path
       # トップページにログインページへ遷移するボタンがあることを確認する
-      expect(page.body).to have_content('ログイン')
+      expect(page.body).to have_content('Login')
       # ログインページへ遷移する
       visit new_user_session_path
       # 正しいユーザー情報を入力する
@@ -86,10 +86,10 @@ RSpec.describe 'ログイン', type: :system do
       # トップページへ遷移することを確認する
       expect(current_path).to eq(root_path)
       # ログアウトボタンが表示されることを確認する
-      expect(page.body).to have_content('ログアウト')
+      expect(page.body).to have_content('Logout')
       # サインアップページへ遷移するボタンやログインページへ遷移するボタンが表示されていないことを確認する
-      expect(page.body).to have_no_content('新規登録')
-      expect(page.body).to have_no_content('ログイン')
+      expect(page.body).to have_no_content('Sinup')
+      expect(page.body).to have_no_content('Login')
     end
   end
   context 'ログインができないとき' do
@@ -97,7 +97,7 @@ RSpec.describe 'ログイン', type: :system do
       # トップページに移動する
       visit root_path
       # トップページにログインページへ遷移するボタンがあることを確認する
-      expect(page.body).to have_content('ログイン')
+      expect(page.body).to have_content('Login')
       # ログインページへ遷移する
       visit new_user_session_path
       # ユーザー情報を入力する
@@ -145,14 +145,14 @@ RSpec.describe 'ユーザー情報編集', type: :system do
       # トップページへ遷移したことを確認する
       expect(current_path).to eq(root_path)
       # ログアウトボタンが表示されることを確認する
-      expect(page.body).to have_content('ログアウト')
+      expect(page.body).to have_content('Logout')
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
-      expect(page.body).to have_no_content('新規登録')
-      expect(page.body).to have_no_content('ログイン')
+      expect(page.body).to have_no_content('Signup')
+      expect(page.body).to have_no_content('Login')
     end
   end
   context 'ユーザー情報が編集できないとき' do
-    it '誤った情報ではユーザー新規登録ができずに新規登録ページへ戻ってくる' do
+    it '誤った情報ではユーザー編集登録ができずに編集ページへ戻ってくる' do
       # ログインする
       visit new_user_session_path
       fill_in 'user_email', with: @user.email
