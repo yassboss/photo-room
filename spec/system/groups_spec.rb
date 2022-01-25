@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "新規グループ登録", type: :system do
+RSpec.describe '新規グループ登録', type: :system do
   before do
     @user = FactoryBot.create(:user)
     @another_user = FactoryBot.create(:user)
@@ -20,7 +20,7 @@ RSpec.describe "新規グループ登録", type: :system do
       # グループ情報を入力する
       fill_in 'group_name', with: @group.name
       fill_in 'group_introduction', with: @group.introduction
-      select "#{@another_user.nickname}", from: 'group[user_ids][]', match: :first
+      select @another_user.nickname.to_s, from: 'group[user_ids][]', match: :first
       # 登録ボタンを押すとgroupモデルのカウントが1上がること、group_usersモデルのカウントが2上がることを確認する
       expect do
         find('input[name="commit"]').click
@@ -42,7 +42,7 @@ RSpec.describe "新規グループ登録", type: :system do
       # グループ情報を入力する
       fill_in 'group_name', with: ''
       fill_in 'group_introduction', with: ''
-      select "#{@another_user.nickname}", from: 'group[user_ids][]', match: :first
+      select @another_user.nickname.to_s, from: 'group[user_ids][]', match: :first
       # 登録ボタンを押してもgroupモデルのカウント、group_usersモデルのカウントが上がらないことを確認する
       expect do
         find('input[name="commit"]').click
@@ -70,7 +70,7 @@ RSpec.describe 'グループ情報編集', type: :system do
       # グループ詳細ページへのリンクが存在することを確認する
       expect(
         find('.select-group').click
-      ).to have_content "#{@group.name}"
+      ).to have_content @group.name.to_s
       # グループ詳細ページへ遷移する
       visit group_path(@group)
       # グループ編集ボタンが表示されることを確認する

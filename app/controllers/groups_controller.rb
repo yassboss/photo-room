@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
     @groups = Group.includes(:user)
     @group = Group.find(params[:id])
     @user_groups = Group.where(id: GroupUser.select(:group_id).where(user_id: current_user.id)) if user_signed_in?
-    
+
     @members = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
     @owner = User.find(@group.owner_id)
   end
@@ -46,9 +46,7 @@ class GroupsController < ApplicationController
 
   def ensure_correct_user
     @group = Group.find(params[:id])
-    unless @group.owner_id == current_user.id
-      redirect_to group_path(@group)
-    end
+    redirect_to group_path(@group) unless @group.owner_id == current_user.id
   end
 
   def set_member_in_out
