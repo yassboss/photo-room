@@ -55,7 +55,6 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :group
 - has_many :comments
 - has_many :unit_posts
 - has_many :units, through: :unit_posts
