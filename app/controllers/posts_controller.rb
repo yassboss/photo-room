@@ -27,10 +27,17 @@ class PostsController < ApplicationController
     @user_groups = Group.where(id: @group_ids)
   end
 
-  def update
+  def edit
+    @post = Post.find(params[:id])
   end
 
-  def edit
+  def update
+    @post = Post.find(params[:id])
+    if @post.update(post_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
   end
 
   def destroy
