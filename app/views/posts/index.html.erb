@@ -1,22 +1,30 @@
 <%= render "shared/header" %>
 
-<main class="main-box" style="background-color: #F5F5F5; height: 100vh; display: flex; align-items: center; ">
-  <div class="main-content" style="width: calc(100vw - 200px); margin: 0 20px;  background-color: white; height: 600px;">
+<main class="main-box" style="background-color: #F5F5F5;">
+  所属外のグループ
+  <% if @groups.length >= 1 %>
+    <% @groups.each do |group| %>
+      <% unless @user_groups.ids.include?(group.id) %>
+        <%= link_to "#{group.name}", group_path(group.id), style: "margin-left: 20px;" %>
+      <% end %>
+    <% end %>
+  <% end %>
+  <div class="main-wrapper" style="display: flex; align-items: center;">
+  <div class="main-content" style="width: 95%; margin: 40px auto; background-color: white;">
     <div>
       Main-content
-    </div>
-  </div>
-  <div style="width: 200px; height: 600px;">
-    Side bar
-    <p>所属外のグループ</p>
-      <% if @groups.length >= 1 %>
-        <% @groups.each do |group| %>
-          <% unless @user_groups.ids.include?(group.id) %>
-          <div>
-            <%= link_to "#{group.name}", group_path(group.id) %>
+      <% if @posts.exists? %>
+        <% @posts.each do |post| %>
+          <div class="post-content">
+            <p>Title:<%= post.title %></p>
+            <p>Name:<%= post.user.nickname %></p>
+            <% post.images[0..-1].each do |image| %>
+              <%= image_tag image %>
+            <% end %>
           </div>
-          <% end %>
         <% end %>
       <% end %>
+    </div>
+  </div>
   </div>
 </main>

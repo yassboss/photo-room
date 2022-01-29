@@ -14,6 +14,7 @@
       <ul>
         <li><%= link_to "Home", root_path %></li>
       <% if user_signed_in? %>
+        <li><%= link_to "Single Post", new_post_path %></li>
         <li><%= link_to "New Group", new_group_path %></li>
         <% if @user_groups.exists? %>
           <li>
