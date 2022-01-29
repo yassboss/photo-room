@@ -16,11 +16,13 @@
       <% if @posts.exists? %>
         <% @posts.each do |post| %>
           <div class="post-content">
+          <%= link_to post_path(post.id) do %>
             <p>Title:<%= post.title %></p>
             <p>Name:<%= post.user.nickname %></p>
             <% post.images[0..-1].each do |image| %>
               <%= image_tag image %>
             <% end %>
+          <% end %>
           </div>
         <% end %>
       <% end %>

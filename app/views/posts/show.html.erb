@@ -1,0 +1,11 @@
+<%= render "shared/header" %>
+
+<p>Title:<%= @post.title %></p>
+<p>Name:<%= @post.user.nickname %></p>
+<%= image_tag @post.user.image.url %>
+<p><%= @post.user.main_camera %></p>
+<p><%= @post.user.prefecture.name %></p>
+<p><%= @post.user.camera_experience.name %></p>
+<% @post.images[0..-1].each do |image| %>
+  <%= image_tag image %>
+<% end %>
