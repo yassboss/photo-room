@@ -1,0 +1,17 @@
+<%= render "shared/header" %>
+
+<p>Title:<%= @post.title %></p>
+<p><%= @post.text %></p>
+<p>Name:<%= @post.user.nickname %></p>
+<%= image_tag @post.user.image.url %>
+<p><%= @post.user.main_camera %></p>
+<p><%= @post.user.prefecture.name %></p>
+<p><%= @post.user.camera_experience.name %></p>
+<% @post.images[0..-1].each do |image| %>
+  <%= image_tag image %>
+<% end %>
+
+<% if user_signed_in? && current_user.id == @post.user_id %>
+  <%= link_to '編集', edit_post_path(@post.id) %>
+  <%= link_to '削除', post_path(@post.id), method: :delete %>
+<% end %>

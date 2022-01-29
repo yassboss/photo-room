@@ -55,25 +55,24 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :group
 - has_many :comments
-- has_many :unit_posts
-- has_many :units, through: :unit_posts
+- has_many :post_units
+- has_many :units, through: :post_units
 - has_many_attached :images
 
-# units テーブル
+## units テーブル
 
 | Column             | Type       | Options              |
 | ------------------ | ---------- | ---------------------|
-| title              | string     | null: false          |
-| text               | text       | null: false          |
+| unit_title         | string     | null: false          |
+| unit_text          | text       | null: false          |
 | group_id           | integer    | null: false          |
 
 ### Association
-- has_many :unit_posts
-- has_many :posts, through: :unit_posts
+- has_many :post_units
+- has_many :posts, through: :post_units
 
-## unit_posts テーブル
+## post_units テーブル
 
 | Column   | Type       | Options                        |
 | -------- | ---------- | -------------------------------|
