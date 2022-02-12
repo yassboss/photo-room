@@ -31,6 +31,7 @@
 ### Association
 - has_many :group_users
 - has_many :users, through: :group_users
+- has_many :group_posts
 
 ## group_users テーブル
 
@@ -49,7 +50,7 @@
 | ------------------ | ---------- | -------------------------------|
 | title              | string     | null: false                    |
 | text               | text       | null: false                    |
-| group_post_id      | integer    |                                |
+| group_post_id      | integer    | foreign_key: true              |
 | action             | string     | default: '', null: false       |
 | user               | references | null: false, foreign_key: true |
 
@@ -61,14 +62,15 @@
 
 ## group_posts テーブル
 
-| Column             | Type       | Options              |
-| ------------------ | ---------- | ---------------------|
-| group_title        | string     | null: false          |
-| group_text         | text       | null: false          |
-| group_id           | integer    | null: false          |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | -------------------------------|
+| group_title        | string     | null: false                    |
+| group_text         | text       | null: false                    |
+| group_id           | integer    | null: false, foreign_key: true |
 
 ### Association
 - has_many :posts
+- belongs_to :group
 
 ## comments テーブル
 
