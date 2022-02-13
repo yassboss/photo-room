@@ -102,6 +102,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
   // input要素を取得
   const fileField = document.querySelector('input[type="file"][name="post[images][]"]')
+  // const fileField = document.querySelector('input[type="file"]');
+  // const num = fileField.getAttributes("name");
   
   // input要素で値の変化が起きた際に呼び出される関数
   fileField.addEventListener('change', changedFileField);

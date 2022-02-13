@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_26_132831) do
+ActiveRecord::Schema.define(version: 2022_02_12_032612) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -33,6 +33,14 @@ ActiveRecord::Schema.define(version: 2022_01_26_132831) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "group_posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "group_title", null: false
+    t.text "group_text", null: false
+    t.integer "group_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "group_users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "group_id", null: false
     t.bigint "user_id", null: false
@@ -53,7 +61,7 @@ ActiveRecord::Schema.define(version: 2022_01_26_132831) do
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "text", null: false
-    t.integer "theme_id"
+    t.integer "group_post_id", null: false
     t.string "action", default: "", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

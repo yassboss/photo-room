@@ -4,11 +4,14 @@ class PostsController < ApplicationController
     @group_ids = GroupUser.select(:group_id).where(user_id: current_user.id) if user_signed_in?
     @user_groups = Group.where(id: @group_ids)
 
-    @posts = Post.includes(:user).order('created_at DESC')
+    @single_posts = Post.where(action: 'single').includes(:user).order('created_at DESC')
+    @group_posts = GroupPost.includes(:group).order('created_at DESC')
   end
 
   def new
     @post = Post.new
+    @group_ids = GroupUser.select(:group_id).where(user_id: current_user.id) if user_signed_in?
+    @user_groups = Group.where(id: @group_ids)
   end
 
   def create
@@ -49,6 +52,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :action, {images: []}).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :text, :group_post_id, :action, {images: []}).merge(user_id: current_user.id)
   end
 end

@@ -31,6 +31,7 @@
 ### Association
 - has_many :group_users
 - has_many :users, through: :group_users
+- has_many :group_posts
 
 ## group_users テーブル
 
@@ -49,38 +50,26 @@
 | ------------------ | ---------- | -------------------------------|
 | title              | string     | null: false                    |
 | text               | text       | null: false                    |
-| theme_id           | integer    |                                |
+| group_post_id      | integer    | foreign_key: true              |
 | action             | string     | default: '', null: false       |
 | user               | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
+- belongs_to :group_post
 - has_many :comments
-- has_many :post_units
-- has_many :units, through: :post_units
 - has_many_attached :images
 
-## units テーブル
+## group_posts テーブル
 
-| Column             | Type       | Options              |
-| ------------------ | ---------- | ---------------------|
-| unit_title         | string     | null: false          |
-| unit_text          | text       | null: false          |
-| group_id           | integer    | null: false          |
-
-### Association
-- has_many :post_units
-- has_many :posts, through: :post_units
-
-## post_units テーブル
-
-| Column   | Type       | Options                        |
-| -------- | ---------- | -------------------------------|
-| post     | references | null: false, foreign_key: true |
-| unit     | references | null: false, foreign_key: true |
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | -------------------------------|
+| group_title        | string     | null: false                    |
+| group_text         | text       | null: false                    |
+| group_id           | integer    | null: false, foreign_key: true |
 
 ### Association
-- belongs_to :user
+- has_many :posts
 - belongs_to :group
 
 ## comments テーブル

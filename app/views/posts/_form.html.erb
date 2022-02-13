@@ -1,8 +1,9 @@
-<%= form_with model: @post, id: 'new_post', local: true do |f| %>
+<%= form_with model: @post, method: :post, id: 'new_post', local: true do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
   <div class="message-field">
     <%= f.text_field :title, placeholder: 'title' %><br>
     <%= f.text_area :text %>
+    <%= f.hidden_field :group_post_id, :value => 0 %>
     <%= f.hidden_field :action, :value => 'single' %>
   </div>
   <div class="image-field">
