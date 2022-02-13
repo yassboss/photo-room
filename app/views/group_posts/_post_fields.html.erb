@@ -2,7 +2,6 @@
   <div class="post-field">
     <div class="user-select">
       <div class="group_users_insert_point"></div> 
-      <%= f.hidden_field :user_id, :value => current_user.id %>
       
       <div id="user-select">
         <div class="field ">
@@ -17,7 +16,8 @@
       <%= f.hidden_field :action,  value: 'group' %>
     </div>
     <div class="image-field">
-      <div class="previews"></div>
+      <div class="previews">
+      </div>
       <div class="click-upload">
         <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 } %>
       </div>
@@ -25,17 +25,3 @@
       <%= link_to_remove_association "削除", f %>
   </div>
 </div>
-
-<script>
-function loadImage(obj){
-  let preview = obj.closest('.image-field').firstElementChild;
-  preview.innerHTML = '<p>プレビュー</p>';
-	for (i = 0; i < obj.files.length; i++) {
-		var fileReader = new FileReader();
-		fileReader.onload = (function (e) {
-      preview.innerHTML += '<img src="' + e.target.result + '">';
-		});
-		fileReader.readAsDataURL(obj.files[i]);
-	};
-};
-</script>

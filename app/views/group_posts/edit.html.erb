@@ -1,9 +1,9 @@
-<%= form_with model: @group_post, id: 'new_post', local: true do |f| %>
+<%= form_with model: @group_post, local: true do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
 
   <div>
-    <%= @group.name %>
-    <%= f.hidden_field :group_id, value: @group.id %>
+    <%= @group_post.group.name %>
+    <%= f.hidden_field :group_id, value: @group_post.group.id %>
   </div>
   <div class="title-field">
     <p>タイトル</p>

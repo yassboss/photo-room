@@ -22,6 +22,20 @@ class GroupPostsController < ApplicationController
     @group_post = GroupPost.find(params[:id])
   end
 
+  def edit
+    @group_post = GroupPost.find(params[:id])
+    @group_users = User.where(id: GroupUser.select(:user_id).where(group_id: @group_post.group.id))
+  end
+
+  def update
+    @group_post = GroupPost.find(params[:id])
+    if @group_post.update(group_post_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
   private
 
   def group_post_params
