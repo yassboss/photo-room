@@ -11,7 +11,6 @@ class PostsController < ApplicationController
     @post = Post.new
     @group_ids = GroupUser.select(:group_id).where(user_id: current_user.id) if user_signed_in?
     @user_groups = Group.where(id: @group_ids)
-    @units = Unit.where(group_id: @group_ids)
   end
 
   def create
@@ -52,6 +51,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :text, :action, {images: []}).merge(user_id: current_user.id)
+    params.require(:post).permit(:title, :text, :group_post_id, :action, {images: []}).merge(user_id: current_user.id)
   end
 end

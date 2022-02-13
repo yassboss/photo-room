@@ -40,10 +40,10 @@ document.addEventListener('DOMContentLoaded', function(){
     // 2枚目用のfile_fieldを作成
     const newFileField = document.createElement('input');
     newFileField.setAttribute('type', 'file');
-    newFileField.setAttribute('name', 'form_post_collection[posts_attributes][0][images][]');
+    newFileField.setAttribute('name', 'post[images][]');
 
     // 最後のfile_fieldを取得
-    const lastFileField = document.querySelector('input[type="file"][name="form_post_collection[posts_attributes][0][images][]"]:last-child');
+    const lastFileField = document.querySelector('input[type="file"][name="post[images][]"]:last-child');
     // nextDataIndex = 最後のfile_fieldのdata-index + 1
     const nextDataIndex = Number(lastFileField.getAttribute('data-index')) + 1;
     newFileField.setAttribute('data-index', nextDataIndex);
@@ -101,11 +101,9 @@ document.addEventListener('DOMContentLoaded', function(){
   };
 
   // input要素を取得
-
-  console.log(formNum);
-  const fileField = document.querySelector('input[type="file"][name="form_post_collection[posts_attributes][0][images][]"]')
+  const fileField = document.querySelector('input[type="file"][name="post[images][]"]')
   // const fileField = document.querySelector('input[type="file"]');
-  const num = fileField.getAttribute("name");
+  // const num = fileField.getAttributes("name");
   
   // input要素で値の変化が起きた際に呼び出される関数
   fileField.addEventListener('change', changedFileField);

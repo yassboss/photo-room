@@ -8,7 +8,6 @@ require("@rails/ujs").start()
 require("@rails/activestorage").start()
 require("channels")
 require('../preview')
-require('../post-form')
 require('jquery') 
 import "cocoon"
 

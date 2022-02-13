@@ -1,0 +1,38 @@
+<%= form_with model: @group_post, id: 'new_post', local: true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+
+  <div>
+    <%= @group.name %>
+    <%= f.hidden_field :group_id, value: @group.id %>
+  </div>
+  <div class="title-field">
+    <p>タイトル</p>
+    <%= f.text_field :group_title, placeholder: 'group_title' %>
+  </div>
+  <div class="text-field">
+    <p>テキスト</p>
+    <%= f.text_area :group_text, placeholder: 'group_text' %>
+  </div>
+
+  <div id="detail-association-insertion-point">
+    <%= f.fields_for :posts do |post_field| %>
+      <%= render 'post_fields', f: post_field %>
+    <% end %>
+  </div>
+
+  <div class="add-botton-box">
+    <%= link_to_add_association "追加ボタン", f, :posts,
+    class: 'add_fields',
+    id: 'add-btn',
+    data: {
+      association_insertion_node: '#detail-association-insertion-point',
+      association_insertion_method: 'append'
+      }
+    %>
+  </div>
+  
+  <div class="submit-btn">
+    <%= f.submit '送信' %>
+  </div>
+
+<% end %>

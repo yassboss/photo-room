@@ -3,6 +3,7 @@
   <div class="message-field">
     <%= f.text_field :title, placeholder: 'title' %><br>
     <%= f.text_area :text %>
+    <%= f.hidden_field :group_post_id, :value => 0 %>
     <%= f.hidden_field :action, :value => 'single' %>
   </div>
   <div class="image-field">
