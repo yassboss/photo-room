@@ -1,6 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :user
-  # belongs_to :group_post
   has_many_attached :images
 
   validates :title, presence: true
