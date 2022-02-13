@@ -1,6 +1,7 @@
 <h1><%= @group_post.group_title %></h1>
 <h3><%= @group_post.group_text %></h3>
 <%= link_to "#{@group_post.group_title}の編集", edit_group_post_path(@group_post.id) if user_signed_in? && @group_post.group.users.ids.include?(current_user.id) %>
+<%= link_to "#{@group_post.group_title}の削除", group_post_path(@group_post.id), method: :delete if user_signed_in? && @group_post.group.users.ids.include?(current_user.id) %>
 <% @group_post.posts.each do |post| %>
 <h4>メンバー</h4>
 <p><%= post.user.nickname %></p>
