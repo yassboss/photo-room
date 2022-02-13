@@ -18,6 +18,10 @@ class GroupPostsController < ApplicationController
     end
   end
 
+  def show
+    @group_post = GroupPost.find(params[:id])
+  end
+
   private
 
   def group_post_params

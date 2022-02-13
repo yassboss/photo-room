@@ -11,21 +11,39 @@
   <% end %>
   <div class="main-wrapper" style="display: flex; align-items: center;">
   <div class="main-content" style="width: 95%; margin: 40px auto; background-color: white; min-height: 600px;">
-    <div>
-      Main-content
-      <% if @posts.exists? %>
-        <% @posts.each do |post| %>
-          <div class="post-content">
-          <%= link_to post_path(post.id) do %>
-            <p>Title:<%= post.title %></p>
-            <p>Name:<%= post.user.nickname %></p>
-            <% post.images[0..-1].each do |image| %>
-              <%= image_tag image %>
+    <div style="display: flex;">
+      <div class="single-post-content" style="width: 50%;">
+        <% if @single_posts.exists? %>
+          <% @single_posts.each do |post| %>
+            <div class="post-content">
+            <%= link_to post_path(post.id) do %>
+              <p>Title:<%= post.title %></p>
+              <p>Name:<%= post.user.nickname %></p>
+              <% post.images[0..-1].each do |image| %>
+                <%= image_tag image %>
+              <% end %>
             <% end %>
+            </div>
           <% end %>
-          </div>
         <% end %>
-      <% end %>
+      </div>
+      <div class="group-post-content" style="width: 50%;">
+        <% if @group_posts.exists? %>
+          <% @group_posts.each do |g_post| %>
+            <div class="post-content">
+            <%= link_to group_post_path(g_post.id) do %>
+              <p>Title:<%= g_post.group_title %></p>
+              <p>Name:<%= g_post.group.name %></p>
+              <% g_post.posts.each do |p| %>
+                <% p.images[0..-1].each do |image| %>
+                  <%= image_tag image %>
+                <% end %>
+              <% end %>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
   </div>
