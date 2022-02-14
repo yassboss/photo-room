@@ -1,4 +1,4 @@
-<%= form_with model: @post, method: :post, id: 'new_post', local: true do |f| %>
+<%= form_with model: @post, id: 'new_post', local: true do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
   <div class="message-field">
     <%= f.text_field :title, placeholder: 'title' %><br>
