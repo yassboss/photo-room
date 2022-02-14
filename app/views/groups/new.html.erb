@@ -10,32 +10,35 @@
 </div>
 <div class="field">
   <div>
-    <select name="group[user_ids][]">
+    <select name="group[user_ids][]" id="select-user">
       <option value="">グループに招待するユーザーを選択してください</option>
         <% User.where.not(id: current_user.id).each do |user| %>
           <option value=<%= user.id %>><%= user.nickname %></option>
         <% end %>
     </select>
   </div>
-  <div>
-    <select name="group[user_ids][]">
-      <option value="">グループに招待するユーザーを選択してください</option>
-        <% User.where.not(id: current_user.id).each do |user| %>
-          <option value=<%= user.id %>><%= user.nickname %></option>
-        <% end %>
-    </select>
-  </div>
-  <div>
-    <select name="group[user_ids][]">
-      <option value="">グループに招待するユーザーを選択してください</option>
-        <% User.where.not(id: current_user.id).each do |user| %>
-          <option value=<%= user.id %>><%= user.nickname %></option>
-        <% end %>
-    </select>
-  </div>
+  
+  <div id="add-field"></div>
+  
   <input name="group[user_ids][]" type="hidden" value=<%= current_user.id %>>
+
+  <button type="button" id="add-btn">ユーザー追加</button>
 </div>
 <div>
   <%= f.submit '登録'%>
 </div>
 <% end %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const addBtn = document.getElementById('add-btn');
+  if (!addBtn) return null;
+
+  const selectUser = document.getElementById('select-user');
+  const addField = document.getElementById('add-field');
+  addBtn.addEventListener('click', function(){
+    console.log("click");
+    addField.appendChild(selectUser.cloneNode(true));
+  });
+});
+</script>
