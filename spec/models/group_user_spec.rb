@@ -16,14 +16,12 @@ RSpec.describe GroupUser, type: :model do
     it 'user_idがなければ登録できない' do
       @group_user.user_id = nil
       @group_user.valid?
-      expect(@group_user.errors.full_messages).to include('User must exist', "User can't be blank")
+      expect(@group_user.errors.full_messages).to include('User must exist')
     end
-  end
-  context '登録できない場合' do
     it 'group_idがなければ登録できない' do
       @group_user.group_id = nil
       @group_user.valid?
-      expect(@group_user.errors.full_messages).to include('Group must exist', "Group can't be blank")
+      expect(@group_user.errors.full_messages).to include('Group must exist')
     end
   end
 end
