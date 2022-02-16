@@ -1,6 +1,7 @@
 <%= render "shared/header" %>
 
 <h1><%= @group.name %>のページ</h1>
+<%= link_to "グループ投稿", new_group_post_path(@group) if user_signed_in? && @members.include?(current_user) %>
 <%= link_to "#{@group.name}の編集", edit_group_path(@group) if user_signed_in? && @group.owner_id == current_user.id %>
 <h3>グループ紹介</h3>
 <p>紹介文</p>

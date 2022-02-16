@@ -51,6 +51,6 @@ class GroupsController < ApplicationController
 
   def set_member_in_out
     @members = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
-    @add_members = User.where.not(id: current_user.id && @members.ids)
+    @add_members = User.where.not(id: @members.ids)
   end
 end

@@ -92,7 +92,7 @@ RSpec.describe 'Groups', type: :request do
       sign_in @user
       post groups_path,
            params: { group: { name: 'test', introduction: 'test', owner_id: @user.id, user_ids: [@user.id, @another_user.id] } }
-      expect(response.status).to eq(200)
+      expect(response.status).to eq(302)
     end
     it 'ログインしていない状態でcreateアクションにリクエストするとレスポンスにステータスコード302が返ってくる' do
       post groups_path

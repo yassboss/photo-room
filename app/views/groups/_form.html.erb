@@ -9,7 +9,7 @@
     <%= f.text_area :introduction, autofocus: true, style: "border: 1px solid #54595F" %>
   </div>
 
-  <% if @members %>
+  <% if @group.name != nil %>
     <div class="field">
       <h3>メンバー</h3>
       <% @members.where.not(id: current_user.id).each do |user| %>
@@ -30,7 +30,7 @@
       </script>
       <h3>メンバー追加</h3>
       <div>
-        <select name="group[user_ids][]">
+        <select name="group[user_ids][]" id="select-user">
           <option value="">グループメンバーを選択してください</option>
             <% @add_members.each do |user| %>
               <option value=<%= user.id %>><%= user.nickname %></option>
