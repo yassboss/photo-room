@@ -15,13 +15,30 @@
       <%= f.text_area :text, placeholder: 'text' %>
       <%= f.hidden_field :action,  value: 'group' %>
     </div>
+
     <div class="image-field">
-      <div class="previews">
+      <div class="click-upload">
+        <div></div>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 }, class: 'testtest' %>
       </div>
       <div class="click-upload">
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 } %>
+        <div></div>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 1 }, class: 'testtest' %>
+      </div>
+      <div class="click-upload">
+        <div></div>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 2 }, class: 'testtest' %>
+      </div>
+      <div class="click-upload">
+        <div></div>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 3 }, class: 'testtest' %>
+      </div>
+      <div class="click-upload">
+        <div></div>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 4 }, class: 'testtest' %>
       </div>
     </div>
+
       <%= link_to_remove_association "削除", f %>
   </div>
 </div>
