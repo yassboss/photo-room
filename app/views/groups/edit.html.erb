@@ -1,1 +1,73 @@
-<%= render partial: "form" %>
+<%=form_with model: @group, local: true do |f|%>
+<%= render 'layouts/error_messages', model: f.object %>
+
+  <div class="field">
+    <%= f.label :name, 'グループ名（必須）' %><br />
+    <%= f.text_field :name, autofocus: true, style: "border: 1px solid #54595F" %>
+  </div>
+  <div class="field">
+    <%= f.label :introduction, 'グループ紹介（必須）' %><br />
+    <%= f.text_area :introduction, autofocus: true, style: "border: 1px solid #54595F" %>
+  </div>
+
+  <div class="field">
+    <h3>メンバー</h3>
+    <% @members.where.not(id: current_user.id).each do |user| %>
+      <div>
+        <input name="group[user_ids][]" type="hidden" value=<%= user.id %> text=<%= user.nickname %>><%= user.nickname %>
+        <span style="border: 1px solid #54595F;" id="mem">削除</span>
+      </div>
+    <% end %>
+
+    <h3>メンバー追加</h3>
+    <div>
+      <select name="group[user_ids][]" id="select-user" class="select-user">
+        <option value="">グループメンバーを選択してください</option>
+          <% @add_members.each do |user| %>
+            <option value=<%= user.id %>><%= user.nickname %></option>
+          <% end %>
+      </select>
+    </div>
+
+    <div id="add-field"></div>
+
+    <script>
+    var deles = document.querySelectorAll("#mem");
+    for (var i=0; i < deles.length; i++) {
+      deles[i].addEventListener('click', (e) => {
+        var inputChild = e.target.parentNode.firstElementChild;
+        var option = document.createElement("option");
+        option.text = inputChild.getAttribute('text');
+        option.value = inputChild.value;
+
+        var selectUser = document.querySelectorAll('.select-user');
+        for (var r=0; r < selectUser.length; r++) {
+          const add = option.cloneNode(true);
+          selectUser[r].appendChild(add);
+        };
+        e.target.parentNode.remove();
+      })
+    };
+    </script>
+
+    <input name="group[user_ids][]" type="hidden" value=<%= current_user.id %>>
+
+    <button type="button" id="add-btn">ユーザー追加</button>
+  </div>
+  <div>
+    <%= f.submit '登録'%>
+  </div>
+<% end %>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  const addBtn = document.getElementById('add-btn');
+  if (!addBtn) return null;
+
+  const selectUser = document.getElementById('select-user');
+  const addField = document.getElementById('add-field');
+  addBtn.addEventListener('click', function(){
+    addField.appendChild(selectUser.cloneNode(true));
+  });
+});
+</script>
