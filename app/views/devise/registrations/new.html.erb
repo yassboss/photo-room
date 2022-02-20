@@ -28,7 +28,7 @@
 
   <div class="field">
     <%= f.label :image, 'プロフィール画像' %><br/>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, accept: ".png, .jpg, .jpeg", id: 'profile-image'%>
   </div>
 
   <div class="field">
@@ -62,3 +62,21 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+const sizeLimit = 1024 * 1024 * 1; // 制限サイズ
+const fileInput = document.getElementById('profile-image'); // input要素
+
+const handleFileSelect = () => {
+  const files = fileInput.files;
+  for (let i = 0; i < files.length; i++) {
+    if (files[i].size > sizeLimit) {
+      alert('ファイルサイズは1MB以下にしてください'); // エラーメッセージを表示
+      fileInput.value = ''; // inputの中身をリセット
+      return; // この時点で処理を終了する
+    };
+  };
+};
+
+fileInput.addEventListener('change', handleFileSelect);
+</script>

@@ -9,7 +9,7 @@
   <div class="image-field">
     <div id="previews"></div>
     <div class="click-upload">
-      <%= f.file_field :images, name: 'post[images][]', data: { index: 0 } %>
+      <%= f.file_field :images, name: 'post[images][]', data: { index: 0 }, accept: ".png, .jpg, .jpeg" %>
     </div>
   </div>
   <div class="submit-btn">

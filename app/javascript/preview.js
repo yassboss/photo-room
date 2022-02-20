@@ -81,6 +81,14 @@ document.addEventListener('DOMContentLoaded', function(){
       return null;
     };
 
+    const sizeLimit = 1024 * 1024 * 1; // 制限サイズ
+    if (file.size > sizeLimit) {
+      // ファイルサイズが制限以上
+      alert('ファイルサイズは1MB以下にしてください'); // エラーメッセージを表示
+      e.target.value = ''; // inputの中身をリセット
+      return; // この時点で処理を終了する
+    };
+
     const blob = window.URL.createObjectURL(file);
 
     // data-indexを使用して、すでにプレビューが表示されているかを確認する

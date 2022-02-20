@@ -19,26 +19,46 @@
     <div class="image-field">
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 }, class: 'testtest' %>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 }, accept: ".png, .jpg, .jpeg" %>
       </div>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 1 }, class: 'testtest' %>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 1 }, accept: ".png, .jpg, .jpeg" %>
       </div>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 2 }, class: 'testtest' %>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 2 }, accept: ".png, .jpg, .jpeg" %>
       </div>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 3 }, class: 'testtest' %>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 3 }, accept: ".png, .jpg, .jpeg" %>
       </div>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 4 }, class: 'testtest' %>
+        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 4 }, accept: ".png, .jpg, .jpeg" %>
       </div>
     </div>
 
       <%= link_to_remove_association "削除", f %>
   </div>
 </div>
+
+<script>
+function loadImage(obj){
+  const preview = obj.closest('.click-upload').firstElementChild;
+  const sizeLimit = 1024 * 1024 * 1; // 制限サイズ
+	for (let i = 0; i < obj.files.length; i++) {
+		let fileReader = new FileReader();
+		fileReader.onload = (function (e) {
+      if (obj.files[i].size > sizeLimit) {
+      // ファイルサイズが制限以上
+      alert('ファイルサイズは1MB以下にしてください'); // エラーメッセージを表示
+      obj.value = ''; // inputの中身をリセット
+      return; // この時点で処理を終了する
+      };
+      preview.innerHTML += '<img src="' + e.target.result + '">';
+		});
+		fileReader.readAsDataURL(obj.files[i]);
+	};
+};
+</script>
