@@ -29,6 +29,7 @@ class GroupPostsController < ApplicationController
 
   def update
     @group_post = GroupPost.find(params[:id])
+    @group_users = User.where(id: GroupUser.select(:user_id).where(group_id: @group_post.group.id))
     if @group_post.update(group_post_params)
       redirect_to root_path
     else

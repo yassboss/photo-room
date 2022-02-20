@@ -39,7 +39,7 @@
 
 <script>
 function loadImage(obj){
-  let preview = obj.closest('.image-field').firstElementChild;
+  let preview = obj.closest('.click-upload').firstElementChild;
   preview.innerHTML = '<p>プレビュー</p>';
 	for (i = 0; i < obj.files.length; i++) {
 		var fileReader = new FileReader();
