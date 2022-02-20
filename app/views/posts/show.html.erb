@@ -15,3 +15,9 @@
   <%= link_to '編集', edit_post_path(@post.id) %>
   <%= link_to '削除', post_path(@post.id), method: :delete %>
 <% end %>
+
+<% @comments.each do |comment| %>
+  <%= comment.text %><%= comment.created_at %><%= comment.user.nickname %>
+<% end %>
+
+<%= render 'comments/comments', commentable: @post, comment: @comment %>

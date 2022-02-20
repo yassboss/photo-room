@@ -20,6 +20,7 @@ class GroupPostsController < ApplicationController
 
   def show
     @group_post = GroupPost.find(params[:id])
+    @comments = @group_post.comments.includes(:user)
   end
 
   def edit
