@@ -35,10 +35,10 @@
 
 ## group_users テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | -------------------------------|
-| user     | references | null: false, foreign_key: true |
-| group    | references | null: false, foreign_key: true |
+| Column   | Type       | Options                            |
+| -------- | ---------- | -----------------------------------|
+| user     | references | null: false, foreign_key: true     |
+| group    | references | null: false, foreign_key: true     |
 
 ### Association
 - belongs_to :user
@@ -74,12 +74,12 @@
 
 ## comments テーブル
 
-| Column   | Type       | Options                        |
-| -------- | ---------- | -------------------------------|
-| text     | string     | null: false                    |
-| post     | integer    | null: false, foreign_key: true |
-| user     | integer    | null: false, foreign_key: true |
+| Column      | Type       | Options                                           |
+| ----------- | ---------- | --------------------------------------------------|
+| text        | string     | null: false                                       |
+| commentable | references | null: false, foreign_key: true, polymorphic: true |
+| user        | references | null: false, foreign_key: true                    |
 
 ### Association
-- belongs_to :item
+- belongs_to :commentable
 - belongs_to :user
