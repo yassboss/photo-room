@@ -74,11 +74,11 @@
 
 ## comments テーブル
 
-| Column      | Type       | Options                                           |
-| ----------- | ---------- | --------------------------------------------------|
-| text        | string     | null: false                                       |
-| commentable | references | null: false, foreign_key: true, polymorphic: true |
-| user        | references | null: false, foreign_key: true                    |
+| Column      | Type       | Options                               |
+| ----------- | ---------- | --------------------------------------|
+| text        | string     | null: false                           |
+| commentable | references | null: false, polymorphic: true        |
+| user        | references | null: false, foreign_key: true        |
 
 ### Association
 - belongs_to :commentable
