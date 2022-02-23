@@ -16,8 +16,17 @@
   <%= link_to '削除', post_path(@post.id), method: :delete %>
 <% end %>
 
-<% @comments.each do |comment| %>
-  <%= comment.text %><%= comment.created_at %><%= comment.user.nickname %>
+<% @post.comments.each do |comment| %>
+  <div>
+    <%= comment.text %><%= comment.created_at %><%= comment.user.nickname %>
+    <% if user_signed_in? && (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
+      <%= link_to '削除', post_comment_path(comment.id), method: :delete %>
+    <% end %>
+  </div>
 <% end %>
 
-<%= render 'comments/comments', commentable: @post, comment: @comment %>
+<% if user_signed_in? %>
+  <%= render 'comments/comments', commentable: @post, comment: @comment %>
+<% end %>
+
+<%= link_to 'Homeへ', root_path %>

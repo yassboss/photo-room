@@ -18,7 +18,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_email', with: @user.email
       fill_in 'user_password', with: @user.password
       fill_in 'user_password_confirmation', with: @user.password_confirmation
-      attach_file 'user_image', 'public/uploads/test_image.png', make_visible: true
+      attach_file 'user[image]', 'public/uploads/test_image.png', make_visible: true
       fill_in 'user_last_name', with: @user.last_name
       fill_in 'user_first_name', with: @user.first_name
       fill_in 'user_main_camera', with: @user.main_camera
@@ -50,7 +50,7 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       fill_in 'user_email', with: ''
       fill_in 'user_password', with: ''
       fill_in 'user_password_confirmation', with: ''
-      attach_file 'user_image', 'public/uploads/test_image.png', make_visible: true
+      attach_file 'user[image]', 'public/uploads/test_image.png', make_visible: true
       fill_in 'user_last_name', with: ''
       fill_in 'user_first_name', with: ''
       fill_in 'user_main_camera', with: ''

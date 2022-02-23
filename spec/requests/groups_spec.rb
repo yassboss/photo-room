@@ -13,7 +13,8 @@ RSpec.describe 'Groups', type: :request do
       get root_path
       expect(response.status).to eq(200)
     end
-    it 'indexアクションにリクエストするとレスポンスに登録済みのグループ名が存在する' do
+    it 'ログイン状態でindexアクションにリクエストするとレスポンスに登録済みのグループ名が存在する' do
+      sign_in @user
       get root_path
       expect(response.body).to include(@group.name)
     end

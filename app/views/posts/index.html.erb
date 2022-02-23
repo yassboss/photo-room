@@ -1,10 +1,10 @@
 <%= render "shared/header" %>
 
 <main class="main-box" style="background-color: #F5F5F5;">
-  所属外のグループ
-  <% if @groups.length >= 1 %>
+  <% if user_signed_in? && @groups.length >= 1 %>
+    所属外のグループ
     <% @groups.each do |group| %>
-      <% unless @user_groups.ids.include?(group.id) %>
+      <% unless @user_groups.include?(group) %>
         <%= link_to "#{group.name}", group_path(group.id), style: "margin-left: 20px;" %>
       <% end %>
     <% end %>
@@ -13,8 +13,8 @@
   <div class="main-content" style="width: 95%; margin: 40px auto; background-color: white; min-height: 600px;">
     <div style="display: flex;">
       <div class="single-post-content" style="width: 50%;">
-        <% if @single_posts.exists? %>
-          <% @single_posts.each do |post| %>
+        <% if @posts.exists? %>
+          <% @posts.each do |post| %>
             <div class="post-content">
             <%= link_to post_path(post.id) do %>
               <p>Title:<%= post.title %></p>
