@@ -1,0 +1,7 @@
+<%= form_with model: [commentable, Comment.new], local: true do |f| %>
+  <%= f.text_area :text %>
+  <%= f.hidden_field :parent_id, value: comm.id%>
+  <div class="actions">
+    <%= f.submit "返信する" %>
+  </div>
+<% end %>

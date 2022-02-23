@@ -21,8 +21,11 @@ class GroupPostsController < ApplicationController
   end
 
   def show
+    # header.html.erb
+    @user_groups = Group.where(id: current_user.group_users.select(:group_id)) if user_signed_in?
+    # show.html.erb
     @group_post_users = User.where(id: Post.select(:user_id).where(id: @group_post.posts.ids))
-    @comments = @group_post.comments.includes(:user)
+    @comments = @group_post.comments.includes(:user).order('created_at DESC')
   end
 
   def edit

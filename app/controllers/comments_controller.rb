@@ -9,18 +9,29 @@ class CommentsController < ApplicationController
     end
 
     @comment = @commentable.comments.build(comment_params)
-    @comment.save
-    redirect_back(fallback_location: root_path)
+    @comment_reply = @commentable.comments.build(comment_params)
+    if params[:parent_id]
+      @comment_reply.save
+      redirect_back(fallback_location: root_path)
+    else
+      @comment.save
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   def destroy
+    if params[:post_id]
+      comment = Comment.find(params[:post_id])
+    elsif params[:group_post_id]
+      comment = Comment.find(params[:group_post_id])
+    end
     comment.destroy
     redirect_back(fallback_location: root_path)
   end
 
   private
   def comment_params
-    params.require(:comment).permit(:text).merge(user_id: current_user.id)
+    params.require(:comment).permit(:text, :parent_id).merge(user_id: current_user.id)
   end
 
   def move_to_root_path

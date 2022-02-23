@@ -16,17 +16,32 @@
   <%= link_to '削除', post_path(@post.id), method: :delete %>
 <% end %>
 
-<% @post.comments.each do |comment| %>
-  <div>
-    <%= comment.text %><%= comment.created_at %><%= comment.user.nickname %>
-    <% if user_signed_in? && (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
-      <%= link_to '削除', post_comment_path(comment.id), method: :delete %>
-    <% end %>
-  </div>
-<% end %>
+<div class="hamburger-comment">
+  <input type="checkbox" id="menu-btn-check">
+  <label for="menu-btn-check" class="menu-btn"><span></span></label>
 
-<% if user_signed_in? %>
-  <%= render 'comments/comments', commentable: @post, comment: @comment %>
-<% end %>
+  <div class="comment-field">
+    <div class="comment-form">
+      <%= render 'comments/comments', commentable: @post, comment: @comment if user_signed_in?%>
+    </div>
+    <div class="comment-views">
+      <% @post.comments.each do |comment| %>
+        <% if comment.parent_id == nil %>
+          <p><%= comment.user.nickname %> <%= comment.created_at %></p>
+          <p><%= comment.text %><p>
+          <% if user_signed_in? && (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
+            <p><%= link_to '削除', post_comment_path(comment.id), method: :delete %></p>
+          <% end %>
+          <% comment.replies.order(:created_at).each do |reply| %>
+            <p> <%= comment.user.nickname %> : <%=reply.text%></p>
+          <% end %>
+          <div class="reply-form">
+            <%= render 'comments/reply', commentable: @post, comment: @comment, comm: comment if user_signed_in? %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Homeへ', root_path %>

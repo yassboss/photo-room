@@ -3,9 +3,7 @@
     <div class="site-header-box-left">
       <h1>Photo Room</h1>
       <% if user_signed_in? %>
-        <p><%= link_to current_user.nickname, edit_user_registration_path, class: "site-header-link" %>
-          のページ
-        </p>
+        <p class="site-header-link"><%= current_user.nickname %>のページ</p>
       <% else %>
         <p>visitorのページ</p>
       <% end %>
@@ -14,30 +12,33 @@
       <ul>
         <li><%= link_to "Home", root_path %></li>
       <% if user_signed_in? %>
-        <li><%= link_to "Single Post", new_post_path %></li>
-        <li><%= link_to "New Group", new_group_path %></li>
-        <% if @user_groups.exists? %>
-          <li>
-            <select onChange="location.href=value;", class="select-group">
-              <% if @group %>
-                <option value="<%=@group.id%>"><%=@group.name%>のページ</option>
-                <% @user_groups.where.not(id: @group.id).each do |group| %>
-                    <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
-                <% end %>
-              <% else %>
-                <option value="">Select Group</option>
-                <% @user_groups.each do |group| %>
-                  <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
-                <% end %>
-              <% end %>
-            </select>
-          </li>
-        <% end %>
+        <li><%= link_to "Edit User", edit_user_registration_path %></li>
         <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Login", new_user_session_path %></li>
         <li><%= link_to 'Signup', new_user_registration_path %></li>
       <% end %>
+      </ul>
+      <ul>
+        <li><%= link_to "New Post", new_post_path %></li>
+        <li><%= link_to "New Group", new_group_path %></li>
+        <li>
+        <% if user_signed_in? && @user_groups.exists? %>
+          <select onChange="location.href=value;", class="select-group">
+            <% if @group %>
+              <option value="<%=@group.id%>"><%=@group.name%>のページ</option>
+              <% @user_groups.where.not(id: @group.id).each do |group| %>
+                  <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
+              <% end %>
+            <% else %>
+              <option value="">Select Group</option>
+              <% @user_groups.each do |group| %>
+                <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
+              <% end %>
+            <% end %>
+          </select>
+        <% end %>
+        </li>
       </ul>
     </div>
   </div>
