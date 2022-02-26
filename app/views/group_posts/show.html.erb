@@ -28,21 +28,31 @@
       <%= render 'comments/comments', commentable: @group_post, comment: @comment if user_signed_in? %>
     </div>
     <div class="comment-views">
-      <% @comments.each do |comment| %>
-        <% if comment.parent_id == nil %>
-          <p><%= comment.user.nickname %> <%= comment.created_at %></p>
-          <p><%= comment.text %><p>
-          <% if user_signed_in? && (current_user.id == comment.user_id || @group_post_users.ids.include?(current_user.id)) %>
-            <p><%= link_to '削除', group_post_comment_path(comment.id), method: :delete %></p>
+      <div id="comments">
+        <% @comments.each do |comment| %>
+          <% if comment.parent_id == nil %>
+            <div class="comment">
+              <p><%= comment.user.nickname %> <%= comment.created_at %></p>
+              <p><%= comment.text %><p>
+              <% if user_signed_in? && (current_user.id == comment.user_id || @group_post_users.ids.include?(current_user.id)) %>
+                <p><%= link_to '削除', group_post_comment_path(comment.id), method: :delete %></p>
+              <% end %>
+            </div>
+            <div id="replies<%=comment.id%>">
+              <% comment.replies.order(:created_at).each do |reply| %>
+                <div class="reply">
+                  <p class="reply-content"> <%= comment.user.nickname %> : <%=reply.text%></p>
+                </div>
+              <% end %>
+            </div>
+            <div class="reply-form-area">
+              <div class="reply-form" style="display: none;">
+                <%= render 'comments/reply', commentable: @group_post, comment: @comment, comm: comment if user_signed_in? %>
+              </div>
+              <a class="reply-btn" style="cursor: pointer;">返信</a>
+            </div>
           <% end %>
-          <% comment.replies.order(:created_at).each do |reply| %>
-            <p> <%= comment.user.nickname %> : <%=reply.text%></p>
-          <% end %>
-          <div class="reply-form">
-            <%= render 'comments/reply', commentable: @group_post, comment: @comment, comm: comment if user_signed_in? %>
-          </div>
         <% end %>
-      <% end %>
     </div>
   </div>
 </div>

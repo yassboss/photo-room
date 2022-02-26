@@ -25,21 +25,31 @@
       <%= render 'comments/comments', commentable: @post, comment: @comment if user_signed_in?%>
     </div>
     <div class="comment-views">
-      <% @post.comments.each do |comment| %>
-        <% if comment.parent_id == nil %>
-          <p><%= comment.user.nickname %> <%= comment.created_at %></p>
-          <p><%= comment.text %><p>
-          <% if user_signed_in? && (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
-            <p><%= link_to '削除', post_comment_path(comment.id), method: :delete %></p>
+      <div id="comments">
+        <% @post.comments.each do |comment| %>
+          <% if comment.parent_id == nil %>
+            <div class="comment">
+              <p><%= comment.user.nickname %> <%= comment.created_at %></p>
+              <p><%= comment.text %><p>
+              <% if user_signed_in? && (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
+                <p><%= link_to '削除', post_comment_path(comment.id), method: :delete, class: "comment-dele" %></p>
+              <% end %>
+            </div>
+            <div id="replies<%=comment.id%>">
+              <% comment.replies.order(:created_at).each do |reply| %>
+                <div class="reply">
+                  <p class="reply-content"> <%= comment.user.nickname %> : <%=reply.text%></p>
+                </div>
+              <% end %>
+            </div>
+            <div class="reply-form-area">
+              <div class="reply-form" style="display: none;">
+                <%= render 'comments/reply', commentable: @post, comment: @comment, comm: comment if user_signed_in? %>
+              </div>
+              <a class="reply-btn" style="cursor: pointer;">返信</a>
+            </div>
           <% end %>
-          <% comment.replies.order(:created_at).each do |reply| %>
-            <p> <%= comment.user.nickname %> : <%=reply.text%></p>
-          <% end %>
-          <div class="reply-form">
-            <%= render 'comments/reply', commentable: @post, comment: @comment, comm: comment if user_signed_in? %>
-          </div>
         <% end %>
-      <% end %>
     </div>
   </div>
 </div>
