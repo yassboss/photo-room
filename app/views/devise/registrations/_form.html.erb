@@ -1,0 +1,25 @@
+<div class="input-field">
+  <p><%= f.label :image, 'プロフィール画像', class: 'profile-img-label' %></p>
+  <%= f.file_field :image, accept: ".png, .jpg, .jpeg", id: 'profile-image'%>
+</div>
+<div class="input-field two-in-one">
+  <div class="last-name-field">
+    <p><%= f.label :last_name, 'お名前', class: 'last-name-label' %></p>
+    <%= f.text_field :last_name, autofocus: true, placeholder: '姓', class: 'name-field' %>
+  </div>
+  <div class="first-name-field">
+    <p><%= f.label :last_name, '-', class: 'first-name-label' %></p>
+    <%= f.text_field :first_name, autofocus: true, placeholder: '名', class: 'name-field' %>
+  </div>
+</div>
+<div class="input-field">
+  <%= f.text_field :main_camera, autofocus: true, placeholder: 'カメラ機種', class: 'field' %>
+</div>
+<div class="input-field two-in-one">
+  <div class="select-field">
+    <%= f.collection_select(:prefecture_id, Prefecture.all, :id, :name, {}, {class:"prefecture-select"}) %>
+  </div>
+  <div class="select-field">
+    <%= f.collection_select(:camera_experience_id, CameraExperience.all, :id, :name, {}, {class:"camera_experience-select"}) %>
+  </div>
+</div>

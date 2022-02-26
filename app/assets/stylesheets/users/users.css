@@ -1,0 +1,71 @@
+main {
+  min-height:100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #DDDDDD;
+}
+
+.signup-form {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
+}
+
+.field {
+  height: 40px;
+  width: 400px;
+  border: 0.5px solid #A9A9A9;
+  padding: 10px;
+}
+
+.input-field {
+  margin-top: 16px;
+}
+
+.two-in-one {
+  display: flex;
+}
+
+.profile-img-label, .last-name-label {
+  color: gray;
+}
+
+.first-name-label {
+  color: white;
+}
+
+.name-field, .prefecture-select, .camera_experience-select {
+  height: 40px;
+  width: 190px;
+  padding: 10px;
+  margin-right: 20px;
+  border: 0.5px solid #A9A9A9;
+}
+
+.caution {
+  font-size: 12px;
+}
+
+.prefecture-select, .camera_experience-select {
+  text-align: center;
+  background-color: #DCDCDC;
+}
+
+.user-submit {
+  height: 40px;
+  width: 400px;
+  margin-bottom: 20px;
+  background-color: #2C7CFF;
+  color: white;
+}
+
+.login-link, .top-link, .back-link {
+  text-decoration: none;
+  color: gray;
+}
