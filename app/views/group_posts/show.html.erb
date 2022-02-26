@@ -1,22 +1,37 @@
 <%= render "shared/header" %>
 
-<h1><%= @group_post.group_title %></h1>
-<h3><%= @group_post.group_text %></h3>
-
+<div class="group-post-content-field" style="background-color: #F5F5F5;">
+  <div class="group-post-title" style="padding: 30px 0; color: #444444;">
+    <p style="text-align: center; font-size: 24px; margin-bottom: 20px;"><%= @group_post.group_title %></p>
+    <p style="text-align: center; font-size: 20px;"><%= @group_post.group_text %></p>
+  </div>
+  <div class="member-field">
+    <% @group_post.posts.each do |post| %>
+      <div class="member-post" style="background-color: #333333; width: 700px; margin: 0 auto; padding: 20px;" >
+        <div class="member-title">
+          <p style="text-align: center; color: white; padding-top: 20px; font-size: 20px;"><%= post.title %></p>
+        </div>
+        <div class="member-photos" style="display: flex; flex-direction: column; align-items: center;">
+          <% post.images.each do |image| %>
+            <div class="member-photo" style="margin-top: 40px;">
+              <%= image_tag image.variant(combine_options:{gravity: :center, resize:"550x550"}).processed %>
+            </div>
+          <% end %>
+        </div>
+        <div class="post-user-info" style="display: flex; flex-direction: column; align-items: center;">
+          <p style="font-size: 20px; padding: 40px 0; color: white;"><%= post.text %></p>
+          <p style="color: white;"><%= post.user.nickname %></p>
+          <%= image_tag post.user.image.url, style: "width: 80px; height: 80px;" %>
+          <p style="color: white;"><%= post.user.main_camera %></p>
+          <p style="color: white;"><%= post.user.prefecture.name %></p>
+          <p style="color: white;"><%= post.user.camera_experience.name %></p>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% if user_signed_in? && @group_post.group.users.ids.include?(current_user.id) %>
   <%= link_to "編集", edit_group_post_path(@group_post.id) %>
   <%= link_to "削除", group_post_path(@group_post.id), method: :delete %>
-<% end %>
-
-<% @group_post.posts.each do |post| %>
-  <h4>メンバー</h4>
-  <p><%= post.user.nickname %></p>
-  <h4>タイトル</h4>
-  <p><%= post.title %></p>
-  <p><%= post.text %></p>
-  <% post.images.each do |image| %>
-    <div><%= image_tag image %></div>
-  <% end %>
 <% end %>
 
 <div class="hamburger-comment">

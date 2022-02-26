@@ -4,8 +4,12 @@ class PostsController < ApplicationController
 
   def index
     @groups = Group.all
-    @posts = Post.where(action: 'single').includes(:user).order('created_at DESC')
-    @group_posts = GroupPost.includes(:group).order('created_at DESC')
+
+    posts = Post.where(action: 'single').includes(:user).order('created_at DESC')
+    group_posts = GroupPost.includes(:group).order('created_at DESC')
+
+    @instances = posts | group_posts
+    @instances.sort!{ |a, b| b.created_at <=> a.created_at }
   end
 
   def new
@@ -55,6 +59,9 @@ class PostsController < ApplicationController
   end
 
   def set_current_user_group
-    @user_groups = Group.where(id: current_user.group_users.select(:group_id)) if user_signed_in?
+    if user_signed_in?
+      @user_groups = Group.where(id: current_user.group_users.select(:group_id))
+      @other_groups = Group.where.not(id: current_user.group_users.select(:group_id))
+    end
   end
 end

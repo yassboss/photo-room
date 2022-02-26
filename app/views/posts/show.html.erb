@@ -1,20 +1,29 @@
 <%= render "shared/header" %>
 
-<p>Title:<%= @post.title %></p>
-<p><%= @post.text %></p>
-<p>Name:<%= @post.user.nickname %></p>
-<%= image_tag @post.user.image.url %>
-<p><%= @post.user.main_camera %></p>
-<p><%= @post.user.prefecture.name %></p>
-<p><%= @post.user.camera_experience.name %></p>
-<% @post.images[0..-1].each do |image| %>
-  <%= image_tag image %>
-<% end %>
-
-<% if user_signed_in? && current_user.id == @post.user_id %>
-  <%= link_to '編集', edit_post_path(@post.id) %>
-  <%= link_to '削除', post_path(@post.id), method: :delete %>
-<% end %>
+<div class="post-content-field" style="background-color: #F5F5F5F5;">
+  <div class="post-title" style="padding-top: 20px; color: #444444;">
+    <p style="text-align: center; font-size: 24px;"><%= @post.title %></p>
+  </div>
+  <div class="post-photos" style="display: flex; flex-direction: column; align-items: center;">
+    <% @post.images[0..-1].each do |image| %>
+      <div class="photo" style="margin-top: 40px;">
+        <%= image_tag image.variant(combine_options:{gravity: :center, resize:"550x550"}).processed %>
+      </div>
+    <% end %>
+  </div>
+  <div class="post-user-info" style="display: flex; flex-direction: column; align-items: center;">
+    <p style="font-size: 20px; padding: 40px 0;"><%= @post.text %></p>
+    <p><%= @post.user.nickname %></p>
+    <%= image_tag @post.user.image.url, style: "width: 80px; height: 80px;" %>
+    <p><%= @post.user.main_camera %></p>
+    <p><%= @post.user.prefecture.name %></p>
+    <p><%= @post.user.camera_experience.name %></p>
+    <% if user_signed_in? && current_user.id == @post.user_id %>
+      <%= link_to '編集', edit_post_path(@post.id) %>
+      <%= link_to '削除', post_path(@post.id), method: :delete %>
+    <% end %>
+  </div>
+</div>
 
 <div class="hamburger-comment">
   <input type="checkbox" id="menu-btn-check">
@@ -53,5 +62,3 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Homeへ', root_path %>

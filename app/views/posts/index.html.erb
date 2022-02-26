@@ -1,51 +1,42 @@
 <%= render "shared/header" %>
 
 <main class="main-box" style="background-color: #F5F5F5;">
-  <% if user_signed_in? && @groups.length >= 1 %>
-    所属外のグループ
-    <% @groups.each do |group| %>
-      <% unless @user_groups.include?(group) %>
-        <%= link_to "#{group.name}", group_path(group.id), style: "margin-left: 20px;" %>
-      <% end %>
+  <% if user_signed_in? && @other_groups.length >= 1 %>
+    Other Group :
+    <% @other_groups.each do |group| %>
+      <%= link_to "#{group.name}", group_path(group.id), style: "margin-left: 20px; text-decoration: none; color: gray;" %>
     <% end %>
+    <p style="font-family: sans-serif; text-align: center; padding: 10px 0;">組写真をお楽しみください。ログインすると写真の投稿やコメントが可能です。</p>
   <% end %>
   <div class="main-wrapper" style="display: flex; align-items: center;">
-  <div class="main-content" style="width: 95%; margin: 40px auto; background-color: white; min-height: 600px;">
-    <div style="display: flex;">
-      <div class="single-post-content" style="width: 50%;">
-        <% if @posts.exists? %>
-          <% @posts.each do |post| %>
-            <div class="post-content">
-            <%= link_to post_path(post.id) do %>
-              <p>Title:<%= post.title %></p>
-              <p>Name:<%= post.user.nickname %></p>
-              <% post.images[0..-1].each do |image| %>
-                <%= image_tag image %>
-              <% end %>
+    <div class="main-content" style="width: 100%; margin: 40px auto; background-color: white; min-height: 100vh;">
+      <div class="post-content" style="background-color: #222222;">
+        <h2 style="font-size: 24px; font-family: sans-serif; text-align: center; padding: 30px 0; color: white;">PHOTOS</h2>
+        <ul class="post-lists">
+          <% if @instances.length >= 1 %>
+            <% @instances.each do |instance| %>
+              <li class="post-list">
+                <div class="post-content">
+                  <% if instance.class == Post %>
+                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><%= instance.user.nickname %></p>
+                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><%= instance.title %></p>
+                    <%= link_to post_path(instance.id) do %>
+                      <%= image_tag instance.images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
+                    <% end %>
+                  <% else %>
+                    <p style="font-size: 18px; font-family: sans-serif; color: white;">Group: <%= instance.group.name %></p>
+                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><%= instance.group_title %></p>
+                    <%= link_to group_post_path(instance.id) do %>
+                      <%= image_tag instance.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </li>
             <% end %>
-            </div>
           <% end %>
-        <% end %>
-      </div>
-      <div class="group-post-content" style="width: 50%;">
-        <% if @group_posts.exists? %>
-          <% @group_posts.each do |g_post| %>
-            <div class="post-content">
-            <%= link_to group_post_path(g_post.id) do %>
-              <p>Title:<%= g_post.group_title %></p>
-              <p>Name:<%= g_post.group.name %></p>
-              <% g_post.posts.each do |p| %>
-                <% p.images[0..-1].each do |image| %>
-                  <%= image_tag image %>
-                <% end %>
-              <% end %>
-            <% end %>
-            </div>
-          <% end %>
-        <% end %>
+        </ul>
       </div>
     </div>
-  </div>
   </div>
 </main>
 
