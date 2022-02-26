@@ -1,15 +1,60 @@
+<%= render "shared/header" %>
+
 <h1><%= @group_post.group_title %></h1>
 <h3><%= @group_post.group_text %></h3>
-<%= link_to "#{@group_post.group_title}の編集", edit_group_post_path(@group_post.id) if user_signed_in? && @group_post.group.users.ids.include?(current_user.id) %>
-<%= link_to "#{@group_post.group_title}の削除", group_post_path(@group_post.id), method: :delete if user_signed_in? && @group_post.group.users.ids.include?(current_user.id) %>
-<% @group_post.posts.each do |post| %>
-<h4>メンバー</h4>
-<p><%= post.user.nickname %></p>
-<h4>タイトル</h4>
-<p><%= post.title %></p>
-<p><%= post.text %></p>
-<% post.images.each do |image| %>
-  <div><%= image_tag image %></div>
+
+<% if user_signed_in? && @group_post.group.users.ids.include?(current_user.id) %>
+  <%= link_to "編集", edit_group_post_path(@group_post.id) %>
+  <%= link_to "削除", group_post_path(@group_post.id), method: :delete %>
 <% end %>
 
+<% @group_post.posts.each do |post| %>
+  <h4>メンバー</h4>
+  <p><%= post.user.nickname %></p>
+  <h4>タイトル</h4>
+  <p><%= post.title %></p>
+  <p><%= post.text %></p>
+  <% post.images.each do |image| %>
+    <div><%= image_tag image %></div>
+  <% end %>
 <% end %>
+
+<div class="hamburger-comment">
+  <input type="checkbox" id="menu-btn-check">
+  <label for="menu-btn-check" class="menu-btn"><span></span></label>
+
+  <div class="comment-field">
+    <div class="comment-form">
+      <%= render 'comments/comments', commentable: @group_post, comment: @comment if user_signed_in? %>
+    </div>
+    <div class="comment-views">
+      <div id="comments">
+        <% @comments.each do |comment| %>
+          <% if comment.parent_id == nil %>
+            <div class="comment">
+              <p><%= comment.user.nickname %> <%= comment.created_at %></p>
+              <p><%= comment.text %><p>
+              <% if user_signed_in? && (current_user.id == comment.user_id || @group_post_users.ids.include?(current_user.id)) %>
+                <p><%= link_to '削除', group_post_comment_path(comment.id), method: :delete %></p>
+              <% end %>
+            </div>
+            <div id="replies<%=comment.id%>">
+              <% comment.replies.order(:created_at).each do |reply| %>
+                <div class="reply">
+                  <p class="reply-content"> <%= comment.user.nickname %> : <%=reply.text%></p>
+                </div>
+              <% end %>
+            </div>
+            <div class="reply-form-area">
+              <div class="reply-form" style="display: none;">
+                <%= render 'comments/reply', commentable: @group_post, comment: @comment, comm: comment if user_signed_in? %>
+              </div>
+              <a class="reply-btn" style="cursor: pointer;">返信</a>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Homeへ', root_path %>

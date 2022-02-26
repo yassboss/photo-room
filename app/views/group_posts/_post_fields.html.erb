@@ -1,45 +1,43 @@
 <div class="nested-fields">
-  <div class="post-field">
+  <div class="post-field" style="border: 1px solid gray;">
+    <%= link_to_remove_association "削除", f %>
     <div class="user-select">
-      <div class="group_users_insert_point"></div> 
-      
+      <div class="group_users_insert_point">
+      </div> 
       <div id="user-select">
-        <div class="field ">
-          <%= f.collection_select :user_id, @group_users, :id, :nickname, include_blank: "ユーザーを選択してください" %>
+        <div class="user-select-field">
+          <p>撮 影 者 <%= f.collection_select :user_id, @group_users, :id, :nickname, include_blank: "選択してください" %></p>
         </div>
       </div>
-
     </div>
     <div class="message-field">
-      <%= f.text_field :title, placeholder: 'title' %><br>
-      <%= f.text_area :text, placeholder: 'text' %>
+      <p>タイトル <%= f.text_field :title, placeholder: 'title' %></p>
+      <p>作品説明 <%= f.text_area :text, placeholder: 'text' %></p>
       <%= f.hidden_field :action,  value: 'group' %>
     </div>
-
     <div class="image-field">
+      <p>写真は1枚まで選択可 ※1枚あたり1MBまで</p>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 }, accept: ".png, .jpg, .jpeg" %>
+        <p>1枚目<%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 1 }, accept: ".png, .jpg, .jpeg" %>
+        <p>2枚目<%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 1 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 2 }, accept: ".png, .jpg, .jpeg" %>
+        <p>3枚目<%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 2 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 3 }, accept: ".png, .jpg, .jpeg" %>
+        <p>4枚目<%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 3 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
       <div class="click-upload">
         <div></div>
-        <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 4 }, accept: ".png, .jpg, .jpeg" %>
+        <p>5枚目<%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 4 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
     </div>
-
-      <%= link_to_remove_association "削除", f %>
   </div>
 </div>
 
@@ -51,8 +49,7 @@ function loadImage(obj){
 		let fileReader = new FileReader();
 		fileReader.onload = (function (e) {
       if (obj.files[i].size > sizeLimit) {
-      // ファイルサイズが制限以上
-      alert('ファイルサイズは1MB以下にしてください'); // エラーメッセージを表示
+      alert('ファイルサイズは1MB以下にしてください');
       obj.value = ''; // inputの中身をリセット
       return; // この時点で処理を終了する
       };

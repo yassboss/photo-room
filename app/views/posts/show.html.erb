@@ -15,3 +15,43 @@
   <%= link_to '編集', edit_post_path(@post.id) %>
   <%= link_to '削除', post_path(@post.id), method: :delete %>
 <% end %>
+
+<div class="hamburger-comment">
+  <input type="checkbox" id="menu-btn-check">
+  <label for="menu-btn-check" class="menu-btn"><span></span></label>
+
+  <div class="comment-field">
+    <div class="comment-form">
+      <%= render 'comments/comments', commentable: @post, comment: @comment if user_signed_in?%>
+    </div>
+    <div class="comment-views">
+      <div id="comments">
+        <% @post.comments.each do |comment| %>
+          <% if comment.parent_id == nil %>
+            <div class="comment">
+              <p><%= comment.user.nickname %> <%= comment.created_at %></p>
+              <p><%= comment.text %><p>
+              <% if user_signed_in? && (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
+                <p><%= link_to '削除', post_comment_path(comment.id), method: :delete, class: "comment-dele" %></p>
+              <% end %>
+            </div>
+            <div id="replies<%=comment.id%>">
+              <% comment.replies.order(:created_at).each do |reply| %>
+                <div class="reply">
+                  <p class="reply-content"> <%= comment.user.nickname %> : <%=reply.text%></p>
+                </div>
+              <% end %>
+            </div>
+            <div class="reply-form-area">
+              <div class="reply-form" style="display: none;">
+                <%= render 'comments/reply', commentable: @post, comment: @comment, comm: comment if user_signed_in? %>
+              </div>
+              <a class="reply-btn" style="cursor: pointer;">返信</a>
+            </div>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<%= link_to 'Homeへ', root_path %>

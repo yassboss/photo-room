@@ -1,0 +1,36 @@
+<%= form_with model: @group_post, local: true do |f| %>
+<%= render 'layouts/error_messages', model: f.object %>
+
+<div style="width: 500px;">
+  <h2><%= "#{@group.name}の投稿" %><%= f.hidden_field :group_id, value: @group.id %></h2>
+  <div class="title-field">
+    <p>グループ投稿の題目</p>
+    <%= f.text_field :group_title, style:'border: 1px solid gray; width:100%;' %>
+  </div>
+  <div class="text-field">
+    <p>説明</p>
+    <%= f.text_area :group_text, style:'border: 1px solid gray; width:100%;' %>
+  </div>
+</div>
+<div>
+  <div id="detail-association-insertion-point">
+    <%= f.fields_for :posts do |post_field| %>
+      <%= render 'post_fields', f: post_field %>
+    <% end %>
+  </div>
+
+  <div class="add-botton-box">
+    <%= link_to_add_association "撮影者追加", f, :posts,
+    class: 'add_fields',
+    id: 'add-btn',
+    data: {
+      association_insertion_node: '#detail-association-insertion-point',
+      association_insertion_method: 'append'
+      }
+    %>
+  </div>
+</div>
+<div class="submit-btn">
+  <%= f.submit '投稿' %>
+</div>
+<% end %>
