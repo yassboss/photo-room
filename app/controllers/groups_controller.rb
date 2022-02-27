@@ -22,6 +22,8 @@ class GroupsController < ApplicationController
     # show.html.erb
     @groups = Group.includes(:user)
     @owner = User.find(@group.owner_id)
+
+    @group_posts = GroupPost.where(group_id: @group.id).includes(:group).order('created_at DESC')
   end
 
   def edit

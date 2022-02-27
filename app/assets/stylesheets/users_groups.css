@@ -1,4 +1,4 @@
-main {
+.main-form {
   min-height:100vh;
   display: flex;
   align-items: center;
@@ -6,7 +6,11 @@ main {
   background-color: #DDDDDD;
 }
 
-.signup-form {
+.main-form>p, h2, h3 {
+  font-family: sans-serif;
+}
+
+.signup-form, .group-submit-form {
   width: 600px;
   display: flex;
   flex-direction: column;
@@ -19,6 +23,13 @@ main {
 
 .field {
   height: 40px;
+  width: 400px;
+  border: 0.5px solid #A9A9A9;
+  padding: 10px;
+}
+
+.text-area-field {
+  height: 80px;
   width: 400px;
   border: 0.5px solid #A9A9A9;
   padding: 10px;
@@ -46,18 +57,21 @@ main {
   padding: 10px;
   margin-right: 20px;
   border: 0.5px solid #A9A9A9;
+  cursor: pointer;
 }
 
 .caution {
   font-size: 12px;
 }
 
-.prefecture-select, .camera_experience-select {
+.prefecture-select, .camera_experience-select, .select-user {
+  height: 40px;
   text-align: center;
   background-color: #DCDCDC;
+  cursor: pointer;
 }
 
-.user-submit {
+.user-submit, .group-submit {
   height: 40px;
   width: 400px;
   margin-bottom: 20px;
@@ -65,7 +79,49 @@ main {
   color: white;
 }
 
+.user-add-btn {
+  height: 40px;
+  width: 150px;
+  margin: 16px auto;
+  background-color: #DCDCDC;
+  text-align: center;
+}
+
+.member-name {
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.member-delete-btn {
+  display: inline-block;
+  height: 25px;
+  width: 40px;
+  background-color: #DCDCDC;
+  text-align: center;
+  cursor: pointer;
+}
+
 .login-link, .top-link, .back-link {
   text-decoration: none;
   color: gray;
+}
+
+.group-show {
+  min-height: 100vh;
+  max-width: calc(100vw - 40px);
+  margin: 20px;
+}
+
+.group-field {
+  margin: 20px 0;
+}
+
+.group-post-btn , .group-edit-btn{
+  height: 35px;
+  padding: 10px;
+  background-color: #DCDCDC;
+  text-decoration: none;
+  text-align: center;
+  color: black;
+  cursor: pointer;
 }

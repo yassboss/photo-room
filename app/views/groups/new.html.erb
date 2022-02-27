@@ -1,37 +1,45 @@
-<%=form_with model: @group, local: true do |f|%>
-<%= render 'layouts/error_messages', model: f.object %>
+<div class="main-form">
+  <div class="group-submit-form">
+  <h2>New Group</h2>
 
-  <div class="field">
-    <%= f.label :name, 'グループ名（必須）' %><br />
-    <%= f.text_field :name, autofocus: true, style: "border: 1px solid #54595F" %>
-  </div>
-  <div class="field">
-    <%= f.label :introduction, 'グループ紹介（必須）' %><br />
-    <%= f.text_area :introduction, autofocus: true, style: "border: 1px solid #54595F" %>
-  </div>
+  <%=form_with model: @group, local: true do |f|%>
+  <%= render 'layouts/error_messages', model: f.object %>
 
-  <div class="field">
-    <div>
-      <select name="group[user_ids][]" id="select-user">
-        <option value="">グループに招待するユーザーを選択してください</option>
-          <% User.where.not(id: current_user.id).each do |user| %>
-            <option value=<%= user.id %>><%= user.nickname %></option>
-          <% end %>
-      </select>
+    <div class="input-field">
+      <%= f.label :name, 'グループ名' %><br />
+      <%= f.text_field :name, autofocus: true, class: 'field' %>
+    </div>
+    <div class="input-field">
+      <%= f.label :introduction, 'グループ紹介' %><br />
+      <%= f.text_area :introduction, autofocus: true, class: 'text-area-field' %>
     </div>
 
-    <div id="add-field"></div>
+    <div class="input-field">
+      <div class="input-field">
+        <select name="group[user_ids][]" id="select-user" class="select-user field">
+          <option value="">グループに参加するユーザー選択</option>
+            <% User.where.not(id: current_user.id).each do |user| %>
+              <option value=<%= user.id %>><%= user.nickname %></option>
+            <% end %>
+        </select>
+      </div>
 
-    <input name="group[user_ids][]" type="hidden" value=<%= current_user.id %>>
+      <div id="add-field"></div>
 
-    <button type="button" id="add-btn">ユーザー追加</button>
+      <input name="group[user_ids][]" type="hidden" value=<%= current_user.id %>>
+
+      <button type="button" id="add-btn" class='user-add-btn field input-field'>ユーザー追加</button>
+    </div>
+    <div>
+      <%= f.submit "登録", class: 'group-submit' %>
+    </div>
+  <% end %>
+  <%= link_to 'Topページはこちら', root_path, class: 'top-link' %>
   </div>
-  <div>
-    <%= f.submit '登録'%>
-  </div>
-<% end %>
+</div>
 
 <script>
+// ユーザー追加
 document.addEventListener('DOMContentLoaded', function(){
   const addBtn = document.getElementById('add-btn');
   if (!addBtn) return null;
@@ -39,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function(){
   const selectUser = document.getElementById('select-user');
   const addField = document.getElementById('add-field');
   addBtn.addEventListener('click', function(){
-    addField.appendChild(selectUser.cloneNode(true));
+    addField.appendChild(selectUser.parentNode.cloneNode(true));
   });
 });
 </script>

@@ -1,17 +1,40 @@
 <%= render "shared/header" %>
 
-<h1><%= @group.name %>のページ</h1>
-<%= link_to "グループ投稿", new_group_post_path(@group) if user_signed_in? && @member.include?(current_user) %>
-<%= link_to "#{@group.name}の編集", edit_group_path(@group) if user_signed_in? && @group.owner_id == current_user.id %>
-<h3>グループ紹介</h3>
-<p>紹介文</p>
-  <p><span><%= @group.introduction %></span></p>
-<p>オーナー</p>
-  <p><span><%= @owner.nickname %></span></p>
-<p>メンバーリスト</p>
-<ul>
-  <% @member.each do |member| %>
-    <li><%= member.nickname %></li>
-  <% end %>
-</ul>
-
+<div class="group-show">
+  <div class="group-name-field group-field">
+    <h1><%= @group.name %></h1>
+  </div>
+  <div class="group-btn-field">
+    <%= link_to "グループ投稿", new_group_post_path(@group), class: 'group-post-btn' if user_signed_in? && @member.include?(current_user) %>
+    <%= link_to "#{@group.name}の編集", edit_group_path(@group), class: 'group-edit-btn' if user_signed_in? && @group.owner_id == current_user.id %>
+  </div>
+  <div class="group-detail-field group-field">
+    <h3>グループ紹介</h3>
+    <p><span><%= @group.introduction %></span></p>
+    <h4>オーナー</h4>
+      <p><span><%= @owner.nickname %></span></p>
+    <p>メンバーリスト</p>
+    <ul>
+      <% @member.each do |member| %>
+        <li><%= member.nickname %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="group-post-field">
+    <ul class="post-lists">
+      <% if @group_posts.length >= 1 %>
+        <% @group_posts.each do |post| %>
+          <li class="post-list">
+            <div class="post-content">
+              <p style="font-size: 18px; font-family: sans-serif;">Group: <%= post.group.name %></p>
+              <p style="font-size: 18px; font-family: sans-serif;"><%= post.group_title %></p>
+              <%= link_to group_post_path(post.id) do %>
+                <%= image_tag post.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
+              <% end %>
+            </div>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</div>
