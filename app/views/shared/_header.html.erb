@@ -1,45 +1,44 @@
 <header class="site-header" style="background-image: url(<%= asset_path "#{current_user.image.url}" if user_signed_in?%>);">
   <div class="site-header-box">
     <div class="site-header-box-left">
-      <h1>Photo Room</h1>
-      <% if user_signed_in? %>
-        <p class="site-header-link"><%= current_user.nickname %>のページ</p>
-      <% else %>
-        <p>visitorのページ</p>
-      <% end %>
-    </div>
-    <div class="site-header-right">
-      <ul>
-        <li><%= link_to "Home", root_path %></li>
-      <% if user_signed_in? %>
-        <li><%= link_to "Edit User", edit_user_registration_path %></li>
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Login", new_user_session_path %></li>
-        <li><%= link_to 'Signup', new_user_registration_path %></li>
-      <% end %>
-      </ul>
-      <ul>
-        <li><%= link_to "New Post", new_post_path %></li>
-        <li><%= link_to "New Group", new_group_path %></li>
-        <li>
-        <% if user_signed_in? && @user_groups.exists? %>
-          <select onChange="location.href=value;", class="select-group">
-            <% if @group %>
-              <option value="<%=@group.id%>"><%=@group.name%>のページ</option>
-              <% @user_groups.where.not(id: @group.id).each do |group| %>
-                  <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
-              <% end %>
-            <% else %>
-              <option value="">Select Group</option>
-              <% @user_groups.each do |group| %>
-                <option value=<%= group_path(group.id) %>><%= group.name %>のページへ</option>
-              <% end %>
-            <% end %>
-          </select>
+      <div class="site-header-box-left-upper">
+        <%= link_to root_path do %><h1>Photo Room</h1><% end %>
+      </div>
+      <div class="site-header-box-left-lower">
+        <% if user_signed_in? %>
+          <p>as <%= current_user.nickname %> <%= link_to edit_user_registration_path, class: 'user-edit-link' do %><i class="fa-regular fa-pen-to-square"></i><% end %></p>
+        <% else %>
+          <p>as visitor</p>
         <% end %>
-        </li>
-      </ul>
+      </div>
+    </div>
+    <div class="site-header-box-right">
+      <% if user_signed_in? %>
+        <div class="site-header-box-right-group-select">
+          <% if @user_groups.exists? %>
+            <select onChange="location.href=value;" class="select-group">
+              <% if @group %>
+                <option value="<%=@group.id%>"><%=@group.name%> グループ</option>
+                <% @user_groups.where.not(id: @group.id).each do |group| %>
+                  <option value=<%= group_path(group.id) %>> <%= group.name %> グループ</option>
+                <% end %>
+              <% else %>
+                <option value="">Select Group</option>
+                <% @user_groups.each do |group| %>
+                  <option value=<%= group_path(group.id) %>> <%= group.name %> グループ</option>
+                <% end %>
+              <% end %>
+            </select>
+          <% end %>
+        </div>
+        <div class="site-header-box-right-logging-btn">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'logging-btn' %>
+        </div>
+      <% else %>
+        <div class="site-header-box-right-logging-btn">
+          <%= link_to "Login", new_user_session_path, class: 'logging-btn' %>
+        </div>
+      <% end %>
     </div>
   </div>
 </header>

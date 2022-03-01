@@ -11,12 +11,43 @@ img {
 }
 
 .post-list {
-  width: 40vh;
+  width: 40vw;
+  min-width: 285px;
   padding: 1vw;
-  margin: 20px 50px;
+  margin: 20px 40px;
   list-style: none;
 }
 
 .index-img:hover {
   opacity: 0.5;
+}
+
+.post-content {
+  text-align: center;
+}
+
+.position-fixed-btn-signed-in {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  height: 55px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.new-post-btn-field, .new-group-btn-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
+  width: 40%;
+  max-width: 400px;
+  margin: 0 20px;
+  background-color: #54595F;
+  text-decoration: none;
+  color: white;
+  font-family: sans-serif;
+  font-size: 20px;
 }

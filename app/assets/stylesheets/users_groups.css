@@ -11,7 +11,8 @@
 }
 
 .signup-form, .group-submit-form {
-  width: 600px;
+  max-width: 600px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -21,16 +22,21 @@
   box-shadow: 0 10px 25px 0 rgba(0, 0, 0, .5);
 }
 
+.new_user, .group-submit-form>form {
+  width: 100%;
+  max-width: 400px;
+}
+
 .field {
   height: 40px;
-  width: 400px;
+  width: 100%;
   border: 0.5px solid #A9A9A9;
   padding: 10px;
 }
 
 .text-area-field {
-  height: 80px;
-  width: 400px;
+  height: 120px;
+  width: 100%;
   border: 0.5px solid #A9A9A9;
   padding: 10px;
 }
@@ -41,6 +47,7 @@
 
 .two-in-one {
   display: flex;
+  justify-content: space-between;
 }
 
 .profile-img-label, .last-name-label {
@@ -51,13 +58,16 @@
   color: white;
 }
 
-.name-field, .prefecture-select, .camera_experience-select {
+.name-field {
   height: 40px;
-  width: 190px;
-  padding: 10px;
-  margin-right: 20px;
+  width: 100%;
+  padding: 10%;
   border: 0.5px solid #A9A9A9;
   cursor: pointer;
+}
+
+.select-field, .last-name-field, .first-name-field {
+  width: 48%;
 }
 
 .caution {
@@ -69,11 +79,15 @@
   text-align: center;
   background-color: #DCDCDC;
   cursor: pointer;
+  line-height: 1.5;
+  width: 100%;
+  border: 0.5px solid #A9A9A9;
+  cursor: pointer;
 }
 
 .user-submit, .group-submit {
   height: 40px;
-  width: 400px;
+  width: 100%;
   margin-bottom: 20px;
   background-color: #2C7CFF;
   color: white;
@@ -81,7 +95,7 @@
 
 .user-add-btn {
   height: 40px;
-  width: 150px;
+  width: 60px;
   margin: 16px auto;
   background-color: #DCDCDC;
   text-align: center;

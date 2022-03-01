@@ -6,12 +6,22 @@
     <% @other_groups.each do |group| %>
       <%= link_to "#{group.name}", group_path(group.id), style: "margin-left: 20px; text-decoration: none; color: gray;" %>
     <% end %>
-    <p style="font-family: sans-serif; text-align: center; padding: 10px 0;">組写真をお楽しみください。ログインすると写真の投稿やコメントが可能です。</p>
   <% end %>
   <div class="main-wrapper" style="display: flex; align-items: center;">
     <div class="main-content" style="width: 100%; margin: 40px auto; background-color: white;">
       <div class="post-content" style="background-color: #222222; min-height: 100vh;">
-        <h2 style="font-size: 24px; font-family: sans-serif; text-align: center; padding: 30px 0; color: white;">PHOTOS</h2>
+        <div class="position-fixed-btn-signed-in">
+          <% if user_signed_in? %>
+            <%= link_to new_post_path, class: 'new-post-btn-field' do %>
+              <p class="new-post-btn">New Post</p>
+            <% end %>
+            <%= link_to new_group_path, class: 'new-group-btn-field' do %>
+              <p class="new-post-btn">New Group</p>
+            <% end %>
+          <% end %>
+        </div>
+        <p style="font-family: sans-serif; text-align: center; padding: 40px 40px;  color: white;">組写真の共有アプリケーションです。<br>個人での投稿 または グループでテーマを設定しての投稿が可能です。</p>
+        <h2 style="font-size: 28px; font-family: sans-serif; text-align: center; padding: 30px 0; color: white;">Photos</h2>
         <ul class="post-lists">
           <% if @instances.length >= 1 %>
             <% @instances.each do |instance| %>
@@ -24,7 +34,7 @@
                       <%= image_tag instance.images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
                     <% end %>
                   <% else %>
-                    <p style="font-size: 18px; font-family: sans-serif; color: white;">Group: <%= instance.group.name %></p>
+                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><i class="fa-solid fa-user-group"></i> <%= instance.group.name %></p>
                     <p style="font-size: 18px; font-family: sans-serif; color: white;"><%= instance.group_title %></p>
                     <%= link_to group_post_path(instance.id) do %>
                       <%= image_tag instance.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>

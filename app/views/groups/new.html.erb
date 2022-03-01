@@ -16,7 +16,7 @@
 
     <div class="input-field">
       <div class="input-field">
-        <select name="group[user_ids][]" id="select-user" class="select-user field">
+        <select name="group[user_ids][]" id="select-user" class="select-user">
           <option value="">グループに参加するユーザー選択</option>
             <% User.where.not(id: current_user.id).each do |user| %>
               <option value=<%= user.id %>><%= user.nickname %></option>
@@ -28,7 +28,7 @@
 
       <input name="group[user_ids][]" type="hidden" value=<%= current_user.id %>>
 
-      <button type="button" id="add-btn" class='user-add-btn field input-field'>ユーザー追加</button>
+      <button type="button" id="add-btn" class='user-add-btn field input-field'><i class="fa-solid fa-user-plus"></i></button>
     </div>
     <div>
       <%= f.submit "登録", class: 'group-submit' %>

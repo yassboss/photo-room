@@ -26,7 +26,6 @@
         <% @group_posts.each do |post| %>
           <li class="post-list">
             <div class="post-content">
-              <p style="font-size: 18px; font-family: sans-serif;">Group: <%= post.group.name %></p>
               <p style="font-size: 18px; font-family: sans-serif;"><%= post.group_title %></p>
               <%= link_to group_post_path(post.id) do %>
                 <%= image_tag post.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
@@ -38,3 +37,5 @@
     </ul>
   </div>
 </div>
+
+<%= render "shared/footer" %>
