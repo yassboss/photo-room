@@ -1,5 +1,5 @@
   .site-header {
-    height: 120px;
+    height: 150px;
     width: 100vw;
     background-size: auto 100%;
     background-color:rgba(255,255,255,0.8);
@@ -84,6 +84,10 @@
     line-height: 1.4;
   }
 
+  .select-group:hover {
+    color: black;
+  }
+
   .site-header-box-right-logging-btn {
     height: 100%;
     width: 30%;
@@ -104,53 +108,45 @@
     opacity: 0.9;
   }
 
+  .logging-btn:hover {
+    opacity: 0.7;
+  }
+
 @media screen and (max-width: 500px) {
   .site-header {
-    width: 100vw;
-    background-size: auto 100%;
-    background-color:rgba(255,255,255,0.8);
-    background-blend-mode:lighten;
-    background-repeat: repeat;
+    height: 150px;
   }
 
   .site-header-box {
-    width: inherit;
     padding: 5px 5px;
-    margin: 0 auto;
-    align-items: center;
-    font-family: sans-serif;
     display: flex;
     flex-direction: column;
   }
   
   .site-header-box-left {
     width: 100%;
-    display: flex;
-    text-shadow:5px 0 5px white;
+    flex-direction: row;
+    justify-content: space-between;
   }
-  
+
   .site-header-box-right {
     width: 100%;
-    display: flex;
     align-items: left;
   }
-  
+
   .site-header-box-left-upper {
-    width: 70vw;
+    width: 65vw;
   }
   
   .site-header-box-left-lower {
-    display: none;
-  }
-  
-  .site-header-box-left-upper>a, .site-header-box-left-lower>p {
-    color: #54595F;
-    text-decoration: none;
-    font-weight: bold;
+    height: 100%;
+    width: 35vw;
+    display: flex;
+    align-items: center;
   }
   
   .site-header-box-left-upper>a {
-    font-size:min(18px, 30px);
+    font-size:min(16px, 30px);
   }
   
   .site-header-box-left-lower>p {
@@ -158,41 +154,8 @@
     font-size: 16px;
   }
   
-  .user-edit-link {
-    font-size: 20px;
-    color: #54595F;
-  }
-  
   .site-header-box-right-group-select {
     height: 100%;
     display: flex;
-    font-size: 18px;
-    font-weight: bold;
-    color: #54595F;
-  }
-  
-  .select-group {
-    padding: 10px;
-    line-height: 1.4;
-  }
-  
-  .site-header-box-right-logging-btn {
-    height: 100%;
-    width: 30%;
-    max-width: 100px;
-    display: flex;
-    align-items: center;
-    padding: 10px;
-  }
-  
-  .logging-btn {
-    width: 80px;
-    padding: 10px;
-    text-align: center;
-    text-decoration: none;
-    background-color: #0170B9;
-    color: white;
-    font-weight: bold;
-    opacity: 0.9;
   }
 } 

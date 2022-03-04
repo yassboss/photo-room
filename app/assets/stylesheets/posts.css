@@ -51,3 +51,46 @@ img {
   font-family: sans-serif;
   font-size: 20px;
 }
+
+.new-post-btn-field:hover, .new-group-btn-field:hover {
+  background-color: gray;
+}
+
+
+.individual-new-post {
+  min-height: 100vh;
+  width: 100vw;
+  min-width: 380px;
+  padding: 40px;
+  background-color: #E6FFE9;
+
+}
+
+.individual-post-title-field {
+  height: 50px;
+  width: 100%;
+}
+
+.individual-post-text-field {
+  height: 100px;
+  width: 100%;
+
+}
+
+.new-post-field {
+  margin-bottom: 20px;
+  background-color: white;
+  border: 0.5px solid lightgray;
+  padding: 10px;
+}
+
+.image-field {
+  background-color: white;
+  border: 0.5px solid lightgray;
+  min-height: 100px;
+}
+
+.preview-image {
+  max-width: 400px;
+  
+}

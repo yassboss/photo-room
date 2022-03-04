@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function(){
     const newFileField = document.createElement('input');
     newFileField.setAttribute('type', 'file');
     newFileField.setAttribute('name', 'post[images][]');
+    newFileField.setAttribute('accept', '.png, .jpg, .jpeg');
+    newFileField.setAttribute('style', 'display: block;');
 
     // 最後のfile_fieldを取得
     const lastFileField = document.querySelector('input[type="file"][name="post[images][]"]:last-child');

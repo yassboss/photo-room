@@ -1,18 +1,20 @@
-<%= form_with model: @post, id: 'new_post', local: true do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
-  <div class="message-field">
-    <%= f.text_field :title, placeholder: 'title' %><br>
-    <%= f.text_area :text %>
-    <%= f.hidden_field :group_post_id, :value => 0 %>
-    <%= f.hidden_field :action, :value => 'single' %>
-  </div>
-  <div class="image-field">
-    <div id="previews"></div>
-    <div class="click-upload">
-      <%= f.file_field :images, name: 'post[images][]', data: { index: 0 }, accept: ".png, .jpg, .jpeg" %>
+<div class="individual-post-field">
+  <%= form_with model: @post, id: 'new_post', local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+    <div class="message-field">
+      <%= f.text_field :title, class: 'individual-post-title-field new-post-field', placeholder: 'タイトル' %><br>
+      <%= f.text_area :text, class: 'individual-post-text-field new-post-field', placeholder: 'キャプション' %>
+      <%= f.hidden_field :group_post_id, :value => 0 %>
+      <%= f.hidden_field :action, :value => 'single' %>
     </div>
-  </div>
-  <div class="submit-btn">
-    <%= f.submit '送信' %>
-  </div>
-<% end %>
+    <div class="image-field">
+      <div id="previews"></div>
+      <div class="click-upload">
+        <%= f.file_field :images, name: 'post[images][]', data: { index: 0 }, accept: ".png, .jpg, .jpeg" %>
+      </div>
+    </div>
+    <div class="submit-btn">
+      <%= f.submit '送信' %>
+    </div>
+  <% end %>
+</div>
