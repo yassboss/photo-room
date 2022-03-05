@@ -1,26 +1,38 @@
+<div class="group-post-field">
 <%= form_with model: @group_post, local: true do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
 
-<div style="width: 500px;">
-  <h2><%= "#{@group.name}の投稿" %><%= f.hidden_field :group_id, value: @group.id %></h2>
-  <div class="title-field">
-    <p>グループ投稿の題目</p>
-    <%= f.text_field :group_title, style:'border: 1px solid gray; width:100%;' %>
+  <div class="group-message-field">
+    <div class="group-message-content">
+      <p>グループテーマ</p>
+      <div class="group-message-field-area">
+        <div class="group-message-theme-field">
+          <p>テーマ</p>
+          <%= f.text_field :group_title, class: 'group-post-group_title new-post-field' %>
+        </div>
+        <div class="group-message-text-field">
+          <p>説明</p>
+          <%= f.text_area :group_text, class: 'group-post-group_text new-post-field' %>
+        </div>
+        <%= f.hidden_field :group_id, value: @group.id %>
+      </div>
+    </div>
   </div>
-  <div class="text-field">
-    <p>説明</p>
-    <%= f.text_area :group_text, style:'border: 1px solid gray; width:100%;' %>
-  </div>
-</div>
-<div>
-  <div id="detail-association-insertion-point">
-    <%= f.fields_for :posts do |post_field| %>
-      <%= render 'post_fields', f: post_field %>
-    <% end %>
+  <div class="member-message-field">
+    <div class="member-message-content">
+      <p>メンバーフォーム</p>
+      <div class="member-message-field-area">
+        <div id="detail-association-insertion-point">
+          <%= f.fields_for :posts do |post_field| %>
+            <%= render 'post_fields', f: post_field %>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="add-botton-box">
-    <%= link_to_add_association "撮影者追加", f, :posts,
+    <%= link_to_add_association "メンバーフォーム追加", f, :posts,
     class: 'add_fields',
     id: 'add-btn',
     data: {
@@ -29,8 +41,8 @@
       }
     %>
   </div>
+  <div class="submit-btn">
+    <%= f.submit '投稿', class: 'group-post-submit-btn' %>
+  </div>
+  <% end %>
 </div>
-<div class="submit-btn">
-  <%= f.submit '投稿' %>
-</div>
-<% end %>

@@ -1,2 +1,4 @@
-<h3>投稿修正ページ</h3>
-<%= render partial: "form" %>
+<div class="individual-post-content">
+  <h1><%= current_user.nickname %>の<%= @post.title %>の編集</h1>
+  <%= render partial: "form" %>
+</div>

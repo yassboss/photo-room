@@ -39,10 +39,11 @@ document.addEventListener('DOMContentLoaded', function(){
   const buildNewFileField = () => {
     // 2枚目用のfile_fieldを作成
     const newFileField = document.createElement('input');
-    newFileField.setAttribute('type', 'file');
     newFileField.setAttribute('name', 'post[images][]');
     newFileField.setAttribute('accept', '.png, .jpg, .jpeg');
+    newFileField.setAttribute('type', 'file');
     newFileField.setAttribute('style', 'display: block;');
+    newFileField.setAttribute('class', 'individual-post-image-file-field');
 
     // 最後のfile_fieldを取得
     const lastFileField = document.querySelector('input[type="file"][name="post[images][]"]:last-child');
