@@ -71,3 +71,5 @@ gem 'pry-rails'
 gem 'cocoon'
 
 gem "aws-sdk-s3", require: false
+
+gem 'fog-aws'
