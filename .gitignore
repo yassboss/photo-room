@@ -31,4 +31,3 @@ yarn-debug.log*
 .yarn-integrity
 .Ds_Store
 /public/uploads
-/.env
