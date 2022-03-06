@@ -1,12 +1,6 @@
 <%= render "shared/header" %>
 
 <main class="main-box" style="background-color: #F5F5F5;">
-  <% if user_signed_in? && @other_groups.length >= 1 %>
-    Other Group :
-    <% @other_groups.each do |group| %>
-      <%= link_to "#{group.name}", group_path(group.id), style: "margin-left: 20px; text-decoration: none; color: gray;" %>
-    <% end %>
-  <% end %>
   <div class="main-wrapper" style="display: flex; align-items: center;">
     <div class="main-content" style="width: 100%; margin: 40px auto; background-color: white;">
       <div class="post-content" style="background-color: #222222; min-height: 100vh;">
@@ -34,7 +28,7 @@
                       <%= image_tag instance.images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
                     <% end %>
                   <% else %>
-                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><i class="fa-solid fa-user-group"></i> <%= instance.group.name %></p>
+                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><i class="fa-solid fa-user-group"></i> <%= link_to instance.group.name, group_path(instance.group_id), style: 'text-decoration: none; color: white;' %></p>
                     <p style="font-size: 18px; font-family: sans-serif; color: white;"><%= instance.group_title %></p>
                     <%= link_to group_post_path(instance.id) do %>
                       <%= image_tag instance.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
