@@ -14,7 +14,7 @@
   <div class="post-user-info" style="display: flex; flex-direction: column; align-items: center;">
     <p style="font-size: 20px; padding: 40px 0;"><%= @post.text %></p>
     <p><%= @post.user.nickname %></p>
-    <%= image_tag @post.user.image.url, style: "width: 80px; height: 80px;" %>
+    <%= image_tag @post.user.avatar, style: "width: 80px; height: 80px;" if @post.user.avatar.present? %>
     <p><%= @post.user.main_camera %></p>
     <p><%= @post.user.prefecture.name %></p>
     <p><%= @post.user.camera_experience.name %></p>

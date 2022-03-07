@@ -21,7 +21,7 @@
         <div class="post-user-info" style="display: flex; flex-direction: column; align-items: center;">
           <p style="font-size: 20px; padding: 40px 0; color: white;"><%= post.text %></p>
           <p style="color: white;"><%= post.user.nickname %></p>
-          <%= image_tag post.user.image.url, style: "width: 80px; height: 80px;" %>
+          <%= image_tag post.user.avatar, style: "width: 80px; height: 80px;" if post.user.avatar.present? %>
           <p style="color: white;"><%= post.user.main_camera %></p>
           <p style="color: white;"><%= post.user.prefecture.name %></p>
           <p style="color: white;"><%= post.user.camera_experience.name %></p>
