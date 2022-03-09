@@ -32,10 +32,10 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include("Password can't be blank", "Password confirmation doesn't match Password")
       end
-      it 'imageが空では登録できない' do
-        @user.image = nil
+      it 'avatarが空では登録できない' do
+        @user.avatar = nil
         @user.valid?
-        expect(@user.errors.full_messages).to include("Image can't be blank")
+        expect(@user.errors.full_messages).to include("Avatar can't be blank")
       end
       it 'last_nameが空では登録できない' do
         @user.last_name = ''

@@ -5,6 +5,7 @@ RSpec.describe Group, type: :model do
     @user = FactoryBot.create(:user)
     @group = FactoryBot.build(:group)
     @group.owner_id = @user.id
+    sleep 0.5
   end
 
   describe 'グループ新規登録' do

@@ -8,36 +8,6 @@ RSpec.describe 'Groups', type: :request do
     @group_user = FactoryBot.create(:group_user, user_id: @user.id, group_id: @group.id)
   end
 
-  describe 'GET #index' do
-    it 'indexアクションにリクエストすると正常にレスポンスが返ってくる' do
-      get root_path
-      expect(response.status).to eq(200)
-    end
-    it 'ログイン状態でindexアクションにリクエストするとレスポンスに登録済みのグループ名が存在する' do
-      sign_in @user
-      get root_path
-      expect(response.body).to include(@group.name)
-    end
-    it 'ログイン状態でindexアクションにリクエストするとレスポンスにレスポンスにユーザーのnicknameが存在する' do
-      sign_in @user
-      get root_path
-      expect(response.body).to include(@user.nickname.to_s)
-    end
-    it 'ログイン状態でindexアクションにリクエストするとレスポンスにlogoutボタンが存在する' do
-      sign_in @user
-      get root_path
-      expect(response.body).to include('Logout')
-    end
-    it 'ログインしていない状態でindexアクションにリクエストするとレスポンスにloginボタンが存在する' do
-      get root_path
-      expect(response.body).to include('Login')
-    end
-    it 'ログインしていない状態でindexアクションにリクエストするとレスポンスに新規登録ボタンが存在する' do
-      get root_path
-      expect(response.body).to include('Signup')
-    end
-  end
-
   describe 'GET #show' do
     it 'showアクションにリクエストすると正常にレスポンスが返ってくる' do
       get group_path(@group)
@@ -76,7 +46,7 @@ RSpec.describe 'Groups', type: :request do
     it 'ログイン状態でnewアクションにリクエストするとレスポンスにグループ情報登録フォームが存在する' do
       sign_in @user
       get new_group_path
-      expect(response.body).to include('グループ紹介（必須）')
+      expect(response.body).to include('グループ紹介')
     end
     it 'ログインしていない状態でnewアクションにリクエストするとレスポンスにステータスコード302が返ってくる' do
       get new_group_path
@@ -110,7 +80,7 @@ RSpec.describe 'Groups', type: :request do
     it 'グループオーナーでログインしてeditアクションにリクエストするとレスポンスにグループ情報入力フォームが存在する' do
       sign_in @user
       get edit_group_path(@group)
-      expect(response.body).to include('グループ紹介（必須）')
+      expect(response.body).to include('グループ紹介')
     end
     it 'グループオーナー以外でログインしてeditアクションにリクエストするとレスポンスにステータスコード302が返ってくる' do
       sign_in @another_user

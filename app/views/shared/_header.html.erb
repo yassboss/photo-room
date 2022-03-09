@@ -6,7 +6,7 @@
       </div>
       <div class="site-header-box-left-lower">
         <% if user_signed_in? %>
-          <p>as <%= current_user.nickname %> <%= link_to edit_user_registration_path, class: 'user-edit-link' do %><i class="fa-regular fa-pen-to-square"></i><% end %></p>
+          <p class="as">as <%= link_to edit_user_registration_path, class: 'user-edit-link' do %><%= current_user.nickname %><% end %></p>
         <% else %>
           <p>as visitor</p>
         <% end %>
