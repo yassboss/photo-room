@@ -16,6 +16,7 @@ class ApplicationController < ActionController::Base
                                       keys: [:nickname, :last_name, :first_name, :main_camera, :prefecture_id,
                                              :camera_experience_id, :avatar])
     devise_parameter_sanitizer.permit(:account_update,
-                                      keys: [:nickname, :last_name, :first_name, :main_camera, :prefecture_id, :camera_experience_id, :avatar])
+                                      keys: [:nickname, :last_name, :first_name, :main_camera, :prefecture_id,
+                                             :camera_experience_id, :avatar])
   end
 end
