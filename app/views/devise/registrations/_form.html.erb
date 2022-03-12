@@ -1,6 +1,7 @@
 <div class="input-field">
   <p><%= f.label :avatar, 'プロフィール画像', class: 'profile-img-label' %></p>
-  <%= f.file_field :avatar, accept: ".png, .jpg, .jpeg", id: 'profile-image'%>
+  <div id="avatar-view"></div>
+  <%= f.file_field :avatar, accept: ".png, .jpg, .jpeg", id: 'profile-image', onchange: "loadAvatar(this);" %>
 </div>
 <div class="input-field two-in-one">
   <div class="last-name-field">
@@ -23,3 +24,20 @@
     <%= f.collection_select(:camera_experience_id, CameraExperience.all, :id, :name, {}, {class:"camera_experience-select"}) %>
   </div>
 </div>
+
+<script>
+function loadAvatar(obj){
+  const sizeLimit = 1024 * 1024 * 1; // 制限サイズ
+  let fileReader = new FileReader();
+  fileReader.onload = (function () {
+    if (obj.files[0].size > sizeLimit) {
+      alert('ファイルサイズは1MB以下にしてください');
+      obj.value = '';
+      return;
+    };
+    const avatarView = document.getElementById('avatar-view');
+    avatarView.innerHTML = '<img src="' + fileReader.result + '" style="width: 100px; height: 100px;">';
+  });
+  fileReader.readAsDataURL(obj.files[0]);
+};
+</script>
