@@ -47,7 +47,6 @@ img {
   background-color: #54595F;
   text-decoration: none;
   color: white;
-  font-family: sans-serif;
   font-size: 20px;
 }
 
@@ -61,7 +60,6 @@ img {
   width: 100vw;
   min-width: 380px;
   padding: 0.3%;
-  font-family: sans-serif;
 }
 
 .individual-post-content>h1, .group-post-content>h1 {
@@ -157,7 +155,6 @@ img {
   padding: 10px;
   width: 300px;
   background-color: #2C7CFF;
-  font-family: sans-serif;
   text-align: center;
   color: white;
 }

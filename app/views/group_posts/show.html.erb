@@ -47,8 +47,8 @@
         <% @comments.each do |comment| %>
           <% if comment.parent_id == nil %>
             <div class="comment">
-              <p style="font-family: sans-serif;"><%= comment.user.nickname %> <%= comment.created_at %></p>
-              <p style="font-family: sans-serif;"><%= comment.text %><p>
+              <p><%= comment.user.nickname %> <%= comment.created_at %></p>
+              <p><%= comment.text %><p>
               <% if user_signed_in? && (current_user.id == comment.user_id || @group_post_users.ids.include?(current_user.id)) %>
                 <p><%= link_to '削除', group_post_comment_path(comment.id), method: :delete %></p>
               <% end %>

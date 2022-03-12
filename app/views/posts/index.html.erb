@@ -14,22 +14,22 @@
             <% end %>
           <% end %>
         </div>
-        <p style="font-family: sans-serif; text-align: center; padding: 40px 40px;  color: white;">組写真の共有アプリケーションです。<br>個人での投稿 または グループでテーマを設定しての投稿が可能です。</p>
-        <h2 style="font-size: 28px; font-family: sans-serif; text-align: center; padding: 30px 0; color: white;">Photos</h2>
+        <p style="text-align: center; padding: 40px 40px;  color: white;">組写真の共有アプリケーションです。<br>個人での投稿 または グループでテーマを設定しての投稿が可能です。</p>
+        <h2 style="font-size: 28px; text-align: center; padding: 30px 0; color: white;">Photos</h2>
         <ul class="post-lists">
           <% if @instances.length >= 1 %>
             <% @instances.each do |instance| %>
               <li class="post-list">
                 <div class="post-content">
                   <% if instance.class == Post %>
-                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><%= instance.user.nickname %></p>
-                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><%= instance.title %></p>
+                    <p style="font-size: 18px; color: white;"><%= instance.user.nickname %></p>
+                    <p style="font-size: 18px; color: white;"><%= instance.title %></p>
                     <%= link_to post_path(instance.id) do %>
                       <%= image_tag instance.images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
                     <% end %>
                   <% elsif instance.class == GroupPost && instance.posts.length >= 1 %>
-                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><i class="fa-solid fa-user-group"></i> <%= link_to instance.group.name, group_path(instance.group_id), style: 'text-decoration: none; color: white;' %></p>
-                    <p style="font-size: 18px; font-family: sans-serif; color: white;"><%= instance.group_title %></p>
+                    <p style="font-size: 18px; color: white;"><i class="fa-solid fa-user-group"></i> <%= link_to instance.group.name, group_path(instance.group_id), style: 'text-decoration: none; color: white;' %></p>
+                    <p style="font-size: 18px; color: white;"><%= instance.group_title %></p>
                     <%= link_to group_post_path(instance.id) do %>
                       <%= image_tag instance.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
                     <% end %>

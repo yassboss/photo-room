@@ -6,10 +6,6 @@
   background-color: #DDDDDD;
 }
 
-.main-form>p, h2, h3 {
-  font-family: sans-serif;
-}
-
 .signup-form, .group-submit-form {
   max-width: 600px;
   width: 100%;
