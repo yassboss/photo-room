@@ -144,15 +144,15 @@ https://photo-room.herokuapp.com/
 ## ローカルでの動作方法
 ### 任意のディレクトリにアプリケーションをクローン
 ```
-% git clone https://github.com/yassboss/photo-room.git
+git clone https://github.com/yassboss/photo-room.git
 ```
 ### クローンしたアプリに移動してGemインストール
 ```
-% bundle install
+bundle install
 ```
 ### JavaScriptのパッケージをインストール
 ```
-% yarn install
+yarn install
 ```
 ### 開発環境
 - Ruby 2.6.5
