@@ -146,7 +146,11 @@ https://photo-room.herokuapp.com/
 ```
 git clone https://github.com/yassboss/photo-room.git
 ```
-### クローンしたアプリに移動してGemインストール
+### クローンしたアプリに移動
+```
+cd photo-room
+```
+### Gemインストール
 ```
 bundle install
 ```
