@@ -3,16 +3,16 @@
 <br>
 
 ## 利用方法
-### URL：https://photo-room.herokuapp.com/
+### URL
+https://photo-room.herokuapp.com/
 ### Basic認証
 - ID : admin
 - Pass : 1111
 ### テスト用アカウント
 - メールアドレス : test@com
 - パスワード : test111111
-<br>
 
-### 動作確認方法
+### 利用手順
 - WebブラウザGoogle Chromeの最新版を利用してアクセスしてください。
     - ただしデプロイ等で接続できないタイミングもございます。その際は少し時間をおいてから接続してください。
     - 接続先およびログイン情報については、上記の通りです。
@@ -34,6 +34,7 @@
 - 個人で写真を投稿できること
 - グループで写真を投稿できること
 - 投稿した写真にコメントができること
+- グループ内でチャットができること
 
 <br>
 
@@ -73,7 +74,7 @@
 - has_many :comments
 - has_one_attached :avatar
 
-## group テーブル
+## groups テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | -------------------------------|
@@ -131,6 +132,7 @@
 | ----------- | ---------- | --------------------------------------|
 | text        | string     | null: false                           |
 | commentable | references | null: false, polymorphic: true        |
+| parent      | references | null: false, foreign_key: true        |
 | user        | references | null: false, foreign_key: true        |
 
 ### Association

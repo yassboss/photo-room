@@ -25,13 +25,13 @@
                     <p style="font-size: 18px; color: white;"><%= instance.user.nickname %></p>
                     <p style="font-size: 18px; color: white;"><%= instance.title %></p>
                     <%= link_to post_path(instance.id) do %>
-                      <%= image_tag instance.images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
+                      <%= image_tag instance.images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' if instance.images[0].present? %>
                     <% end %>
                   <% elsif instance.class == GroupPost && instance.posts.length >= 1 %>
                     <p style="font-size: 18px; color: white;"><i class="fa-solid fa-user-group"></i> <%= link_to instance.group.name, group_path(instance.group_id), style: 'text-decoration: none; color: white;' %></p>
                     <p style="font-size: 18px; color: white;"><%= instance.group_title %></p>
                     <%= link_to group_post_path(instance.id) do %>
-                      <%= image_tag instance.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
+                      <%= image_tag instance.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' if instance.posts[0].present? %>
                     <% end %>
                   <% end %>
                 </div>
