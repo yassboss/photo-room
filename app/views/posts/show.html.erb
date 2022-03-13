@@ -40,10 +40,12 @@
   <label for="menu-btn-check" class="menu-btn"><span></span></label>
 
   <div class="comment-field">
-    <p>ここにコメントを記載 <i class="fa-regular fa-comment-dots"></i></p>
-    <div class="comment-form">
-      <%= render 'comments/comments', commentable: @post, comment: @comment if user_signed_in?%>
-    </div>
+    <% if user_signed_in? %>
+      <p>ここにコメントを記載 <i class="fa-regular fa-comment-dots"></i></p>
+      <div class="comment-form">
+        <%= render 'comments/comments', commentable: @post, comment: @comment %>
+      </div>
+    <% end %>
     <div class="comment-views">
       <div id="comments">
         <% @post.comments.each do |comment| %>
