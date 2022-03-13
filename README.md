@@ -13,16 +13,14 @@
 <br>
 
 ### 動作確認方法
-#### WebブラウザGoogle Chromeの最新版を利用してアクセスしてください。
-#### ただしデプロイ等で接続できないタイミングもございます。その際は少し時間をおいてから接続してください。
-#### 接続先およびログイン情報については、上記の通りです。
-#### 同時に複数の方がログインしている場合に、ログインできない可能性があります。
-<br>
-
-#### 投稿方法
-- テストアカウントでログイン→トップページからNew Postボタン押下→投稿情報入力→写真投稿
-#### コメント方法
-- テストアカウントでログイン→トップページから写真選択→コメントボタン押下→コメント投稿
+- WebブラウザGoogle Chromeの最新版を利用してアクセスしてください。
+    - ただしデプロイ等で接続できないタイミングもございます。その際は少し時間をおいてから接続してください。
+    - 接続先およびログイン情報については、上記の通りです。
+    - 同時に複数の方がログインしている場合に、ログインできない可能性があります。
+- 投稿方法
+    - テストアカウントでログイン→トップページからNew Postボタン押下→投稿情報入力→写真投稿
+- コメント方法
+    - テストアカウントでログイン→トップページから写真選択→コメントボタン押下→コメント投稿
 確認後、ログアウト処理をお願いします。
 
 
@@ -51,8 +49,8 @@
 <br>
 
 ## データベース設計
-ER図
-[![Image from Gyazo](https://i.gyazo.com/4fa8d0edf9f58a6c17e01d9e2b5b5e57.png)](https://gyazo.com/4fa8d0edf9f58a6c17e01d9e2b5b5e57)
+### ER図
+[![Image from Gyazo](https://i.gyazo.com/8a1b6db900ec749fd92b54a88bfbc0ee.png)](https://gyazo.com/8a1b6db900ec749fd92b54a88bfbc0ee)
 
 
 ## users テーブル
@@ -62,7 +60,6 @@ ER図
 | nickname             | string     | null: false              |
 | email                | string     | null: false,unique: true |
 | encrypted_password   | string     | null: false              |
-| image                | string     | null: false              |
 | last_name            | string     | null: false              |
 | first_name           | string     | null: false              |
 | main_camera          | string     | null: false              |
@@ -74,6 +71,7 @@ ER図
 - has_many :group_users
 - has_many :groups, through: :group_users
 - has_many :comments
+- has_one_attached :avatar
 
 ## group テーブル
 
