@@ -142,6 +142,22 @@ https://photo-room.herokuapp.com/
 <br>
 
 ## ローカルでの動作方法
-- 
-## 開発環境
-- Ruby/Ruby on Rails/MySQL/GitHub/AWS/Visual Studio Code
+### 任意のディレクトリにアプリケーションをクローン
+```
+% git clone https://github.com/yassboss/furima-37030.git
+```
+### クローンしたアプリに移動してGemインストール
+```
+% bundle install
+```
+### JavaScriptのパッケージをインストール
+```
+% yarn install
+```
+### 開発環境
+- Ruby 2.6.5
+- Ruby on Rails 6.1.4
+- MySQL 5.6.51
+- GitHub
+- Rspec
+- Visual Studio Code
