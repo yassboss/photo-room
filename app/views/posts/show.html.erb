@@ -1,27 +1,37 @@
 <%= render "shared/header" %>
 
-<div class="post-content-field" style="background-color: #F5F5F5F5;">
-  <div class="post-title" style="padding-top: 20px; color: #444444;">
-    <p style="text-align: center; font-size: 24px;"><%= @post.title %></p>
+<div class="post-content-field">
+  <div class="post-title">
+    <p><%= @post.title %></p>
   </div>
-  <div class="post-photos" style="display: flex; flex-direction: column; align-items: center;">
+  <div class="post-photos">
     <% @post.images[0..-1].each do |image| %>
-      <div class="photo" style="margin-top: 40px;">
+      <div class="photo">
         <%= image_tag image.variant(combine_options:{gravity: :center, resize:"550x550"}).processed %>
       </div>
     <% end %>
   </div>
-  <div class="post-user-info" style="display: flex; flex-direction: column; align-items: center;">
-    <p style="font-size: 20px; padding: 40px 0;"><%= @post.text %></p>
-    <p><%= @post.user.nickname %></p>
-    <%= image_tag @post.user.avatar, style: "width: 80px; height: 80px;" if @post.user.avatar.present? %>
-    <p><%= @post.user.main_camera %></p>
-    <p><%= @post.user.prefecture.name %></p>
-    <p><%= @post.user.camera_experience.name %></p>
-    <% if user_signed_in? && current_user.id == @post.user_id %>
-      <%= link_to '編集', edit_post_path(@post.id) %>
-      <%= link_to '削除', post_path(@post.id), method: :delete %>
-    <% end %>
+  <div class="post-user-info">
+    <p><%= @post.text %></p>
+    <div class="user-info-box">
+      <div class="user-image-field">
+        <%= image_tag @post.user.avatar.variant(combine_options:{gravity: :center, resize:"40x40^",crop:"40x40+0+0"}).processed %>
+        <div class="user-name-prefecture">
+          <p class="user-p20"><%= @post.user.nickname %></p>
+        </div>
+      </div>
+      <div class="user-info-field">
+        <p class="user-p12"><%= @post.user.prefecture.name %></p>
+        <p class="user-p12">カメラ歴:<%= @post.user.camera_experience.name %></p>
+        <p class="user-p12">メイン機種:<%= @post.user.main_camera %></p>
+      </div>
+    </div>
+    <div class="post-edit-delete-btn">
+      <% if user_signed_in? && current_user.id == @post.user_id %>
+        <%= link_to '編集', edit_post_path(@post.id), class: 'post-edit-btn' %>
+        <%= link_to '削除', post_path(@post.id),class: 'post-delete-btn', method: :delete %>
+      <% end %>
+    </div>
   </div>
 </div>
 
@@ -30,6 +40,7 @@
   <label for="menu-btn-check" class="menu-btn"><span></span></label>
 
   <div class="comment-field">
+    <p>ここにコメントを記載 <i class="fa-regular fa-comment-dots"></i></p>
     <div class="comment-form">
       <%= render 'comments/comments', commentable: @post, comment: @comment if user_signed_in?%>
     </div>
@@ -38,7 +49,7 @@
         <% @post.comments.each do |comment| %>
           <% if comment.parent_id == nil %>
             <div class="comment">
-              <p><%= comment.user.nickname %> <%= comment.created_at %></p>
+              <p><%= image_tag comment.user.avatar.variant(gravity: :center, resize:"25x25^", crop:"25x25+0+0").processed %> <%= comment.user.nickname %> <%= time_ago_in_words(comment.created_at) %> ago</p>
               <p><%= comment.text %><p>
               <% if user_signed_in? && (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
                 <p><%= link_to '削除', post_comment_path(comment.id), method: :delete, class: "comment-dele" %></p>
@@ -59,6 +70,7 @@
             </div>
           <% end %>
         <% end %>
+      </div>
     </div>
   </div>
 </div>

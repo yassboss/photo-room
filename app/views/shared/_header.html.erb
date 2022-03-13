@@ -6,9 +6,11 @@
       </div>
       <div class="site-header-box-left-lower">
         <% if user_signed_in? %>
-          <p class="as">as <%= link_to edit_user_registration_path, class: 'user-edit-link' do %><%= current_user.nickname %><% end %></p>
+          <p class="as">as</p>
+          <%= link_to edit_user_registration_path, class: 'user-edit-link' do %><p><%= current_user.nickname %></p><% end %>
         <% else %>
-          <p>as visitor</p>
+          <p class="as">as</p>
+          <p>visitor</p>
         <% end %>
       </div>
     </div>
@@ -18,14 +20,14 @@
           <% if @user_groups.exists? %>
             <select onChange="location.href=value;" class="select-group">
               <% if @group %>
-                <option value="<%=@group.id%>"><%=@group.name%> グループ</option>
+                <option value="<%=@group.id%>"><%=@group.name%></option>
                 <% @user_groups.where.not(id: @group.id).each do |group| %>
-                  <option value=<%= group_path(group.id) %>> <%= group.name %> グループ</option>
+                  <option value=<%= group_path(group.id) %>> <%= group.name %></option>
                 <% end %>
               <% else %>
                 <option value="">Select Group</option>
                 <% @user_groups.each do |group| %>
-                  <option value=<%= group_path(group.id) %>> <%= group.name %> グループ</option>
+                  <option value=<%= group_path(group.id) %>> <%= group.name %></option>
                 <% end %>
               <% end %>
             </select>

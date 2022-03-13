@@ -1,13 +1,44 @@
 .comment-field {
   min-width: 300px;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
   position: fixed;
-  top: 120px;
+  top: 0px;
   right: -100%;
   z-index: 80;
   background-color: white;
-  transition: all 0.5s;
+  transition: all 0.1s;
   border: 0.5px solid lightgray;
+  overflow: scroll;
+  padding: 15px;
+}
+
+.comment-field>p {
+  font-size: 18px;
+}
+
+.comment-form {
+  margin-top: 10px;
+}
+
+.comment-form-textarea {
+  border: 1px solid gray;
+  width: 100%;
+  padding: 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: end;
+}
+
+.comment-submit-btn {
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.comment-submit-btn:hover {
+  background-color: #EEEEEE;
 }
 
 .menu-btn {
@@ -15,8 +46,8 @@
   top: 130px;
   right: 10px;
   display: flex;
-  height: 40px;
-  width: 40px;
+  height: 30px;
+  width: 30px;
   justify-content: center;
   align-items: center;
   z-index: 90;
@@ -27,9 +58,9 @@
 .menu-btn span:after {
   content: '';
   display: block;
-  height: 3px;
-  width: 25px;
-  border-radius: 3px;
+  height: 2px;
+  width: 20px;
+  border-radius: 2px;
   background-color: #ffffff;
   position: absolute;
 }
@@ -42,6 +73,11 @@
 
 #menu-btn-check:checked ~ .menu-btn span {
   background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+}
+#menu-btn-check:checked ~ .menu-btn {
+  top: 5px;
+  right: 5px;
+  transition: all 0.1s;
 }
 #menu-btn-check:checked ~ .menu-btn span::before {
   bottom: 0;
@@ -58,4 +94,7 @@
 
 #menu-btn-check:checked ~ .comment-field {
   right: 0;
+}
+
+.comment-field 
 }

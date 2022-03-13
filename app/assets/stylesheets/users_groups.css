@@ -72,12 +72,12 @@
 
 .prefecture-select, .camera_experience-select, .select-user {
   height: 40px;
-  text-align: center;
   background-color: #DCDCDC;
   cursor: pointer;
   line-height: 1.5;
   width: 100%;
   border: 0.5px solid #A9A9A9;
+  padding: 0 10px;
 }
 
 .user-submit, .group-submit {
@@ -115,22 +115,130 @@
   color: gray;
 }
 
-.group-show {
+/* groups/show.html.erb */
+.group-show-background {
+  background-color: #F5F5F5;
+  padding: 20px;
   min-height: 100vh;
-  max-width: calc(100vw - 40px);
-  margin: 20px;
+  max-width: 100vw;
 }
 
-.group-field {
-  margin: 20px 0;
+.group-show-box {
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.group-post-btn , .group-edit-btn{
-  height: 35px;
-  padding: 10px;
+.group-show-box>p {
+  text-align: center;
+}
+
+.group-name-field {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding-bottom: 20px;
+}
+
+.group-name {
+  width: 80%;
+  text-align: center;
+  color: #54595F;
+  text-shadow: 0.5px 1px 1.5px #808080;
+}
+
+.group-name-block {
+  width: 10%;
+}
+
+.group-post-btn, .group-edit-btn{
+  padding: 5px;
+  width: 9%;
+  min-width: 45px;
+  margin-right: 1%;
   background-color: #DCDCDC;
   text-decoration: none;
   text-align: center;
-  color: black;
+  color: #54595F;
   cursor: pointer;
+}
+
+.group-info-field {
+  background-color: white;
+  padding: 20px;
+}
+
+.group-member-field {
+  margin-bottom: 20px;
+}
+
+.group-member-field>ul {
+  padding: 5px;
+  list-style: none;
+}
+
+.group-member-title, .group-member-post-title {
+  height: 35px;
+  padding: 2px;
+  text-align: center;
+  background-color: #54595F;
+}
+
+.group-member-title>h3, .group-member-post-title>h3 {
+  color: white;
+  text-shadow: 0.5px 1px 1.5px #808080;
+}
+
+.member-lists {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.member-list {
+  display: flex;
+  width: 400px;
+  max-width: 250px;
+}
+
+.member-image-field {
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-p16 {
+  font-size: 16px;
+  margin-bottom: 20px;
+  color: #54595F;
+}
+
+.member-p10 {
+  font-size: 10px;
+}
+
+.member-p16 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.member-p16>span {
+  color: #CC0000;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.group-member-introduction-field>ul {
+  list-style: none;
+}
+
+.group-member-post-field {
+  width: 100%;
+}
+
+.member-post-lists {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

@@ -1,6 +1,6 @@
 class CameraExperience < ActiveHash::Base
   self.data = [
-    { id: 1, name: '- カメラ歴選択 -' },
+    { id: 1, name: 'カメラ歴を選択' },
     { id: 2, name: '1年未満' },
     { id: 3, name: '1〜3年' },
     { id: 4, name: '4〜5年' },

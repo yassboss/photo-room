@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
- body {
+body {
   font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+
+#error_explanation>ul>li {
+  list-style: none;
 }
