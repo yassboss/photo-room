@@ -1,4 +1,4 @@
-<header class="site-header" style="background-image: url(<%= rails_blob_url(current_user.avatar) if user_signed_in? && current_user.avatar.present? %>);">
+<header class="site-header" style="background-image: url('<%= rails_blob_url(current_user.avatar) if user_signed_in? && current_user.avatar.present? %>');">
   <div class="site-header-box">
     <div class="site-header-box-left">
       <div class="site-header-box-left-upper">
