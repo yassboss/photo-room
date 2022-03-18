@@ -1,5 +1,5 @@
 img {
-  object-fit: contain;
+  /* object-fit: contain; */
 }
 
 .post-lists {
@@ -365,6 +365,19 @@ img {
   padding: 10px;
   display: flex;
   justify-content: center;
+}
+
+.time-ago {
+  font-size: 12px;
+  color: gray;
+}
+
+.comment-delete-p {
+  text-align: center;
+}
+
+.reply-btn-p {
+  text-align: center;
 }
 
 @media screen and (max-width: 500px) {

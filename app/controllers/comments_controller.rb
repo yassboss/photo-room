@@ -13,16 +13,12 @@ class CommentsController < ApplicationController
 
     if params[:parent_id]
       @comment_reply.save
-      if @comment_reply.save && @group_post
-        CommentGroupChannel.broadcast_to @group_post,
-                                         { comment: @comment_reply,
-                                           user: @comment_reply.user }
-      end
+      CommentGroupChannel.broadcast_to @group_post,{ comment: @comment_reply, user: @comment_reply.user } if @comment_reply.save && @group_post
       CommentChannel.broadcast_to @post, { comment: @comment_reply, user: @comment_reply.user } if @comment_reply.save && @post
     else
       @comment.save
       CommentGroupChannel.broadcast_to @group_post, { comment: @comment, user: @comment.user } if @comment.save && @group_post
-      CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user } if @comment.save && @post
+      CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user, avatar: url_for(@comment.user.avatar) } if @comment.save && @post
     end
   end
 

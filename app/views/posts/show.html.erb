@@ -46,33 +46,48 @@
         <%= render 'comments/comments', commentable: @post, comment: @comment %>
       </div>
     <% end %>
-    <div class="comment-views">
-      <div id="comments">
-        <% @post.comments.each do |comment| %>
-          <% if comment.parent_id == nil %>
-            <div class="comment">
-              <p><%= image_tag comment.user.avatar.variant(gravity: :center, resize:"25x25^", crop:"25x25+0+0").processed %> <%= comment.user.nickname %> <%= time_ago_in_words(comment.created_at) %> ago</p>
-              <p><%= comment.text %><p>
-              <% if user_signed_in? && (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
-                <p><%= link_to '削除', post_comment_path(comment.id), method: :delete, class: "comment-dele" %></p>
-              <% end %>
+    <div class="comments" id="comments">
+      <% @post.comments.each do |comment| %>
+        <% if comment.parent_id == nil %>
+          <div class="comment">
+            <div class="comment-avatar-box">
+              <%= image_tag comment.user.avatar.variant(gravity: :center, resize:"25x25^", crop:"25x25+0+0").processed %>
             </div>
-            <div id="replies<%=comment.id%>">
-              <% comment.replies.order(:created_at).each do |reply| %>
-                <div class="reply">
-                  <p class="reply-content"> <%= comment.user.nickname %> : <%=reply.text%></p>
+            <div class="comment-text-box">
+              <p class="comment-nickname"><%= comment.user.nickname %></p>
+              <p class="comment-text"><%= comment.text %><p>
+              <div class="comment-text-bottom-box">
+                <div class="comment-delete-p">
+                  <span class="time-ago"><%= time_ago_in_words(comment.created_at) %> ago</span> 
                 </div>
-              <% end %>
-            </div>
-            <div class="reply-form-area">
-              <div class="reply-form" style="display: none;">
-                <%= render 'comments/reply', commentable: @post, comment: @comment, comm: comment if user_signed_in? %>
+                <% if user_signed_in? %>
+                  <div class="comment-delete-btn-box btn">
+                    <% if (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
+                      <%= link_to '削除', post_comment_path(comment.id), method: :delete, class: "comment-dele btn" %>
+                    <% end %>
+                  </div>
+                  <p class="reply-btn-p btn"><a class="reply-btn" style="cursor: pointer;">返信</a></p>
+                <% end %>
               </div>
-              <a class="reply-btn" style="cursor: pointer;">返信</a>
+              <div class="reply-form-area">
+                <div class="reply-form" style="display: none;">
+                  <%= render 'comments/reply', commentable: @post, comment: @comment, comm: comment if user_signed_in? %>
+                </div>
+              </div>
             </div>
-          <% end %>
+          </div>
+          <div id="replies<%=comment.id%>" class="reply-box">
+            <% comment.replies.order(:created_at).each do |reply| %>
+              <div class="reply">
+                <p class="reply-content"><%= image_tag comment.user.avatar.variant(gravity: :center, resize:"25x25^", crop:"25x25+0+0").processed %> <span><%= comment.user.nickname %></span></p>
+                <div class="reply-text">
+                  <p class="reply-text-p"><%=reply.text%></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

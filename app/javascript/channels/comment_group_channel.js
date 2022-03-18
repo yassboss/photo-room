@@ -15,7 +15,6 @@ if(location.pathname.match(/\/group_posts\/\d/)){
     },
 
     received(data) {
-      console.log(data);
       const replyHtml = () => {
         const html = `
         <div class="reply">
@@ -31,7 +30,7 @@ if(location.pathname.match(/\/group_posts\/\d/)){
         if (user_id === comment_user_id) {
           const html = `
           <div class="comment">
-            <p>${data.user.nickname} ${data.comment.created_at}</p>
+            <p>${data.user.nickname}</p>
             <p>${data.comment.text}<p>
             <a rel="nofollow" data-method="delete" href="/posts/${data.comment.id}/comments/${data.comment.commentable_id}" class="comment-dele">
               <i class="fas fa-trash-alt"></i>
@@ -48,7 +47,7 @@ if(location.pathname.match(/\/group_posts\/\d/)){
                   <input type="hidden" name="comment[parent_id]" value="${data.comment.id}">
                   <textarea name="comment[text]"></textarea>
                   <div class="actions">
-                    <input type="submit" name="commit" value="返信する" data-disable-with="返信する">
+                    <input type="submit" name="commit" class="reply-post-btn" value="返信する" data-disable-with="返信する">
                   </div>
                 </form>
               </div>
@@ -61,7 +60,7 @@ if(location.pathname.match(/\/group_posts\/\d/)){
         } else {
           const html = `
           <div class="comment">
-            <p>${data.user.nickname} ${data.comment.created_at}</p>
+            <p>${data.user.nickname}</p>
             <p>${data.comment.text}<p>
           </div>
             <div id="replies${data.comment.id}">
@@ -75,7 +74,7 @@ if(location.pathname.match(/\/group_posts\/\d/)){
                   <input type="hidden" name="comment[parent_id]" value="${data.comment.id}">
                   <textarea name="comment[text]"></textarea>
                   <div class="actions">
-                    <input type="submit" name="commit" value="返信する" data-disable-with="返信する">
+                    <input type="submit" name="commit" class="reply-post-btn" value="返信する" data-disable-with="返信する">
                   </div>
                 </form>
               </div>

@@ -19,7 +19,10 @@ if(location.pathname.match(/\/posts\/\d/)){
       const replyHtml = () => {
         const html = `
         <div class="reply">
-          <p class="reply-content"> ${data.user.nickname} : ${data.comment.text}</p>
+          <p class="reply-content"><img src="${data.avatar}" style="width: 25px; height: 25px;"><span>${data.user.nickname}</span></p>
+          <div class="reply-text">
+            <p class="reply-text-p">${data.comment.text}</p>
+          </div>
         </div>`;
         const reply = document.getElementById(`replies${data.comment.parent_id}`);
         reply.insertAdjacentHTML('beforeend', html)
@@ -31,29 +34,35 @@ if(location.pathname.match(/\/posts\/\d/)){
         if (user_id === comment_user_id) {
           const html = `
           <div class="comment">
-            <p>${data.user.nickname} ${data.comment.created_at}</p>
-            <p>${data.comment.text}<p>
-            <a rel="nofollow" data-method="delete" href="/posts/${data.comment.id}/comments/${data.comment.commentable_id}" class="comment-dele">
-              <i class="fas fa-trash-alt"></i>
-            </a>
-          </div>
-            <div id="replies${data.comment.id}">
-              <div class="reply">
-                <p class="reply-content"></p>
+            <div class="comment-avatar-box">
+              <img src="${data.avatar}" style="width: 25px; height: 25px;">
+            </div>
+            <div class="comment-text-box">
+              <p class="comment-nickname">${data.user.nickname}</p>
+              <p class="comment-text">${data.comment.text}<p>
+              <div class="comment-text-bottom-box">
+                <div class="comment-delete-p">
+                </div>
+                <div class="comment-delete-btn-box btn">
+                  <a rel="nofollow" data-method="delete" href="/posts/${data.comment.id}/comments/${data.comment.commentable_id}" class="comment-dele btn">削除</a>
+                </div>
+                <p class="reply-btn-p btn"><a class="reply-btn" style="cursor: pointer;">返信</a></p>
+              </div>
+              <div class="reply-form-area">
+                <div class="reply-form" style="display: none;">
+                  <form id="reply-form${data.comment.id}" action="/posts/${data.comment.commentable_id}/comments" accept-charaset="UTF-8" data-remote="true" method="post">
+                    <input type="hidden" name="comment[parent_id]" value="${data.comment.id}">
+                    <textarea name="comment[text]" class="reply-form-text-area"></textarea>
+                    <div class="actions">
+                      <input type="submit" name="commit" class="reply-post-btn" value="返信する" data-disable-with="返信する">
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
-            <div class="reply-form-area">
-              <div class="reply-form" style="display: none;">
-                <form id="reply-form${data.comment.id}" action="/posts/${data.comment.commentable_id}/comments" accept-charaset="UTF-8" data-remote="true" method="post">
-                  <input type="hidden" name="comment[parent_id]" value="${data.comment.id}">
-                  <textarea name="comment[text]"></textarea>
-                  <div class="actions">
-                    <input type="submit" name="commit" value="返信する" data-disable-with="返信する">
-                  </div>
-                </form>
-              </div>
-              <a class="reply-btn" style="cursor: pointer;">返信</a>
-            </div>`;
+          </div>
+          <div id="replies${data.comment.id}" class="reply-box">
+          </div>`;
           const comment = document.getElementById("comments");
           comment.insertAdjacentHTML('beforeend', html)
           const commentForm = document.getElementById('comment-form');
@@ -61,26 +70,34 @@ if(location.pathname.match(/\/posts\/\d/)){
         } else {
           const html = `
           <div class="comment">
-            <p>${data.user.nickname} ${data.comment.created_at}</p>
-            <p>${data.comment.text}<p>
-          </div>
-            <div id="replies${data.comment.id}">
-              <div class="reply">
-                <p class="reply-content"></p>
+            <div class="comment-avatar-box">
+              <img src="${data.avatar}" style="width: 25px; height: 25px;">
+            </div>
+            <div class="comment-text-box">
+              <p class="comment-nickname">${data.user.nickname}</p>
+              <p class="comment-text">${data.comment.text}<p>
+              <div class="comment-text-bottom-box">
+                <div class="comment-delete-p">
+                </div>
+                <div class="comment-delete-btn-box btn">
+                </div>
+                <p class="reply-btn-p btn"><a class="reply-btn" style="cursor: pointer;">返信</a></p>
+              </div>
+              <div class="reply-form-area">
+                <div class="reply-form" style="display: none;">
+                  <form id="reply-form${data.comment.id}" action="/posts/${data.comment.commentable_id}/comments" accept-charaset="UTF-8" data-remote="true" method="post">
+                    <input type="hidden" name="comment[parent_id]" value="${data.comment.id}">
+                    <textarea name="comment[text]" class="reply-form-text-area"></textarea>
+                    <div class="actions">
+                      <input type="submit" name="commit" class="reply-post-btn" value="返信する" data-disable-with="返信する">
+                    </div>
+                  </form>
+                </div>
               </div>
             </div>
-            <div class="reply-form-area">
-              <div class="reply-form" style="display: none;">
-                <form id="reply-form${data.comment.id}" action="/posts/${data.comment.commentable_id}/comments" accept-charaset="UTF-8" data-remote="true" method="post">
-                  <input type="hidden" name="comment[parent_id]" value="${data.comment.id}">
-                  <textarea name="comment[text]"></textarea>
-                  <div class="actions">
-                    <input type="submit" name="commit" value="返信する" data-disable-with="返信する">
-                  </div>
-                </form>
-              </div>
-              <a class="reply-btn" style="cursor: pointer;">返信</a>
-            </div>`;
+          </div>
+          <div id="replies${data.comment.id}" class="reply-box">
+          </div>`;
           const comment = document.getElementById("comments");
           comment.insertAdjacentHTML('beforeend', html)
           const commentForm = document.getElementById('comment-form');

@@ -1,21 +1,14 @@
-document.addEventListener('DOMContentLoaded', function(){
-  const replyBtn = document.getElementsByClassName('reply-btn');
-  const replyPostBtn = document.getElementsByClassName('reply-post-btn');
-  if (!replyBtn) return null;
-
-  for (let i=0; i<replyBtn.length; i++){
-    replyBtn[i].addEventListener('click', function(e){
-      const replyForm = e.target.parentNode.firstElementChild;
-      replyForm.removeAttribute('style', 'display:none;');
-      this.setAttribute('style', 'display:none;');
-    });
-  };
-  for (let o=0; o<replyPostBtn.length; o++){
-    replyPostBtn[o].addEventListener('click', function (e) {
-      const replyForm = e.target.closest('.reply-form');
-      const replyBtn = document.getElementsByClassName('reply-btn');
-      replyForm.setAttribute('style', 'display:none;');
-      replyBtn[o].removeAttribute('style', 'display:none;');
-    })
+document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('reply-btn')) {
+    const replyForm = e.target.closest('.comment-text-box').lastElementChild.firstElementChild;
+    if (replyForm.style.display=="none"){
+      replyForm.style.display ="block";
+      replyForm.firstElementChild.lastElementChild.firstElementChild.disabled =false;
+      e.target.style.display ="none";
+    }
   }
-});
+  if (e.target.classList.contains('reply-post-btn')) {
+    e.target.closest('.reply-form').style.display ="none";
+    e.target.closest('.reply-form-area').previousElementSibling.lastElementChild.firstElementChild.style.display ="block";
+  }
+}, false);
