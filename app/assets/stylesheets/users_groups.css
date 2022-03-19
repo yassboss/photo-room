@@ -117,7 +117,6 @@
 
 /* groups/show.html.erb */
 .group-show-background {
-  background-color: #F5F5F5;
   padding: 20px;
   min-height: 100vh;
   max-width: 100vw;
@@ -163,12 +162,13 @@
 }
 
 .group-info-field {
-  background-color: white;
+  background-color: #F5F5F5;
   padding: 20px;
 }
 
 .group-member-field {
   margin-bottom: 20px;
+  background-color: white;
 }
 
 .group-member-field>ul {
@@ -176,16 +176,10 @@
   list-style: none;
 }
 
-.group-member-title, .group-member-post-title {
-  height: 35px;
-  padding: 2px;
-  text-align: center;
-  background-color: #54595F;
-}
-
 .group-member-title>h3, .group-member-post-title>h3 {
-  color: white;
+  color: gray;
   text-shadow: 0.5px 1px 1.5px #808080;
+  text-align: center;
 }
 
 .member-lists {

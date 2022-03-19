@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     group_posts = GroupPost.includes(:group).order('created_at DESC')
 
     @instances = posts | group_posts
-    @instances.sort!{ |a, b| b.created_at <=> a.created_at }
+    @instances.sort! { |a, b| b.created_at <=> a.created_at }
   end
 
   def new

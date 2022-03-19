@@ -6,11 +6,11 @@
     <% if user_signed_in? %>
       <p>ここにコメントを記載 <i class="fa-regular fa-comment-dots"></i></p>
       <div class="comment-form">
-        <%= render 'comments/comment_form', commentable: @post, comment: @comment %>
+        <%= render 'comments/comment_form', commentable: commentable, comment: @comment %>
       </div>
     <% end %>
     <div class="comments" id="comments">
-      <% @post.comments.each do |comment| %>
+      <% commentable.comments.each do |comment| %>
         <% if comment.parent_id == nil %>
         <div class="comment-border">
           <div class="comment">
@@ -35,7 +35,7 @@
               </div>
               <div class="reply-form-area">
                 <div class="reply-form" style="display: none;">
-                  <%= render 'comments/reply_form', commentable: @post, comment: @comment, comm: comment if user_signed_in? %>
+                  <%= render 'comments/reply_form', commentable: commentable, comment: @comment, comm: comment if user_signed_in? %>
                 </div>
               </div>
             </div>

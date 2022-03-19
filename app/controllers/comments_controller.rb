@@ -8,17 +8,15 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment_reply = @commentable.comments.build(comment_params)
 
-    @post = Post.find(params[:post_id]) if params[:post_id]
-    @group_post = GroupPost.find(params[:group_post_id]) if params[:group_post_id]
-
     if params[:parent_id]
       @comment_reply.save
-      CommentGroupChannel.broadcast_to @group_post,{ comment: @comment_reply, user: @comment_reply.user } if @comment_reply.save && @group_post
-      CommentChannel.broadcast_to @post, { comment: @comment_reply, user: @comment_reply.user } if @comment_reply.save && @post
+      CommentChannel.broadcast_to @commentable, { comment: @comment_reply, user: @comment_reply.user }
+      CommentGroupChannel.broadcast_to @commentable, { comment: @comment_reply, user: @comment_reply.user }
     else
       @comment.save
-      CommentGroupChannel.broadcast_to @group_post, { comment: @comment, user: @comment.user } if @comment.save && @group_post
-      CommentChannel.broadcast_to @post, { comment: @comment, user: @comment.user, post_user: @post.user, current_user: current_user, avatar: url_for(@comment.user.avatar) } if @comment.save && @post
+      CommentChannel.broadcast_to @commentable,
+                                  { comment: @comment, user: @comment.user, avatar: url_for(@comment.user.avatar) }
+      CommentGroupChannel.broadcast_to @commentable, { comment: @comment, user: @comment.user, avatar: url_for(@comment.user.avatar) }
     end
   end
 

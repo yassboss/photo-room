@@ -45,16 +45,17 @@ img {
   align-items: center;
   height: 40px;
   width: 40%;
-  max-width: 400px;
+  max-width: 350px;
   margin: 0 20px;
-  background-color: #54595F;
+  background-color: #708090;
   text-decoration: none;
   color: white;
-  font-size: 20px;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .new-post-btn-field:hover, .new-group-btn-field:hover {
-  background-color: gray;
+  opacity: 0.8;
 }
 
 /* new.html.erb */
@@ -174,6 +175,8 @@ img {
   align-items: center;
 }
 
+
+
 /* グループ投稿のみ */
 .group-message-content>p, .member-message-content>p {
   background-color: lightgray;
@@ -278,7 +281,7 @@ img {
 
 /* posts/show.html.erb, group_posts/show.html.erb */
 .post-content-field, .group-post-content-field {
-  background-color: #F5F5F5F5;
+  background-color: #F5F5F5;
 }
 
 .post-title {

@@ -103,15 +103,15 @@
     padding: 8px;
     text-align: center;
     text-decoration: none;
-    border: 2px solid #54595F;
-    color:#54595F;
+    background-color: #778899;
+    color: white;
     font-weight: bold;
     line-height: 1.5;
-    text-shadow: 0.5px 1px 1.5px #808080;
+    cursor: pointer;
   }
 
-  .select-group:hover {
-    background-color: rgba(255, 0, 0, 0.3);
+  .select-group:hover, .logging-btn:hover {
+    opacity: 0.8;
   }
 
   .site-header-box-right-logging-btn {
@@ -128,14 +128,9 @@
     padding: 8px;
     text-align: center;
     text-decoration: none;
-    border: 2px solid #54595F;
-    color: #54595F;
+    background-color: #778899;
+    color: white;
     font-weight: bold;
-    text-shadow: 0.5px 1px 1.5px #808080;
-  }
-
-  .logging-btn:hover {
-    background-color: rgba(255, 0, 0, 0.3);
   }
 
 @media screen and (max-width: 500px) {
