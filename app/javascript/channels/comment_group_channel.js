@@ -47,7 +47,7 @@ if(location.pathname.match(/\/group_posts\/\d/)){
             </div>
             <div class="reply-form-area">
               <div class="reply-form" style="display: none;">
-                <form id="reply-form${data.comment.id}" action="/posts/${data.comment.commentable_id}/comments" accept-charaset="UTF-8" data-remote="true" method="post">
+                <form id="reply-form${data.comment.id}" action="/posts/${data.comment.commentable_id}/comments" accept-charset="UTF-8" data-remote="true" method="post">
                   <input type="hidden" name="comment[parent_id]" value="${data.comment.id}">
                   <textarea name="comment[text]" class="reply-form-text-area"></textarea>
                   <div class="actions">

@@ -33,7 +33,6 @@ RSpec.describe 'ユーザー新規登録', type: :system do
       # ログアウトボタンが表示されることを確認する
       expect(page.body).to have_content('Logout')
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
-      expect(page.body).to have_no_content('Signup')
       expect(page.body).to have_no_content('Login')
     end
   end
@@ -147,7 +146,6 @@ RSpec.describe 'ユーザー情報編集', type: :system do
       # ログアウトボタンが表示されることを確認する
       expect(page.body).to have_content('Logout')
       # サインアップページへ遷移するボタンや、ログインページへ遷移するボタンが表示されていないことを確認する
-      expect(page.body).to have_no_content('Signup')
       expect(page.body).to have_no_content('Login')
     end
   end
