@@ -16,7 +16,8 @@ class CommentsController < ApplicationController
       @comment.save
       CommentChannel.broadcast_to @commentable,
                                   { comment: @comment, user: @comment.user, avatar: url_for(@comment.user.avatar) }
-      CommentGroupChannel.broadcast_to @commentable, { comment: @comment, user: @comment.user, avatar: url_for(@comment.user.avatar) }
+      CommentGroupChannel.broadcast_to @commentable,
+                                       { comment: @comment, user: @comment.user, avatar: url_for(@comment.user.avatar) }
     end
   end
 

@@ -1,37 +1,37 @@
 <%= render "shared/header" %>
 
-<main class="main-box" style="background-color: #F5F5F5;">
-  <div class="main-wrapper" style="display: flex; align-items: center;">
-    <div class="main-content" style="width: 100%; margin: 40px auto; background-color: white;">
-      <div class="post-content" style="background-color: #222222; min-height: 100vh;">
-        <div class="position-fixed-btn-signed-in">
+<main class="main-outline">
+  <div class="main-wrapper">
+    <div class="main-content">
+      <div class="main-inner-frame">
+        <div class="position-fixed-btn-if-user-signed-in">
           <% if user_signed_in? %>
-            <%= link_to new_post_path, class: 'new-post-btn-field' do %>
-              <p class="new-post-btn">New Post</p>
+            <%= link_to new_post_path, class: 'position-fixed-btn' do %>
+              <p>New Post</p>
             <% end %>
-            <%= link_to new_group_path, class: 'new-group-btn-field' do %>
-              <p class="new-post-btn">New Group</p>
+            <%= link_to new_group_path, class: 'position-fixed-btn' do %>
+              <p>New Group</p>
             <% end %>
           <% end %>
         </div>
-        <p style="text-align: center; padding: 40px 40px;  color: white;">組写真の共有アプリケーションです。<br>個人での投稿 または グループでテーマを設定しての投稿が可能です。</p>
-        <h2 style="font-size: 28px; text-align: center; padding: 30px 0; color: white;">Photos</h2>
+        <p>組写真の共有アプリケーションです。<br>個人での投稿 または グループでテーマを設定しての投稿が可能です。</p>
+        <h3>Photos</h3>
         <ul class="post-lists">
           <% if @instances.length >= 1 %>
             <% @instances.each do |instance| %>
               <li class="post-list">
                 <div class="post-content">
-                  <% if instance.class == Post %>
-                    <p style="font-size: 18px; color: white;"><%= instance.user.nickname %></p>
-                    <p style="font-size: 18px; color: white;"><%= instance.title %></p>
+                  <% if instance.class == Post && instance.images.length >= 1 %>
+                    <p><%= instance.user.nickname %></p>
+                    <p><%= instance.title %></p>
                     <%= link_to post_path(instance.id) do %>
-                      <%= image_tag instance.images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' if instance.images[0].present? %>
+                      <%= image_tag instance.images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
                     <% end %>
                   <% elsif instance.class == GroupPost && instance.posts.length >= 1 %>
-                    <p style="font-size: 18px; color: white;"><i class="fa-solid fa-user-group"></i> <%= link_to instance.group.name, group_path(instance.group_id), style: 'text-decoration: none; color: white;' %></p>
-                    <p style="font-size: 18px; color: white;"><%= instance.group_title %></p>
+                    <p><i class="fa-solid fa-user-group"></i> <%= link_to instance.group.name, group_path(instance.group_id) %></p>
+                    <p><%= instance.group_title %></p>
                     <%= link_to group_post_path(instance.id) do %>
-                      <%= image_tag instance.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' if instance.posts[0].present? %>
+                      <%= image_tag instance.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
                     <% end %>
                   <% end %>
                 </div>

@@ -161,12 +161,14 @@
   }
 
   .site-header-box-left-upper {
+    display: flex;
+    align-items: center;
     height: 100%;
     width: 65vw;
   }
 
   .site-header-box-left-upper>a>h1 {
-    font-size: 35px;
+    font-size: 32px;
   }
   
   .site-header-box-left-lower {
