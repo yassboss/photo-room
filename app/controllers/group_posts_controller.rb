@@ -4,14 +4,14 @@ class GroupPostsController < ApplicationController
 
   def new
     @group = Group.find(params[:id])
-    @group_users = User.where(id: @group.group_users.user_ids)
+    @group_users = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
     @group_post = GroupPost.new
     @group_post.posts.build
   end
 
   def create
     @group = Group.find(group_post_params[:group_id])
-    @group_users = User.where(id: @group.group_users.user_ids)
+    @group_users = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
     @group_post = GroupPost.new(group_post_params)
     if @group_post.save
       redirect_to root_path
