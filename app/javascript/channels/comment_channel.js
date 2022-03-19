@@ -67,11 +67,13 @@ if(location.pathname.match(/\/posts\/\d/)){
         commentForm.reset();
       };
 
-      if (data.comment.parent_id === null) {
-        commentHtml();
-      } else {
-        replyHtml();
-      }
+      if (data.comment.text !== '') {
+        if (data.comment.parent_id === null) {
+          commentHtml();
+        } else {
+          replyHtml();
+        }
+      };
     }
   });
 }
