@@ -15,11 +15,15 @@
 }
 
 .comment-field>p {
-  font-size: 18px;
+  color: gray;
 }
 
 .comments {
   width: 100%;
+}
+
+.comment-border {
+  border-top: 1.5px solid #EEEEEE;
 }
 
 .comment-form {
@@ -42,55 +46,57 @@
   margin-bottom: 20px;
 }
 
-.comment-submit-btn:hover {
+.comment-submit-btn:hover, .reply-post-btn:hover {
   background-color: #EEEEEE;
 }
 
 .menu-btn {
   position: fixed;
-  top: 130px;
-  right: 10px;
+  top: 150px;
+  right: 0px;
   display: flex;
-  height: 30px;
+  height: 100px;
   width: 30px;
   justify-content: center;
   align-items: center;
   z-index: 90;
-  background-color: #3584bb;
-}
-.menu-btn span,
-.menu-btn span:before,
-.menu-btn span:after {
-  content: '';
-  display: block;
-  height: 2px;
-  width: 20px;
-  border-radius: 2px;
-  background-color: #ffffff;
-  position: absolute;
-}
-.menu-btn span:before {
-  bottom: 8px;
-}
-.menu-btn span:after {
-  top: 8px;
+  writing-mode: vertical-rl;
+  background-color: gray;
+  color: white;
 }
 
 #menu-btn-check:checked ~ .menu-btn span {
-  background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: rgba(255, 255, 255, 0);
 }
+
 #menu-btn-check:checked ~ .menu-btn {
   top: 5px;
   right: 5px;
+  height: 30px;
   transition: all 0.1s;
+  color: rgba(255, 255, 255, 0);
 }
-#menu-btn-check:checked ~ .menu-btn span::before {
-  bottom: 0;
-  transform: rotate(45deg);
+
+#menu-btn-check:checked ~ .menu-btn span::before, #menu-btn-check:checked ~ .menu-btn span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 30px;
+  background: white;
 }
+
+#menu-btn-check:checked ~ .menu-btn span::before{
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+
 #menu-btn-check:checked ~ .menu-btn span::after {
-  top: 0;
-  transform: rotate(-45deg);
+  transform: translate(-50%,-50%) rotate(-45deg);
 }
 
 #menu-btn-check {
@@ -131,7 +137,7 @@
 
 .comment-text-bottom-box {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 .btn {
@@ -151,6 +157,7 @@
 .reply-box {
   width: calc(100% - 35px);
   margin-left: 35px;
+  margin-bottom: 15px;
 }
 
 .reply-content {
@@ -179,3 +186,7 @@
   width: 100%;
   padding: 5px;
 }
+
+.time-ago {
+  font-size: 11px;
+  color: gray;

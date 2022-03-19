@@ -367,18 +367,7 @@ img {
   justify-content: center;
 }
 
-.time-ago {
-  font-size: 12px;
-  color: gray;
-}
 
-.comment-delete-p {
-  text-align: center;
-}
-
-.reply-btn-p {
-  text-align: center;
-}
 
 @media screen and (max-width: 500px) {
   .individual-post-content>h1 {

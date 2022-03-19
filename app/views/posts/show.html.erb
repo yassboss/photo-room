@@ -35,61 +35,6 @@
   </div>
 </div>
 
-<div class="hamburger-comment">
-  <input type="checkbox" id="menu-btn-check">
-  <label for="menu-btn-check" class="menu-btn"><span></span></label>
-
-  <div class="comment-field">
-    <% if user_signed_in? %>
-      <p>ここにコメントを記載 <i class="fa-regular fa-comment-dots"></i></p>
-      <div class="comment-form">
-        <%= render 'comments/comments', commentable: @post, comment: @comment %>
-      </div>
-    <% end %>
-    <div class="comments" id="comments">
-      <% @post.comments.each do |comment| %>
-        <% if comment.parent_id == nil %>
-          <div class="comment">
-            <div class="comment-avatar-box">
-              <%= image_tag comment.user.avatar.variant(gravity: :center, resize:"25x25^", crop:"25x25+0+0").processed %>
-            </div>
-            <div class="comment-text-box">
-              <p class="comment-nickname"><%= comment.user.nickname %></p>
-              <p class="comment-text"><%= comment.text %><p>
-              <div class="comment-text-bottom-box">
-                <div class="comment-delete-p">
-                  <span class="time-ago"><%= time_ago_in_words(comment.created_at) %> ago</span> 
-                </div>
-                <% if user_signed_in? %>
-                  <div class="comment-delete-btn-box btn">
-                    <% if (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
-                      <%= link_to '削除', post_comment_path(comment.id), method: :delete, class: "comment-dele btn" %>
-                    <% end %>
-                  </div>
-                  <p class="reply-btn-p btn"><a class="reply-btn" style="cursor: pointer;">返信</a></p>
-                <% end %>
-              </div>
-              <div class="reply-form-area">
-                <div class="reply-form" style="display: none;">
-                  <%= render 'comments/reply', commentable: @post, comment: @comment, comm: comment if user_signed_in? %>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="replies<%=comment.id%>" class="reply-box">
-            <% comment.replies.order(:created_at).each do |reply| %>
-              <div class="reply">
-                <p class="reply-content"><%= image_tag comment.user.avatar.variant(gravity: :center, resize:"25x25^", crop:"25x25+0+0").processed %> <span><%= comment.user.nickname %></span></p>
-                <div class="reply-text">
-                  <p class="reply-text-p"><%=reply.text%></p>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </div>
-</div>
+<%= render 'comments/comments' %>
 
 <%= render "shared/footer" %>

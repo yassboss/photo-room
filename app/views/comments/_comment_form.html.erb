@@ -1,0 +1,6 @@
+<%= form_with model: [commentable, Comment.new], local: true, id: "comment-form" do |f| %>
+  <%= f.text_area :text, placeholder: 'コメントを記入', class: 'comment-form-textarea' %>
+  <div class="actions">
+    <%= f.submit "送信", class: 'comment-submit-btn' %>
+  </div>
+<% end %>

@@ -1,7 +1,7 @@
 document.addEventListener('click', function(e) {
   if (e.target.classList.contains('reply-btn')) {
     const replyForm = e.target.closest('.comment-text-box').lastElementChild.firstElementChild;
-    if (replyForm.style.display=="none"){
+    if (replyForm.style.display==="none"){
       replyForm.style.display ="block";
       replyForm.firstElementChild.lastElementChild.firstElementChild.disabled =false;
       e.target.style.display ="none";

@@ -1,5 +1,5 @@
 <%= form_with model: [commentable, Comment.new], local: true, id: "reply-form#{comm.id}" do |f| %>
-  <%= f.text_area :text, class: 'reply-form-text-area' %>
+  <%= f.text_area :text, placeholder: '返信を記入', class: 'reply-form-text-area' %>
   <%= f.hidden_field :parent_id, value: comm.id%>
   <div class="actions">
     <%= f.submit "返信する", class: 'reply-post-btn' %>
