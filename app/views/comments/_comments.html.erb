@@ -26,8 +26,14 @@
                 </div>
                 <% if user_signed_in? %>
                   <div class="comment-delete-btn-box btn">
-                    <% if (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
-                      <%= link_to '削除', post_comment_path(comment.id), method: :delete, class: "comment-dele btn" %>
+                    <% if comment.commentable_type == 'Post' %>
+                      <% if (current_user.id == comment.user_id || current_user.id == @post.user_id) %>
+                        <%= link_to '削除', post_comment_path(comment.id), method: :delete, class: "comment-dele btn" %>
+                      <% end %>
+                    <% else %>
+                      <% if (current_user.id == comment.user_id || @group_post_users.ids.include?(current_user.id)) %>
+                        <%= link_to '削除', group_post_comment_path(comment.id), method: :delete, class: "comment-dele btn" %>
+                      <% end %>
                     <% end %>
                   </div>
                   <p class="reply-btn-p btn"><a class="reply-btn" style="cursor: pointer;">返信</a></p>
