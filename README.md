@@ -1,14 +1,17 @@
-# 組写真投稿アプリ
+![画像](https://github.com/yassboss/photo-room/blob/master/108d299058b88874dfacffef893727f8.jpg?raw=true)
+<br>
+<br>
+
+# 概要
 ### 撮影した写真を共有できるアプリケーションを作成しました。写真の投稿と投稿に対するコメントで、写真を通したコミュケーションを提供するアプリケションです。
 <br>
 
-## 利用方法
-### URL
+# 本番環境
 https://photo-room.herokuapp.com/
 ### Basic認証
 - ID : admin
 - Pass : 1111
-### テスト用アカウント
+### ログイン情報（テスト用）
 - メールアドレス : test@com
 - パスワード : test111111
 
@@ -26,7 +29,7 @@ https://photo-room.herokuapp.com/
 
 <br>
 
-## 開発コンセプト
+# 制作背景（意図）
 ### 目指した課題解決
 - 写真を趣味としている個人もしくはグループにとって、撮影した写真に対する他者評価を手軽に得られる機会がない、また、同じように趣味で写真をやっている他者の写真を手軽に見られる機会がないといった課題があります。
 - 写真を共有できるコミュニケーションツールがあれば、写真のスキル向上と他者とのコミュニケーションを通した多様な楽しみ方の発見につながると考えました。複数人で集まって撮影会や講評会を行ったりすることが難しい場面でも、アプリを通して共有とフィードバックが可能となります。個人活動になりがちな写真という趣味の可能性を広げることにもつながると考えました。
@@ -38,7 +41,6 @@ https://photo-room.herokuapp.com/
 
 <br>
 
-## 実装概要
 ### 実装済み機能について
 - ユーザー管理機能
 - グループ管理機能
@@ -49,7 +51,46 @@ https://photo-room.herokuapp.com/
 
 <br>
 
-## データベース設計
+# DEMO
+- トップページ（投稿閲覧）
+[![Image from Gyazo](https://i.gyazo.com/452b30cb0226c9ad4ae164cb6c7115ce.gif)](https://gyazo.com/452b30cb0226c9ad4ae164cb6c7115ce)
+<br>
+
+- 新規投稿（個人）
+[![Image from Gyazo](https://i.gyazo.com/d263dfc17f1a0b62f140f3ca0aadb239.gif)](https://gyazo.com/d263dfc17f1a0b62f140f3ca0aadb239)
+<br>
+
+- 新規投稿（グループ）
+[![Image from Gyazo](https://i.gyazo.com/56fb789da66b095a69f0696fa7a9787d.gif)](https://gyazo.com/56fb789da66b095a69f0696fa7a9787d)
+<br>
+
+- コメント投稿
+[![Image from Gyazo](https://i.gyazo.com/4dcce2248cc9c80be019dcd3e22cc16d.gif)](https://gyazo.com/4dcce2248cc9c80be019dcd3e22cc16d)
+<br>
+<br>
+
+# 工夫したポイント
+- グループで同じテーマの写真投稿を同時に行えるように、group_postsモデル（親）、postsモデル（子）を作りました。
+<br>
+<br>
+
+# 使用技術（開発環境）
+## バックエンド
+#### Ruby(2.6.5), Ruby on Rails(6.1.4)
+## フロントエンド
+#### Erb, CSS, Javascript
+## データベース
+#### MySQL 5.6.51, Sequel Pro
+## ソース管理
+#### GitHub, GitHubDesktop
+## テスト
+#### Rspec
+## エディタ
+#### VSCode
+<br>
+<br>
+
+# DB設計
 ### ER図
 [![Image from Gyazo](https://i.gyazo.com/8a1b6db900ec749fd92b54a88bfbc0ee.png)](https://gyazo.com/8a1b6db900ec749fd92b54a88bfbc0ee)
 
@@ -157,10 +198,3 @@ bundle install
 ```
 yarn install
 ```
-### 開発環境
-- Ruby 2.6.5
-- Ruby on Rails 6.1.4
-- MySQL 5.6.51
-- GitHub
-- Rspec
-- Visual Studio Code
