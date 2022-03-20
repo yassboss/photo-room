@@ -53,7 +53,7 @@ https://photo-room.herokuapp.com/
 
 # DEMO
 - トップページ（投稿閲覧）
-[![Image from Gyazo](https://i.gyazo.com/452b30cb0226c9ad4ae164cb6c7115ce.gif)](https://gyazo.com/452b30cb0226c9ad4ae164cb6c7115ce)
+[![Image from Gyazo](https://i.gyazo.com/7879eefe7a2f9802cf5528396aa6bcac.gif)](https://gyazo.com/7879eefe7a2f9802cf5528396aa6bcac)
 <br>
 
 - 新規投稿（個人）
