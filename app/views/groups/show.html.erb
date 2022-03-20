@@ -1,19 +1,22 @@
 <%= render "shared/header" %>
 
-<div class="group-show-background">
+<div class="group-show-outline">
   <div class="group-show-box">
-    <div class="group-name-field">
-      <% if user_signed_in? && @group.owner_id == current_user.id %><p class="group-name-block"></p><% end %>
-      <% if user_signed_in? && @member.include?(current_user) %><p class="group-name-block"></p><% end %>
-      <h2 class="group-name"><%= @group.name %></h2>
-      <%= link_to "投稿", new_group_post_path(@group), class: 'group-post-btn' if user_signed_in? && @member.include?(current_user) %>
-      <%= link_to "編集", edit_group_path(@group), class: 'group-edit-btn' if user_signed_in? && @group.owner_id == current_user.id %>
+    <div class="group-show-about-us">
+      <h3>about us</h3>
+      <h4>ー Group name ー</h4>
+      <h4 class="group-name"><%= @group.name %></h4>
+      <h4>ー Introduction ー</h4>
+      <p class="intro-p16"><%= @group.introduction %></p>
+      <div class="group-show-btn-box">
+        <%= link_to "投稿", new_group_post_path(@group), class: 'group-post-btn' if user_signed_in? && @member.include?(current_user) %>
+        <%= link_to "編集", edit_group_path(@group), class: 'group-edit-btn' if user_signed_in? && @group.owner_id == current_user.id %>
+      </div>
     </div>
-    <p class="intro-p16"><%= @group.introduction %></p>
-    <div class="group-info-field">
+    <div class="group-show-member-lists">
       <div class="group-member-field">
         <div class="group-member-title">
-          <h3>members</h3>
+          <h3>Member</h3>
         </div>
         <ul class="member-lists">
           <% @member.each do |member| %>
@@ -33,25 +36,25 @@
           <% end %>
         </ul>
       </div>
-      <div class="group-member-post-field">
-        <div class="group-member-post-title">
-          <h3>posts</h3>
-        </div>
-        <ul class="member-post-lists">
-          <% if @group_posts.length >= 1 %>
-            <% @group_posts.each do |post| %>
-              <li class="post-list">
-                <div class="post-content">
-                  <p style="font-size: 18px;"><%= post.group_title %></p>
-                  <%= link_to group_post_path(post.id) do %>
-                    <%= image_tag post.posts[0].images[0].variant(gravity: :center, resize:"270x200^", crop:"270x200+0+0").processed, class: 'index-img' %>
-                  <% end %>
-                </div>
-              </li>
-            <% end %>
-          <% end %>
-        </ul>
+    </div>
+    <div class="group-show-about-us">
+      <div class="group-member-post-title">
+        <h3>Post</h3>
       </div>
+      <ul class="member-post-lists">
+        <% if @group_posts.length >= 1 %>
+          <% @group_posts.each do |post| %>
+            <li class="post-list">
+              <div class="post-content">
+                <p style="font-size: 18px; color: var(--main-font-color);"><%= post.group_title %></p>
+                <%= link_to group_post_path(post.id) do %>
+                  <%= image_tag post.posts[0].images[0].variant(gravity: :center, resize:"270x200^", crop:"270x200+0+0").processed, class: 'index-img' %>
+                <% end %>
+              </div>
+            </li>
+          <% end %>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
