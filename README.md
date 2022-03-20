@@ -105,7 +105,6 @@ https://photo-room.herokuapp.com/
 | title              | string     | null: false                    |
 | text               | text       | null: false                    |
 | group_post_id      | integer    | foreign_key: true              |
-| action             | string     | default: '', null: false       |
 | user               | references | null: false, foreign_key: true |
 
 ### Association

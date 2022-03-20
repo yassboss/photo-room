@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   def index
     @groups = Group.all
 
-    posts = Post.where(action: 'single').includes(:user).order('created_at DESC')
+    posts = Post.where(group_post_id: 0).includes(:user).order('created_at DESC')
     group_posts = GroupPost.includes(:group).order('created_at DESC')
 
     @instances = posts | group_posts
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(
-      :title, :text, :group_post_id, :action, { images: [] }
+      :title, :text, :group_post_id, { images: [] }
     ).merge(user_id: current_user.id)
   end
 
@@ -59,9 +59,7 @@ class PostsController < ApplicationController
   end
 
   def set_current_user_group
-    if user_signed_in?
-      @user_groups = Group.where(id: current_user.group_users.select(:group_id))
-      @other_groups = Group.where.not(id: current_user.group_users.select(:group_id))
-    end
+    @user_groups = Group.where(id: current_user.group_users.select(:group_id)) if user_signed_in?
+    @other_groups = Group.where.not(id: current_user.group_users.select(:group_id)) if user_signed_in?
   end
 end

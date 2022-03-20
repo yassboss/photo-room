@@ -48,7 +48,8 @@ class GroupPostsController < ApplicationController
 
   def group_post_params
     params.require(:group_post).permit(:group_title, :group_text, :group_id,
-                                       posts_attributes: [:id, :title, :text, :action, :group_post_id, :user_id, :_destroy, { images: [] }])
+                                       posts_attributes:
+                                      [:id, :title, :text, :group_post_id, :user_id, :_destroy, { images: [] }])
   end
 
   def set_group_post
