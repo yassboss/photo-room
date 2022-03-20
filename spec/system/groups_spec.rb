@@ -27,7 +27,7 @@ RSpec.describe '新規グループ登録', type: :system do
       end.to change { Group.count }.by(1).and change { GroupUser.count }.by(2)
       # グループ紹介文やグループ編集ボタンが表示されることを確認する
       expect(page.body).to have_content(@group.introduction)
-      expect(page.body).to have_content("#{@group.name}の編集")
+      expect(page.body).to have_content("編集")
     end
   end
   context '新規グループ登録ができないとき' do
@@ -74,7 +74,7 @@ RSpec.describe 'グループ情報編集', type: :system do
       # グループ詳細ページへ遷移する
       visit group_path(@group)
       # グループ編集ボタンが表示されることを確認する
-      expect(page.body).to have_content("#{@group.name}の編集")
+      expect(page.body).to have_content("編集")
       # グループ編集ページへ遷移する
       visit edit_group_path(@group)
       # グループ情報を入力する
@@ -88,7 +88,7 @@ RSpec.describe 'グループ情報編集', type: :system do
       expect(current_path).to eq(group_path(@group))
       # グループ紹介文やグループ編集ボタンが表示されることを確認する
       expect(page.body).to have_content('edit')
-      expect(page.body).to have_content("#{@group.name}の編集")
+      expect(page.body).to have_content("編集")
     end
   end
   context 'グループ情報が編集できないとき' do
@@ -101,7 +101,7 @@ RSpec.describe 'グループ情報編集', type: :system do
       # グループ詳細ページへ遷移する
       visit group_path(@group)
       # グループ編集ボタンが表示されることを確認する
-      expect(page.body).to have_content("#{@group.name}の編集")
+      expect(page.body).to have_content("編集")
       # グループ編集ページへ遷移する
       visit edit_group_path(@group)
       # グループ情報を入力する

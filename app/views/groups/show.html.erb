@@ -20,7 +20,7 @@
             <li>
               <div class="member-list">
                 <div class="member-image-field">
-                  <%= image_tag member.avatar.variant(combine_options:{gravity: :center, resize:"60x60^",crop:"60x60+0+0"}).processed %>
+                  <%= image_tag member.avatar.variant(gravity: :center, resize:"60x60^",crop:"60x60+0+0").processed %>
                 </div>
                 <div class="member-info-field">
                   <p class="member-p16"><%= member.nickname %> <span><%= "owner" if member.id == @owner.id %></span></p>
@@ -44,7 +44,7 @@
                 <div class="post-content">
                   <p style="font-size: 18px;"><%= post.group_title %></p>
                   <%= link_to group_post_path(post.id) do %>
-                    <%= image_tag post.posts[0].images[0].variant(combine_options:{gravity: :center, resize:"270x200^", crop:"270x200+0+0"}).processed, class: 'index-img' %>
+                    <%= image_tag post.posts[0].images[0].variant(gravity: :center, resize:"270x200^", crop:"270x200+0+0").processed, class: 'index-img' %>
                   <% end %>
                 </div>
               </li>

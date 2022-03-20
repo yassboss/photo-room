@@ -48,6 +48,7 @@
   padding: 10px;
   border: 0.5px solid gray;
   background-color: var(--form-bg-color);
+  width: 100%;
 }
 
 .click-upload {

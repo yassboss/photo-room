@@ -7,7 +7,7 @@
   <div class="post-photos">
     <% @post.images[0..-1].each do |image| %>
       <div class="photo">
-        <%= image_tag image.variant(combine_options:{gravity: :center, resize:"550x550"}).processed %>
+        <%= image_tag image.variant(gravity: :center, resize:"550x550").processed %>
       </div>
     <% end %>
   </div>
@@ -15,7 +15,7 @@
     <p><%= @post.text %></p>
     <div class="user-info-box">
       <div class="user-image-field">
-        <%= image_tag @post.user.avatar.variant(combine_options:{gravity: :center, resize:"40x40^",crop:"40x40+0+0"}).processed %>
+        <%= image_tag @post.user.avatar.variant(gravity: :center, resize:"40x40^",crop:"40x40+0+0").processed %>
         <div class="user-name-prefecture">
           <p class="user-p20"><%= @post.user.nickname %></p>
         </div>

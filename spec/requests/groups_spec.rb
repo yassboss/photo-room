@@ -28,12 +28,12 @@ RSpec.describe 'Groups', type: :request do
     it 'グループオーナーでログインしてshowアクションにリクエストするとレスポンスにグループ編集ボタンが存在する' do
       sign_in @user
       get group_path(@group)
-      expect(response.body).to include("#{@group.name}の編集")
+      expect(response.body).to include("編集")
     end
     it 'グループオーナー以外でログインしてshowアクションにリクエストするとレスポンスにグループ編集ボタンが存在しない' do
       sign_in @another_user
       get group_path(@group)
-      expect(response.body).not_to include("#{@group.name}の編集")
+      expect(response.body).not_to include("編集")
     end
   end
 
