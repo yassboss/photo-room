@@ -1,18 +1,18 @@
-<div class="group-post-field">
-<%= form_with model: @group_post, local: true do |f| %>
-<%= render 'layouts/error_messages', model: f.object %>
+<div class="post-form-field">
+  <%= form_with model: @group_post, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
 
   <div class="group-message-field">
     <div class="group-message-content">
       <p>グループテーマ</p>
       <div class="group-message-field-area">
-        <div class="group-message-theme-field">
+        <div class="group-post-input-field">
           <p>テーマ</p>
-          <%= f.text_field :group_title, class: 'group-post-group_title new-post-field' %>
+          <%= f.text_field :group_title, class: 'input-text-field' %>
         </div>
-        <div class="group-message-text-field">
+        <div class="group-post-input-field">
           <p>説明</p>
-          <%= f.text_area :group_text, class: 'group-post-group_text new-post-field' %>
+          <%= f.text_area :group_text, class: 'input-text-field' %>
         </div>
         <%= f.hidden_field :group_id, value: @group.id %>
       </div>
@@ -21,7 +21,7 @@
   <div class="member-message-field">
     <div class="member-message-content">
       <p>メンバーフォーム</p>
-      <div class="member-message-field-area">
+      <div class="group-post-input-field">
         <div id="detail-association-insertion-point">
           <%= f.fields_for :posts do |post_field| %>
             <%= render 'post_fields', f: post_field %>
@@ -41,8 +41,11 @@
       }
     %>
   </div>
-  <div class="submit-btn">
-    <%= f.submit '投稿', class: 'group-post-submit-btn' %>
+  <div class="post-submit-btn">
+    <%= f.submit '投稿' %>
   </div>
   <% end %>
+  <div class="link-btn-field">
+    <%= link_to "戻る", :back, class: 'back-link' %>
+  </div>
 </div>

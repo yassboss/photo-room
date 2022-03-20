@@ -1,6 +1,8 @@
 :root {
   --main-bg-color: #F5F5F5;
   --main-bg-block-color: #222222;
+  --form-bg-color: #F9FAFB;
+  --main-font-color: #54595F;
 }
 
 /* index.html.erb */
@@ -91,226 +93,6 @@
   opacity: 0.5;
 }
 
-/* new.html.erb */
-.individual-post-content, .group-post-content {
-  min-height: 100vh;
-  width: 100vw;
-  min-width: 380px;
-  padding: 0.3%;
-}
-
-.individual-post-content>h1, .group-post-content>h1 {
-  text-align: center;
-  padding: 20px;
-  margin-bottom: 20px;
-  color: #54595F;
-}
-
-/* _form.html.erb */
-.individual-post-field, .group-post-field {
-  max-width: 700px;
-  margin: 0 auto;
-}
-
-.individual-post-image-file-field {
-  margin-bottom: 10px;
-}
-
-.image-field {
-  min-height: 100px;
-}
-
-.image-field-area>p>span {
-  font-size: 12px;
-}
-
-.previews-box {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.preview-image {
-  max-width: 400px;
-  margin-top: 20px;
-}
-
-.image-delete-button {
-  width: 80px;
-  padding: 3px;
-  margin: 0 auto;
-  background-color: #FF3300;
-  border-radius: 2px;
-  text-align: center;
-  color: white;
-  font-size: 14px;
-}
-
-.image-delete-button:hover {
-  opacity: 0.8;
-}
-
-.click-upload {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 30px;
-}
-
-.message-field-area {
-  margin-bottom: 30px;
-}
-
-.individual-post-title {
-  height: 50px;
-  width: 100%;
-}
-
-.individual-post-text {
-  height: 100px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.new-post-field {
-  margin-bottom: 20px;
-  background-color: #F9FAFB;
-  border: 0.5px solid gray;
-  padding: 10px;
-}
-
-.submit-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.individual-post-submit-btn, .group-post-submit-btn {
-  padding: 10px;
-  width: 300px;
-  background-color: #2C7CFF;
-  text-align: center;
-  color: white;
-}
-
-.individual-post-submit-btn:hover, .group-post-submit-btn:hover {
-  opacity: 0.8;
-}
-
-.individual-post-link-field {
-  margin: 20px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-
-
-/* グループ投稿のみ */
-.group-message-content>p, .member-message-content>p {
-  background-color: lightgray;
-  margin-bottom: 20px;
-  padding: 10px;
-  font-weight: bold;
-}
-
-.group-message-theme-field, .group-message-text-field, .member-message-field-area {
-  width: 95%;
-  margin: 0 auto;
-}
-.group-post-group_title {
-  height: 50px;
-  width: 100%;
-}
-
-.group-post-group_text {
-  height: 100px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.add-button-box {
-  height: 45px;
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.add_fields {
-  width: 300px;
-  padding: 12px;
-  background-color: pink;
-  text-decoration: none;
-  text-align: center;
-  color: #333333;
-}
-
-.add_fields:hover {
-  opacity: 0.8;
-}
-
-/* _post_fields.html.erb */
-.user-select-delete-area {
-  display: flex;
-  justify-content: space-between;
-}
-
-.member-post-delete-btn-field {
-  display: flex;
-  align-items: center;
-}
-
-.member-post-delete-btn {
-  padding: 8px 20px;
-  background-color: #FF3300;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-}
-
-.member-post-delete-btn:hover {
-  opacity: 0.8;
-}
-
-.user-select-field-pulldown {
-  min-width: 280px;
-  padding: 12px;
-  margin-bottom: 20px;
-  background-color: pink;
-  border: 0.5px solid gray;
-  cursor: pointer;
-}
-
-.member-post-title-field {
-  height: 50px;
-  width: 100%;
-}
-
-.member-post-text-field {
-  height: 100px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.member-post-title-field, .member-post-text-field, .image-field {
-  background-color: white;
-}
-
-.click-upload>p>span {
-  font-size: 14px;
-}
-
-.click-upload>.image-preview>img {
-  max-width: 400px;
-}
 
 /* posts/show.html.erb, group_posts/show.html.erb */
 .post-content-field, .group-post-content-field {
@@ -404,11 +186,11 @@
 }
 
 @media screen and (max-width: 500px) {
-  .individual-post-content>h1 {
+  .post-form-outline>h1 {
     font-size: 24px;
   }
 
-  .individual-post-field {
+  .post-form-field {
     width: 95%;
     margin: 0 auto;
   }
@@ -433,7 +215,7 @@
     width: 300px;
   }
 
-  .photo-file-field {
+  .click-upload>p>input {
     font-size: 12px;
   }
 }

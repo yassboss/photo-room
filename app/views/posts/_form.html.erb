@@ -1,32 +1,32 @@
-<div class="individual-post-field">
+<div class="post-form-field">
   <%= form_with model: @post, id: 'new_post', local: true do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
     
     <div class="image-field-area">
       <p>写真 <span>※5枚まで選択可(1枚あたり1MBまで)</span></p>
-      <div class="image-field new-post-field">
+      <div class="image-field input-text-field">
         <div id="previews" class="previews-box"></div>
         <div class="click-upload">
-          <%= f.file_field :images, name: 'post[images][]', accept: ".png, .jpg, .jpeg", data: { index: 0 }, class: 'individual-post-image-file-field' %>
+          <%= f.file_field :images, name: 'post[images][]', accept: ".png, .jpg, .jpeg", data: { index: 0 } %>
         </div>
       </div>
     </div>
     <div class="message-field-area">
       <p>タイトル</p>
       <div class="message-title-field">
-        <%= f.text_field :title, class: 'individual-post-title new-post-field' %>
+        <%= f.text_field :title, class: 'input-text-field' %>
       </div>
       <p>コメント</p>
       <div class="message-text-field">
-        <%= f.text_area :text, class: 'individual-post-text new-post-field' %>
+        <%= f.text_area :text, class: 'input-text-field' %>
       </div>
       <%= f.hidden_field :group_post_id, :value => 0 %>
     </div>
-    <div class="submit-btn">
-      <%= f.submit '投稿', class: 'individual-post-submit-btn' %>
+    <div class="post-submit-btn">
+      <%= f.submit '投稿' %>
     </div>
   <% end %>
-  <div class="individual-post-link-field">
-    <%= link_to 'Topページ', root_path, class:'login-link' %>
+  <div class="link-btn-field">
+    <%= link_to "戻る", :back, class: 'back-link' %>
   </div>
 </div>

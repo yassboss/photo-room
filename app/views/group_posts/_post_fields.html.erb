@@ -1,4 +1,4 @@
-<div class="nested-fields new-post-field">
+<div class="nested-fields input-text-field">
   <div class="user-select-delete-area">
     <div class="user-select">
       <div class="group_users_insert_point">
@@ -13,42 +13,42 @@
       </div>
     </div>
     <div class="member-post-delete-btn-field">
-      <%= link_to_remove_association "削除", f, class: 'member-post-delete-btn' %>
+      <%= link_to_remove_association "削除", f %>
     </div>
   </div>
   <div class="image-field-area">
     <p>写真 <span>※5枚まで選択可(1枚あたり1MBまで)</span></p>
-    <div class="image-field new-post-field">
+    <div class="image-field input-bg-white">
       <div class="click-upload">
         <div class="image-preview"></div>
-        <p><span>1枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 }, accept: ".png, .jpg, .jpeg", class: 'photo-file-field' %></p>
+        <p><span>1枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 0 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
       <div class="click-upload">
         <div class="image-preview"></div>
-        <p><span>2枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 1 }, accept: ".png, .jpg, .jpeg", class: 'photo-file-field' %></p>
+        <p><span>2枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 1 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
       <div class="click-upload">
         <div class="image-preview"></div>
-        <p><span>3枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 2 }, accept: ".png, .jpg, .jpeg", class: 'photo-file-field' %></p>
+        <p><span>3枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 2 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
       <div class="click-upload">
         <div class="image-preview"></div>
-        <p><span>4枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 3 }, accept: ".png, .jpg, .jpeg", class: 'photo-file-field' %></p>
+        <p><span>4枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 3 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
       <div class="click-upload">
         <div class="image-preview"></div>
-        <p><span>5枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 4 }, accept: ".png, .jpg, .jpeg", class: 'photo-file-field' %></p>
+        <p><span>5枚目</span> <%= f.file_field :images, multiple: true, onchange: "loadImage(this);", data: { index: 4 }, accept: ".png, .jpg, .jpeg" %></p>
       </div>
     </div>
   </div>
   <div class="message-field">
     <p>タイトル</p>
-    <div class="member-post-title-field-area">
-      <%= f.text_field :title, class: 'member-post-title-field new-post-field' %>
+    <div class="member-post-title-field">
+      <%= f.text_field :title, class: 'input-bg-white' %>
     </div>
     <p>コメント</p>
-    <div class="member-post-text-field-area">
-      <%= f.text_area :text, class: 'member-post-text-field new-post-field' %>
+    <div class="member-post-text-field">
+      <%= f.text_area :text, class: 'input-bg-white' %>
     </div>
   </div>
 </div>

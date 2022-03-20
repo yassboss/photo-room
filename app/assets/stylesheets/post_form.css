@@ -1,0 +1,206 @@
+/* new.html.erb */
+/* edit.html.erb */
+.post-form-outline {
+  min-height: 100vh;
+  width: 100vw;
+  min-width: 380px;
+  padding: 0.3%;
+}
+.post-form-outline>h1 {
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--main-font-color);
+}
+
+/* _form.html.erb */
+.post-form-field {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.post-submit-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.post-submit-btn>input {
+  padding: 10px;
+  width: 300px;
+  background-color: #2C7CFF;
+  text-align: center;
+  color: white;
+}
+.post-submit-btn>input:hover {
+  opacity: 0.8;
+}
+
+.image-field {
+  min-height: 100px;
+}
+.image-field-area>p>span {
+  font-size: 12px;
+}
+
+.input-text-field {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 0.5px solid gray;
+  background-color: var(--form-bg-color);
+}
+
+.click-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+}
+.click-upload>input {
+  margin-bottom: 10px;
+}
+
+.previews-box {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.preview-image {
+  max-width: 400px;
+  margin-top: 20px;
+}
+.image-delete-button {
+  width: 80px;
+  padding: 3px;
+  margin: 0 auto;
+  background-color: #FF3300;
+  border-radius: 2px;
+  text-align: center;
+  color: white;
+  font-size: 14px;
+}
+.image-delete-button:hover {
+  opacity: 0.8;
+}
+
+.message-field-area {
+  margin-bottom: 30px;
+}
+.message-title-field>input {
+  height: 50px;
+  width: 100%;
+}
+.message-text-field>textarea {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link-btn-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* グループ投稿のみ */
+.group-message-content>p, .member-message-content>p {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: lightgray;
+  font-weight: bold;
+}
+
+.group-post-input-field {
+  width: 95%;
+  margin: 0 auto;
+}
+.group-post-input-field>input {
+  height: 50px;
+  width: 100%;
+}
+.group-post-input-field>textarea {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add-button-box {
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.add_fields {
+  width: 300px;
+  padding: 12px;
+  background-color: pink;
+  text-decoration: none;
+  text-align: center;
+  color: #333333;
+}
+.add_fields:hover {
+  opacity: 0.8;
+}
+
+/* _post_fields.html.erb */
+.user-select-delete-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.member-post-delete-btn-field {
+  display: flex;
+  align-items: center;
+}
+.member-post-delete-btn-field>a {
+  padding: 8px 20px;
+  background-color: #FF3300;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+.member-post-delete-btn-field>a:hover {
+  opacity: 0.8;
+}
+
+.input-bg-white {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 0.5px solid gray;
+  background-color: white;
+}
+
+.user-select-field-pulldown {
+  min-width: 280px;
+  padding: 12px;
+  margin-bottom: 20px;
+  background-color: pink;
+  border: 0.5px solid gray;
+  cursor: pointer;
+}
+
+.member-post-title-field>input {
+  height: 50px;
+  width: 100%;
+}
+.member-post-text-field>textarea {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.click-upload>p>span {
+  font-size: 14px;
+}
+.click-upload>.image-preview>img {
+  max-width: 400px;
+}
