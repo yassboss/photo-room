@@ -53,11 +53,12 @@ https://photo-room.herokuapp.com/
 
 # DEMO
 - トップページ（投稿閲覧）
-[![Image from Gyazo](https://i.gyazo.com/7879eefe7a2f9802cf5528396aa6bcac.gif)](https://gyazo.com/7879eefe7a2f9802cf5528396aa6bcac)
+[![Image from Gyazo](https://i.gyazo.com/452b30cb0226c9ad4ae164cb6c7115ce.gif)](https://gyazo.com/452b30cb0226c9ad4ae164cb6c7115ce)
+
 <br>
 
 - 新規投稿（個人）
-[![Image from Gyazo](https://i.gyazo.com/d263dfc17f1a0b62f140f3ca0aadb239.gif)](https://gyazo.com/d263dfc17f1a0b62f140f3ca0aadb239)
+[![Image from Gyazo](https://i.gyazo.com/7879eefe7a2f9802cf5528396aa6bcac.gif)](https://gyazo.com/7879eefe7a2f9802cf5528396aa6bcac)
 <br>
 
 - 新規投稿（グループ）
@@ -78,9 +79,9 @@ https://photo-room.herokuapp.com/
 ## バックエンド
 #### Ruby(2.6.5), Ruby on Rails(6.1.4)
 ## フロントエンド
-#### Erb, CSS, Javascript
+#### HTML, CSS, Javascript
 ## データベース
-#### MySQL 5.6.51, Sequel Pro
+#### MySQL(5.6.51), Sequel Pro
 ## ソース管理
 #### GitHub, GitHubDesktop
 ## テスト
