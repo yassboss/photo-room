@@ -55,7 +55,7 @@ https://photo-room.herokuapp.com/
 # DEMO
 - トップページ（投稿閲覧）
 
-![image](https://github.com/yassboss/photo-room/issues/15#issue-1175410698)
+![image](https://user-images.githubusercontent.com/90130298/159273823-a08fc447-c901-48ba-9be9-685fa7738ad7.gif)
 <br>
 
 - 新規投稿（個人）
