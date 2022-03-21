@@ -55,8 +55,7 @@ https://photo-room.herokuapp.com/
 # DEMO
 - トップページ（投稿閲覧）
 
-[![Image from Gyazo](https://i.gyazo.com/35f201d971c729aa2c934b80faa88df8.gif)](https://gyazo.com/35f201d971c729aa2c934b80faa88df8)
-
+![image](https://github.com/yassboss/photo-room/issues/15#issue-1175410698)
 <br>
 
 - 新規投稿（個人）
