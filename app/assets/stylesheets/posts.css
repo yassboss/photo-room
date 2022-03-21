@@ -218,4 +218,13 @@
   .click-upload>p>input {
     font-size: 12px;
   }
+
+  .photo, .member-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .photo>img, .member-photo>img {
+    width: 82%;
+  }
 }
