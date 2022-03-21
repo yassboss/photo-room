@@ -1,5 +1,5 @@
 # アプリ名
-## 組写真投稿アプリ Photo Room
+### 組写真投稿アプリ Photo Room
 
 ![画像](https://user-images.githubusercontent.com/90130298/159275965-a89f06bd-1cd7-4929-b559-6c0eb45377ed.jpg)
 <br>
