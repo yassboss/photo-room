@@ -66,7 +66,7 @@ https://photo-room.herokuapp.com/
 <br>
 
 - 新規投稿（グループ）
-[![Image from Gyazo](https://i.gyazo.com/56fb789da66b095a69f0696fa7a9787d.gif)](https://gyazo.com/56fb789da66b095a69f0696fa7a9787d)
+[![Image from Gyazo](https://i.gyazo.com/d2a3ea078776696207436789f7704310.gif)](https://gyazo.com/d2a3ea078776696207436789f7704310)
 <br>
 
 - コメント投稿
