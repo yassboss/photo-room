@@ -4,9 +4,7 @@
   <div class="group-show-box">
     <div class="group-show-about-us">
       <h3>about us</h3>
-      <h4>ー Group name ー</h4>
-      <h4 class="group-name"><%= @group.name %></h4>
-      <h4>ー Introduction ー</h4>
+      <h2 class="group-name"><%= @group.name %></h2>
       <p class="intro-p16"><%= @group.introduction %></p>
       <div class="group-show-btn-box">
         <%= link_to "投稿", new_group_post_path(@group), class: 'group-post-btn' if user_signed_in? && @member.include?(current_user) %>
@@ -44,8 +42,8 @@
       <ul class="member-post-lists">
         <% if @group_posts.length >= 1 %>
           <% @group_posts.each do |post| %>
-            <li class="post-list">
-              <div class="post-content">
+            <li class="group-post-list">
+              <div class="group-post-content">
                 <p style="font-size: 18px; color: var(--main-font-color);"><%= post.group_title %></p>
                 <%= link_to group_post_path(post.id) do %>
                   <%= image_tag post.posts[0].images[0].variant(gravity: :center, resize:"270x200^", crop:"270x200+0+0").processed, class: 'index-img' %>
