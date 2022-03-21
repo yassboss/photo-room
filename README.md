@@ -1,4 +1,7 @@
-![画像](https://github.com/yassboss/photo-room/blob/master/108d299058b88874dfacffef893727f8.jpg?raw=true)
+# アプリ名
+## 組写真投稿アプリ Photo Room
+
+![画像](https://user-images.githubusercontent.com/90130298/159275965-a89f06bd-1cd7-4929-b559-6c0eb45377ed.jpg)
 <br>
 <br>
 
