@@ -161,11 +161,12 @@
   align-items: center;
 }
 .member-post-delete-btn-field>a {
-  padding: 8px 20px;
+  padding: 8px 12px;
   background-color: #FF3300;
   color: white;
   text-align: center;
   text-decoration: none;
+  font-size: 14px;
 }
 .member-post-delete-btn-field>a:hover {
   opacity: 0.8;

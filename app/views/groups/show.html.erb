@@ -38,6 +38,13 @@
     <div class="group-show-about-us">
       <div class="group-member-post-title">
         <h3>Post</h3>
+        <% if @group_posts.length == 0 %>
+          <p>0 posts</p>
+        <% elsif @group_posts.length == 1 %>
+          <p>1 post</p>
+        <% else %>
+          <p><%= @group_posts.length %> posts</p>
+        <% end %>
       </div>
       <ul class="member-post-lists">
         <% if @group_posts.length >= 1 %>

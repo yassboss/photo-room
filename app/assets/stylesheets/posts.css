@@ -219,6 +219,10 @@
     font-size: 12px;
   }
 
+  .click-upload>input {
+    font-size: 12px;
+  }
+
   .photo, .member-photo {
     display: flex;
     flex-direction: column;
