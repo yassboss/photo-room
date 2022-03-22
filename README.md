@@ -62,15 +62,15 @@ https://photo-room.herokuapp.com/
 <br>
 
 - 新規投稿（個人）
-[![Image from Gyazo](https://i.gyazo.com/7879eefe7a2f9802cf5528396aa6bcac.gif)](https://gyazo.com/7879eefe7a2f9802cf5528396aa6bcac)
+![Image](https://user-images.githubusercontent.com/90130298/159505629-cac7efb8-0005-47e8-8bb3-8836e962563e.gif)
 <br>
 
 - 新規投稿（グループ）
-[![Image from Gyazo](https://i.gyazo.com/d2a3ea078776696207436789f7704310.gif)](https://gyazo.com/d2a3ea078776696207436789f7704310)
+![Image](https://user-images.githubusercontent.com/90130298/159505152-f9a6b72a-44ae-4c6c-85af-26281bb69e1e.gif)
 <br>
 
 - コメント投稿
-[![Image from Gyazo](https://i.gyazo.com/4dcce2248cc9c80be019dcd3e22cc16d.gif)](https://gyazo.com/4dcce2248cc9c80be019dcd3e22cc16d)
+![Image](https://user-images.githubusercontent.com/90130298/159506063-65f2723c-41b8-469d-8a5d-f8ae47069ab0.gif)
 <br>
 <br>
 
