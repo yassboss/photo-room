@@ -14,7 +14,7 @@ class GroupPostsController < ApplicationController
     @group_users = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
     @group_post = GroupPost.new(group_post_params)
     if @group_post.save
-      redirect_to root_path
+      redirect_to group_path(@group)
     else
       render :new
     end
@@ -33,15 +33,16 @@ class GroupPostsController < ApplicationController
 
   def update
     if @group_post.update(group_post_params)
-      redirect_to root_path
+      redirect_to group_path(@group)
     else
       render :edit
     end
   end
 
   def destroy
+    @group = Group.find(@group_post.group_id)
     @group_post.destroy
-    redirect_to root_path
+    redirect_to group_path(@group)
   end
 
   private
@@ -58,6 +59,6 @@ class GroupPostsController < ApplicationController
 
   def set_group_and_group_users
     @group = Group.find(@group_post.group_id)
-    @group_users = User.where(id: @group.group_users.ids)
+    @group_users = User.where(id: GroupUser.select(:user_id).where(group_id: @group.id))
   end
 end
