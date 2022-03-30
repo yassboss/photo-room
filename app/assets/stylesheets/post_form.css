@@ -17,6 +17,7 @@
 .post-form-field {
   max-width: 700px;
   margin: 0 auto;
+  padding: 5px;
 }
 
 .post-submit-btn {
