@@ -179,7 +179,7 @@
   color: white;
 }
 
-.group-post-edit-delete-btn, .post-edit-delete-btn {
+.group-post-edit-delete-btn, .group-post-edit-delete-btn {
   padding: 10px;
   display: flex;
   justify-content: center;
