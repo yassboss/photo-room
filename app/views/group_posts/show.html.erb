@@ -21,16 +21,12 @@
         <div class="post-user-info" style="display: flex; flex-direction: column; align-items: center;">
           <p style="font-size: 20px; padding: 40px 0; color: white;"><%= post.text %></p>
           <div class="user-info-box">
+            <div><p>撮影者</p></div>
             <div class="user-image-field">
               <%= image_tag post.user.avatar.variant(combine_options:{gravity: :center, resize:"40x40^",crop:"40x40+0+0"}).processed %>
               <div class="user-name-prefecture">
                 <p class="user-g-p20"><%= post.user.nickname %></p>
               </div>
-            </div>
-            <div class="user-info-field">
-              <p class="user-g-p12"><%= post.user.prefecture.name %></p>
-              <p class="user-g-p12">カメラ歴:<%= post.user.camera_experience.name %></p>
-              <p class="user-g-p12">メイン機種:<%= post.user.main_camera %></p>
             </div>
           </div>
         </div>

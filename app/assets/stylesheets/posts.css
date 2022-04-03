@@ -136,21 +136,27 @@
 }
 
 .post-user-info>p {
-  font-size: 20px;
+  font-size: 18px;
   padding: 40px 0;
 }
 
 .user-info-box {
-  padding: 20px;
+  padding: 10px 20px;
   border: 0.5px solid gray;
   margin-bottom: 20px;
+}
+
+.user-info-box>div>p {
+  color: white;
+  text-align: center;
+  font-size: 12px;
 }
 
 .user-image-field {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .user-image-field>img {
